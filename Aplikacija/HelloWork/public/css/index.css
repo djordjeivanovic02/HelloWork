@@ -1,0 +1,28 @@
+@import url('variables.css');
+
+.welcome-container{
+    max-width: 1310px;
+}
+.welcome-left-container{
+    width: 60%;
+}
+.welcome-left-container h1{
+    font-family: 'Rubik', sans-serif;
+    font-size: 65px;
+    line-height: 75px;
+}
+.welcome-left-container span{
+    color: var(--main-color);
+}
+.welcome-left-container p {
+    margin-top: 30px;
+    color: var(--grey-text);
+}
+.welcome-right-container{
+    right: 0;
+    bottom: 0;
+    height: 90%;
+}
+.welcome-right-container img{
+    height: 100%;
+}

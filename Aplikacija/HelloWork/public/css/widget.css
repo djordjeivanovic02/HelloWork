@@ -1,0 +1,448 @@
+@import url('variables.css');
+.allaround-container
+{
+    width: 298px;
+    height: 274px;
+    border-radius: 20px;
+}
+
+.img-container
+{
+    background-color: rgb(97, 63, 229);
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+}
+
+.text-pretraga
+{
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+    margin: 20px 10px 10px 10px;
+    font-weight: bold;
+}
+
+.text-pronadji
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 10px;
+    line-height: 15px;
+    color: #7F93B6;
+}
+
+.centaar
+{
+    padding: 10%;
+}
+
+/* Drugi deo */
+
+.spoljni-container
+{
+    width: 298px;
+    height: 150px;
+    background-color: #F0EEFC;
+    border-radius: 10px;
+    margin-top: 30px;
+    position: relative;
+}
+.gornji-text
+{
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+}
+
+.donji-text
+{
+    color: #613FE5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+/* Treći deo */
+
+.out-container
+{
+    width: 397px;
+    height: 273px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition-duration: 0.3s;
+    position: relative;
+    margin-top: 20px;
+}
+
+.out-container:hover
+{
+    border-color:#613FE5;
+}
+
+.full-time-div
+{   
+    background-color: #F0EEFC;
+    border-radius: 5px;
+    width: 58px;
+    height: 19px;
+    margin-top: 7px;
+    margin-right: 7px;
+    position: relative;
+}
+
+.full-time-text
+{
+    font-size: 11px;
+    font-family: 'Poppins', sans-serif;
+    color: #613FE5;
+    font-weight: bold;
+    margin-left: 4px;
+    margin-top: 1px;
+}
+
+.before2
+{
+    width: 60px;
+    height: 30px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.logo-container
+{
+    width: 70px;
+    height: 70px;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    margin-left: 40px;
+    margin-top: -20px;
+}
+
+.top-text
+{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 13px;
+    margin-top: -5px;
+    line-height: 15px;
+}
+
+.bottom-text
+{
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 13px;
+    color: #7F93B6;
+    line-height: 1px;
+
+}
+
+.third-row
+{
+    margin-left: 38px;
+    margin-top: 22px;
+    margin-right: 25px;
+}
+
+.text-third-row
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+}
+
+.button
+{
+    width: 117.1px;
+    height: 42px;
+    background-color: #613FE5;
+    border-radius: 10px;
+    margin-left: 38px;
+    margin-bottom: 10px;
+}
+
+.button-text
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin: 0px;
+}
+
+.price
+{
+    color:#613FE5;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 0px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.month
+{
+    color:#7F93B6;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    margin: 0px;
+}
+
+.pricemonth-div
+{
+    padding-right: 20px;
+    position: relative;
+    padding-top: 10px;
+}
+
+/* Četvrti deo */
+
+.long-container
+{
+    width: 729px;
+    height: 126px;
+    border: 1px solid #F0EEFC;
+    border-radius: 10px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.image-div
+{
+    padding-top: 20px;
+    padding-left: 26px;
+    height: 1px;
+
+}
+
+.above-text
+{
+    padding-top: 31px;
+    padding-left: 15px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 0px;
+}
+
+.all-informations
+{
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+    padding-left: 16px;
+}
+
+.text-in-span
+{
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.down-button-text
+{
+    color: #613FE5;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    margin: 0px;
+}
+
+.down-button
+{
+    width: 103px;
+    height: 20px;
+    background-color: #F3F6FB;
+    border-radius: 20px;
+    margin-top: 17px;
+    margin-left: 14px;
+}
+
+.save-it-div
+{
+    margin-top: 20px;
+    margin-left: 170px;
+}
+
+
+/* Peti deo */
+
+.login-background-container{
+    background-color: rgba(0, 0, 0, 0.60);
+    display: none;
+}
+
+.login-container
+{
+    width: 600px;
+    height: 597px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.text-username
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+}
+
+.title
+{
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    white-space: nowrap;
+    margin-left: 120px;
+    margin-right: 90px;
+    width:333px;
+}
+
+.x
+{
+    width: 40px;
+    height: 40px;
+    padding-top: 15px;
+    border-radius: 10px;
+    margin-top: -55px;
+    background-color: #F3F6FB;
+}
+
+.text-X
+{
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.unesi-ovde
+{
+    width: 492px;
+    height: 55px;
+    background-color: #F3F6FB;
+    color: #7F93B6;
+    padding-left: 15px;
+    border-radius: 15px;
+    padding-top: 10px;
+}
+
+.text-inside-username
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+}
+
+.text-username
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+}
+
+.text-password
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    padding-top: 40px;
+}
+
+.text-inside-password
+{
+    width: 492px;
+    height: 55px;
+    background-color: #F3F6FB;
+    color: #7F93B6;
+    padding-left: 15px;
+    border-radius: 15px;
+    padding-top: 15px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.checkbox
+{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #DDDDDD;
+    margin-right: 300px;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: -20px;
+}
+
+.checkbox:checked
+{
+    background-color: #613FE5;
+}
+
+.checkbox:hover
+{
+    background-color: #613FE5;
+}
+
+.text-zapamti
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+    padding-left: 30px;
+    white-space: nowrap;
+}
+
+.zaboravili
+{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    margin-top: 10px;
+}
+
+.button-prijavi-se
+{
+    width: 492px;
+    height: 55px;
+    background-color: #613FE5;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+.text-inside-button
+{
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    padding-top: 17px;
+}
+
+.text-registration
+{
+    color: #7F93B6;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.text-prijava-registration
+{
+    color: #7F93B6;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding-left: 3px;
+    vertical-align: super;
+}
+
+.registration
+{
+    margin-top: 25px;
+}
