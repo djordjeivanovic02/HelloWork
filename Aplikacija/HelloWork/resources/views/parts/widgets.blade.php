@@ -7,8 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/widget.css') }}">
 </head>
-<body class="centaar d-flex align-items-center justify-content-center">
-    <div class="d-flex flex-column">
+<body class="p-4">
+    <div class="">
 
         {{-- Prvi element --}}
 
@@ -88,45 +88,41 @@
 
         {{-- Peti element - login --}}
 
-        {{-- <div class="login-container d-flex flex-column align-items-center shadow">
-            
-            <div class="gornji-deo d-flex flex-row align-items-center justify-content-center">
-                <p class="title">Prijavi se na Hello Work</p>
+        <div class="login-container d-flex flex-column align-items-center shadow">
+            <div class="w-100 d-flex justify-content-end">
                 <div class="x d-flex align-items-center justify-content-center">
                     <p class="text-X">X</p>
                 </div>
             </div>
+            <div class="w-100 text-center">
+                <p class="title">Prijavi se na Hello Work</p>
+            </div>
+               
+            
             <div class="username-email">
                 <p class="text-username">Korisničko ime ili email adresa</p>
-                <div class="unesi-ovde d-flex align-items-center justify-content-start">
-                    <p class="text-inside-username">Unesi ovde</p>
-                </div>
+                <input type="text" class="input-login" placeholder="Unesi ovde"></input>
             </div>
             <div class="password">
                 <p class="text-password">Lozinka</p>
-                <div class="">
-                    <p class="text-inside-password">Lozinka</p>
-                </div>
+                <input type="text" class="input-login" placeholder="Lozinka"></input>
             </div>
 
-            <div class="zapamtiIzaboravili d-flex">
-                <div class="zapamti">
-                    <div class="checkbox">
-                        <p class="text-zapamti">Zapamti me</p>
-                    </div>
-                </div>    
-                <p class="zaboravili">Zaboravili ste lozinku?</p>
+            <div class="zapamtiIzaboravili d-flex justify-content-between w-100 align-items-center">
+                <div class="d-flex">
+                    <input type="checkbox" class="zapamti">
+                    <p class="text-zapamti">Zapamti me</p>
+                </div>
+                <a class="zaboravili" href="#">Zaboravili ste lozinku?</a>
             </div>   
             
-            <div class="button-prijavi-se d-flex align-items-center justify-content-center">
-                <p class="text-inside-button">Prijavi se</p>
-            </div>
+            <input type="button" class="button-prijavi-se d-flex align-items-center justify-content-center" value="Prijavi se">
 
             <div class="registration d-flex">
-                <p class="text-registration">Još uvek nemate nalog? <p><span class="text-prijava-registration">Registruj se</span></p>
+                <p class="text-registration">Još uvek nemate nalog? <a class="text-prijava-registration" href="#"><span class="registruj-se">Registruj se</span></a>
             </div>
+
         </div>
-        <p>Blabla</p> --}}
 
         <div style="height: 200px">
             <div class="position-relative select-toggler-container d-flex align-items-center">
