@@ -26,3 +26,22 @@
 .welcome-right-container img{
     height: 100%;
 }
+.mt-100{
+    margin-top: 100px;
+}
+.purpleText{
+    color: var(--main-color);
+}
+.site-tutorial h2{
+    color: black;
+    font-size: 40px;
+    line-height: 49px;
+}
+.site-tutorial .tutorial-header{
+    width: 100%;
+    max-width: 850px;
+}
+.site-tutorial .description{
+    font-weight: normal;
+    color: var(--grey-text);
+}

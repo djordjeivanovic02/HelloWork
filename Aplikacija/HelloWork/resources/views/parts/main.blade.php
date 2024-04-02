@@ -13,9 +13,8 @@
     <div class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center">
         <div class="welcome-main-container w-100 d-flex bg-white">
             <div class="main-container w-100 h-100 d-flex flex-column align-items-center justify-content-center">
-
                 <div class="navigation-container container d-flex justify-content-between bg-white">
-                    <div class="logo-container d-flex align-items-center">
+                    <div class="header-logo-container d-flex align-items-center">
                         <img src="images/logo.svg" alt="logo">
                         {{-- Dodati tekst za logo --}}
                     </div>
@@ -33,7 +32,8 @@
                     </div>
                 </div>
                 @yield('welcome-content')
-                @include('parts.login')
+                @yield('search-job')
+                {{-- @include('parts.login') --}}
             </div>
         </div>
 

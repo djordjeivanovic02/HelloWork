@@ -12,24 +12,25 @@
 
         {{-- Prvi element --}}
 
-        <div class="allaround-container d-flex flex-column align-items-center justify-content-center shadow-lg" >
+        {{-- <div class="allaround-container d-flex flex-column align-items-center justify-content-center shadow-lg" >
             <div class="img-container d-flex align-items-center justify-content-center shadow">
                 <img src="/images/Lupa-logo.svg"></img>
             </div>
-                <p class="text-pretraga"> Pretražuj poslove </p>
-                <p class="text-pronadji text-center"> Pronađite poslove koji odgovaraju vašim veštinama i intereseovanjima brzo i jednostavno. </p>
-        </div>
+            <p class="text-pretraga"> Pretražuj poslove </p>
+            <p class="text-pronadji text-center"> Pronađite poslove koji odgovaraju vašim veštinama i intereseovanjima brzo i jednostavno. </p>
+        </div> --}}
+        
 
         {{-- Drugi element --}}
 
-        <div class="spoljni-container d-flex flex-column align-items-center justify-content-center">
+        {{-- <div class="spoljni-container d-flex flex-column align-items-center justify-content-center">
             <p class="gornji-text"> UI/Ux Dizajner </p>
             <p class="donji-text"> 100+ Novih Poslova </p>
-        </div>
+        </div> --}}
 
         {{-- Treći element --}}
 
-        <div class="out-container d-flex flex-column shadow">
+        {{-- <div class="out-container d-flex flex-column shadow">
             <div class="first-row d-flex flex-row justify-content-end">
                 <p class="before2">Pre 2 dana</p>
                 <div class="full-time-div">
@@ -59,11 +60,11 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Četvrti element --}}
 
-        <div class="long-container d-flex flex-column">
+        {{-- <div class="long-container d-flex flex-column">
             <div class="prvi-red d-flex flex-row">
                 <div class="image-div">
                     <img src="/images/Windows-logo.svg"></img>
@@ -83,11 +84,11 @@
             <div class="save-it-div d-flex align-items-start">
                 <img src="/images/Sacuvaj.svg"></img>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Peti element - login --}}
 
-        <div class="login-container d-flex flex-column align-items-center shadow">
+        {{-- <div class="login-container d-flex flex-column align-items-center shadow">
             
             <div class="gornji-deo d-flex flex-row align-items-center justify-content-center">
                 <p class="title">Prijavi se na Hello Work</p>
@@ -124,9 +125,35 @@
             <div class="registration d-flex">
                 <p class="text-registration">Još uvek nemate nalog? <p><span class="text-prijava-registration">Registruj se</span></p>
             </div>
-
         </div>
-        <p>Blabla</p>
+        <p>Blabla</p> --}}
+
+        <div style="height: 200px">
+            <div class="position-relative select-toggler-container d-flex align-items-center">
+                <div class="position-absolute select-toggler"></div>
+            </div>
+        </div>
+
+        <script>
+            const element = document.querySelector('.select-toggler-container');
+            element.addEventListener('click', function(){
+                const toggler = element.querySelector('.select-toggler');
+                if(element.classList.contains('active')){
+                    this.classList.remove('active');
+                    this.classList.add('close');
+
+                    toggler.classList.remove('active');
+                    toggler.classList.add('close');
+                }else{
+                    this.classList.remove('close');
+                    this.classList.add('active');
+
+                    toggler.classList.remove('close');
+                    toggler.classList.add('active');
+                }
+            })
+
+        </script>
     </div>
 </body>
 </html>

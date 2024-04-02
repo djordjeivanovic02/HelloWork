@@ -15,8 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
+Route::get('/searchjob', function () {
+    return view('search-jobs');
+})->name('searchjob');
+
+// samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {
-    return view('parts.searchjob');
+    return view('parts.widgets');
 });

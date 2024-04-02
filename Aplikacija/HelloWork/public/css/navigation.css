@@ -1,21 +1,14 @@
 @import url('variables.css');
-*{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-}
 p{
     font-size: 16px;
     line-height: 20px;
 }
-.welcome-main-container{
-    height: 100vh;
-}
+
 .navigation-container{
     padding: 20px;
     max-width: 1800px;
 }
-.logo-container img{
+.header-logo-container img{
     width: 70px;
     height: 70px;
 }
@@ -38,8 +31,7 @@ p{
 .add-job-button{
     background-color: var(--main-color);
 }
-.welcome-main-container2{
-    height: 100vh;
+.welcome-main-container2{   
     width: 100%;
     background: linear-gradient(to right bottom, #F2F5FB, #F3F6FB);
 }

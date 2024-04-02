@@ -1,0 +1,49 @@
+@import url('variables.css');
+
+.info-container{
+    min-height: 250px;
+    background-color: var(--background-light);
+}
+.info-container{
+    font-size: 34px;
+}
+.info-navigation-container, 
+.info-navigation-container a{
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--grey-color);
+}
+.info-navigation-container a:hover{
+    text-decoration: underline;
+}
+.info-navigation-container a.main{
+    color: black;
+}
+.search-job-main-container{
+    max-width: 1310px;
+    margin-top: 100px;
+}
+.search-job-inputs{
+    width: 35%;
+    max-width: 400px;
+    background-color: var(--background-light);
+    border-radius: 10px;
+    padding: 25px 30px;
+}
+.search-job-inputs p{
+    font-size: 18px;
+    font-weight: 600;
+}
+.search-job-input{
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+.search-job-input input{
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+.search-job-input input::placeholder{
+    color: var(--grey-text);
+    font-weight: normal;
+}
