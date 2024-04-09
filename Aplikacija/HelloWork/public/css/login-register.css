@@ -1,0 +1,35 @@
+.login-background-container{
+    background-color: var(--background-color);
+}
+.login-background-container.deactive{
+    display: none;
+}
+.login-background-container.active{
+    display: flex;
+}
+.login-container{
+    scale: 0;
+}
+.login-container.active{
+    animation: showLoginBox .3s ease-in-out forwards;
+}
+.login-container.deactive{
+    animation: closeLoginBox .3s ease-in-out forwards;
+}
+
+
+/* ANIMACIJE */
+@keyframes showLoginBox {
+    0%{
+        scale: 0;
+    }100%{
+        scale: 1;
+    }
+}
+@keyframes closeLoginBox {
+    0%{
+        scale: 1;
+    }100%{
+        scale: 0;
+    }
+}

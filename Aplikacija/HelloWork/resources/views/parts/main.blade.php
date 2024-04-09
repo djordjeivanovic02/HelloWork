@@ -36,7 +36,13 @@
                 {{-- @include('parts.login') --}}
             </div>
         </div>
-
     </div>
+
+    {{-- Login Container --}}
+    <div class="login-background-container deactive fixed-top align-items-center justify-content-center w-100 h-100">
+        @include('parts.login-widget')
+    </div>
+
+    <script src="{{ asset('js/click-handler.js') }}"></script>
 </body>
 </html>
