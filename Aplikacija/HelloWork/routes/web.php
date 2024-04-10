@@ -25,3 +25,7 @@ Route::get('/searchjob', function () {
 Route::get('/widgets', function () {
     return view('parts.widgets');
 });
+
+Route::get('/user', function(){
+    return view('user-profile');
+});
