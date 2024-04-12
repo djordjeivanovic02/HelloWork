@@ -1,3 +1,4 @@
+
 <div class="login-background-container w-100 h-100 position-fixed top-0 start-0 d-none justify-content-center align-items-center">
     <div class="login-container d-flex flex-column align-items-center shadow bg-white">
         <div class="gornji-deo d-flex flex-row align-items-center justify-content-center">
@@ -35,7 +36,6 @@
         <div class="registration d-flex">
             <p class="text-registration">Još uvek nemate nalog? <p><span class="text-prijava-registration">Registruj se</span></p>
         </div>
-    
     </div>
 </div>
 <script src="{{ asset('js/login.js') }}"></script>

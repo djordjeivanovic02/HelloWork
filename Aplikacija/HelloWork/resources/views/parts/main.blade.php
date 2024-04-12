@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
     <link rel="stylesheet" href="{{ asset('css/widget.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
+
+    {{-- <p>{{$user->name}}</p> --}}
     <div class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center">
         <div class="welcome-main-container w-100 d-flex bg-white">
             <div class="main-container w-100 h-100 d-flex flex-column align-items-center justify-content-center">
@@ -18,7 +22,7 @@
                         <img src="images/logo.svg" alt="logo">
                         {{-- Dodati tekst za logo --}}
                     </div>
-                    <div class="navigation-main d-flex align-items-center gap-5">
+                    <div class="navigation-main align-items-center gap-5">
                         <a href="#">POČETNA</a>
                         <a href="#">PRONAĐI POSAO</a>
                         <a href="#">ZA KANDIDATE</a>
@@ -26,8 +30,25 @@
                         <a href="#">O NAMA</a>
                     </div>
                     <div class="actions-container d-flex align-items-center gap-4">
-                        <a href="#" class="text-decoration-none">Dodajte Vaš CV</a>
-                        <button class="login-register-button h-100 border-0 rounded p-3">Prijava / Registracija</button>
+                        <a href="#" class="text-decoration-none add-your-cv">Dodajte Vaš CV</a>
+
+                            <button class="login-register-button open-profile h-100 border-0 rounded p-3
+                            @if($user !== NULL)
+                                d-block
+                            @else
+                                d-none
+                            @endif
+                            "
+                            >Pogledaj profil</button>
+                            <button class="login-register-button h-100 border-0 rounded p-3
+                            @if ($user !== NULL)
+                                d-none
+                            @else
+                                d-block
+                            @endif
+                            "
+                            id="login-register-button"
+                            >Prijava / Registracija</button>
                         <button class="add-job-button h-100 border-0 rounded p-3 text-white">Postavi Posao</button>
                     </div>
                 </div>
@@ -39,7 +60,7 @@
     </div>
 
     {{-- Login Container --}}
-    <div class="login-background-container deactive fixed-top align-items-center justify-content-center w-100 h-100">
+    <div class="login-background-container deactive fixed-top align-items-center justify-content-around h-100">
         @include('parts.login-widget')
     </div>
 
