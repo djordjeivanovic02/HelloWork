@@ -64,7 +64,9 @@
     font-size: 28px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    padding-bottom: 20px;
+}
+.text-center .title{
+    margin-bottom: 30px;
 }
 
 .x
@@ -100,19 +102,15 @@
     color: #7F93B6;
 }
 
-.text-username
+.text-username, .text-password
 {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     font-weight: 450;
+    margin-bottom: 8px;
 }
-
-.text-password
-{
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 450;
-    padding-top: 40px;
+.username-email{
+    margin-bottom: 20px;
 }
 
 .input-login
@@ -159,7 +157,7 @@
 {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
-    color: #7F93B6; 
+    color: #7F93B6;
     margin-bottom: 0px;
     margin-left: 5px;
     white-space: nowrap;
@@ -183,7 +181,7 @@
 
     .zaboravili
     {
-        
+
         margin-top: 15px;
     }
 }
@@ -270,7 +268,7 @@
     width: 48%;
     height: 65px;
     border-radius: 12px;
-    background-color: #F3F6FB;  
+    background-color: #F3F6FB;
     border: none;
     outline: none;
     color: #613FE5;
@@ -300,8 +298,23 @@
     display: inline-block;
 }
 
+.login-error-container{
+    margin-bottom: 1rem;
+    border: 1px solid red;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 15px;
+    display: none;
+}
+.login-error-container p, b{
+    margin: 0px;
+    padding: 0px;
+}
 
-
+.login-error-container.active{
+    display: block;
+    animation: showLoginError .3s ease-in-out forwards;
+}
 
 /* ANIMACIJE */
 @keyframes showLoginBox {
@@ -333,3 +346,11 @@
         left: 0%;
     }
 }
+@keyframes showLoginError{
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
+}
+
