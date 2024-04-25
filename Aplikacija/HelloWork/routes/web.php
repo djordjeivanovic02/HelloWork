@@ -32,3 +32,4 @@ Route::get('/logout', [AuthController::class, 'signOut']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/updateUserData', [UserController::class, 'updateUserData']);
