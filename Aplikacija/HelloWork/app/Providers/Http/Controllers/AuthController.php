@@ -32,7 +32,7 @@ class AuthController extends Controller
                 'email' => ['required', 'email'],
                 'password' => ['required'],
                 'type' => ['required']
-            ])->validate();
+            ]);
             $emailExist = User::where('email', $request->email)->exists();
             if($emailExist){
                 throw new \Exception("Već postoji korisnik sa unetom email adresom");
