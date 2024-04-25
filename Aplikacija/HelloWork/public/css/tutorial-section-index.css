@@ -21,7 +21,7 @@
 }
 
 .allaround-container:hover .hover-indicator {
-    height: 100%;
+    height: 50%;
 }
 
 .allaround-container p{

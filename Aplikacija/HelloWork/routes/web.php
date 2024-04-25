@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [IndexController::class, '__invoke'])->name('login');
 
 Route::get('/searchjob', function () {
     return view('search-jobs');
@@ -26,6 +27,9 @@ Route::get('/widgets', function () {
     return view('parts.widgets');
 });
 
-Route::get('/user', function(){
-    return view('user-profile');
-});
+Route::get('/user', [UserController::class, 'show'])->middleware('auth');
+Route::get('/logout', [AuthController::class, 'signOut']);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/updateUserData', [UserController::class, 'updateUserData']);

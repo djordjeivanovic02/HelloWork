@@ -1,12 +1,10 @@
 @import url('variables.css');
-p{
-    font-size: 16px;
-    line-height: 20px;
-}
-
 .navigation-container{
     padding: 20px;
     max-width: 1800px;
+}
+.navigation-main{
+    display: flex;
 }
 .header-logo-container img{
     width: 70px;
@@ -31,7 +29,33 @@ p{
 .add-job-button{
     background-color: var(--main-color);
 }
-.welcome-main-container2{   
+.welcome-main-container2{
     width: 100%;
     background: linear-gradient(to right bottom, #F2F5FB, #F3F6FB);
+}
+
+
+@media only screen and (max-width: 640px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+    .navigation-main {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1500px) {
+    .add-job-button, .add-your-cv{
+        display: none;
+    }
 }
