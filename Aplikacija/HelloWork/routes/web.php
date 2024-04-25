@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, '__invoke'])->name('login');
 
 Route::get('/searchjob', function () {
-    return view('search-jobs');
+    return view('search-jobs', ['user' => auth()->user()]);
 })->name('searchjob');
 
 // samo za priakaz Davidovih vidzeta

@@ -11,26 +11,66 @@
                 </div>
             </div>
             <div class="welcome-right-container w-100 position-absolute d-flex justify-content-end align-items-end">
-                <img src="images/welcome-image.svg" alt="">
+                <img src="images/welcome-image.svg" alt="Welcome Image">
             </div>
         </div>
     </div>
 
-    <div class="w-100 d-flex flex-column align-items-center justify-content-center mt-100">
+    <div class="w-100 d-flex flex-column align-items-center justify-content-center">
         <div class="welcome-container d-flex flex-column align-items-center justify-content-center site-tutorial w-100 position-relative">
-            <div class="tutorial-header">
-                <p class="m-0 purpleText text-center">KAKO FUNKCIONIŠE</p>
-                <h2 class="text-center">Pratite četiri jednostavna koraka</h2>
-                <p class="text-center mt-3 description">Navigacija kroz proces zapošljavanja: Ova četiri koraka vode vas kroz kompleksan proces pronalaženja i
-                    osvajanja željenog posla. Od definisanja svojih ciljeva i pripreme za intervju, do uspešnog pregovaranja o
-                    uslovima zaposlenja, ovi koraci su ključni za ostvarenje vaših karijernih ambicija.</p>
+            <div class="w-100 d-flex flex-column align-items-center mt-200">
+                <div class="tutorial-header">
+                    <p class="m-0 purpleText text-center">KAKO FUNKCIONIŠE</p>
+                    <h2 class="text-center">Pratite četiri jednostavna koraka</h2>
+                    <p class="text-center mt-3 description">Navigacija kroz proces zapošljavanja: Ova četiri koraka vode vas kroz kompleksan proces pronalaženja i
+                        osvajanja željenog posla. Od definisanja svojih ciljeva i pripreme za intervju, do uspešnog pregovaranja o
+                        uslovima zaposlenja, ovi koraci su ključni za ostvarenje vaših karijernih ambicija.</p>
+                </div>
+                <div class="tutorial-widgets w-100 d-flex justify-content-center flex-wrap mt-5">
+                    @include('parts.tutorial-widgets')
+                </div>
+            </div>  
+            <div class="welcome-sector-container w-100 p-0 d-flex mt-200">
+                <div class="welcome-sector-text w-50">
+                    <p class="m-0 purpleText">ZADOVOLJNI KORISNICI</p>
+                    <h2>Postanite i Vi jedan od naših zadovoljnih članova</h2>
+                    <p class="mt-3 description">Kažu da je pronalaženje posla dug put, ali mi smo tu da ga učinimo lakšim i uzbudljivijim. Postanite jedan od naših zadovoljnih članova i otvorite vrata svetu profesionalnih prilika i napredovanja!</p>
+                    <p class="mt-1 description"> Registracija je brza, jednostavna i prilagođena vama. Samo nekoliko koraka i već ste spremni za početak vaše karijerne avanture. Nema komplikacija, nema gubljenja vremena - samo čista produktivnost.</p>
+                    <p class="mt-1 description">Pridružite nam se danas i prepustite se čarima koje samo naša platforma za zapošljavanje može pružiti. Jer s nama, pronalaženje posla nije samo cilj - to je putovanje ka ostvarenju vaših profesionalnih snova.</p>
+                    <button class="mt-3">Registruj se</button>
+                </div>
+                <div class="welcome-section-image w-50 d-flex justify-content-end">
+                    <img src="{{ asset('images/welcome-section.svg') }}" alt="Welcome Section Image">
+                </div>
             </div>
-            <div class="tutorial-widgets w-100 d-flex justify-content-between align-items-center mt-5">
-                @include('parts.tutorial-widget1')
-                @include('parts.tutorial-widget2')
-                @include('parts.tutorial-widget3')
-                @include('parts.tutorial-widget4')
+            <div class="w-100 d-flex flex-column align-items-center mt-200">
+                <div class="tutorial-header ">
+                    <p class="m-0 purpleText text-center">KATEGORIJE POSLOVA</p>
+                    <h2 class="text-center">Izaberite željenu kategoriju</h2>
+                    <p class="text-center mt-2 description">Naša sekcija za kategorije poslova pruža vam mogućnost da brzo i lako pronađete poslove koji odgovaraju vašim interesovanjima i veštinama. Bez obzira da li tražite posao u tehnologiji, marketingu, administraciji ili nekoj drugoj oblasti, ovde ćete naći širok spektar opcija.</p>
+                </div>
+                <div class="tutorial-widgets w-100 d-flex justify-content-center flex-wrap mt-5 ">
+                    {{-- @include('parts.tutorial-widgets') --}}
+                    @include('parts.quick-categories')
+                </div>
             </div>
+            <div class="w-100 d-flex flex-column align-items-center mt-200">
+                <div class="welcome-quick-jobs w-100 d-flex justify-content-between align-items-center">
+                    <div class="p-2">
+                        <p class="m-0 purpleText">SKORAŠNJI POSLOVI</p>
+                        <h2>Ponuda novih poslova</h2>
+                        <p class="mt-2 description">Svakog dana 100+ novih oglasa</p>
+                    </div>
+                    <button>Postavi oglas</button>
+                </div>
+
+                <div class="quick-jobs-cotnainer w-100 d-flex flex-column align-items-center">
+                    <div class="tutorial-widgets w-100 d-flex justify-content-center flex-wrap mt-5 ">
+                        @include('parts.quick-job')
+                    </div>
+                    <button>Učitaj još</button>
+                </div>
+            </div>  
         </div>
     </div>
 @endsection
