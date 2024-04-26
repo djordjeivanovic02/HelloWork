@@ -54,6 +54,7 @@
                 </div>
                 @yield('welcome-content')
                 @yield('search-job')
+                @yield('job')
                 {{-- @include('parts.login') --}}
             </div>
         </div>
