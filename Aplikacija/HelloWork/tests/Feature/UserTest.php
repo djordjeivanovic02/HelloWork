@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\UserInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -37,17 +38,20 @@ class UserTest extends TestCase
     }
 
     public function test_update_user_data(){
-        $response = $this->post('/updateUserData', [
+        $response = $this->post('/updateUserData' , [
+            'name' => 'Leke Jovanovic',
             'professional_title' => 'Pekar',
             'languages' => 'Srpski',
-            'current_salary' => '2000',
-            'expected_salary' => '2400',
-            'phone' => '0637303883',
+            'age' => 21,
+            'current_salary' => 100000,
+            'expected_salary' => 150000,
+            'phone' => '063347054',
             'country' => 'Srbija',
-            'postcode' => '18000',
-            'city' => 'Nis',
-            'full_address' => 'Stara Zeleznicka Kolonija 5a'
+            'postcode' => '16210',
+            'city' => 'Vlasotince',
+            'full_address' => 'Mije Milenkovic 125'
         ]);
+
         $response->assertStatus(200);
-    }
+        }
 }

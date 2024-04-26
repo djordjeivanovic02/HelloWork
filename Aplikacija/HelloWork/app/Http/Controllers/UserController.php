@@ -24,10 +24,15 @@ class UserController extends Controller
                 'country' => ['required'],
                 'city' => ['required']
             ]);
+
             $userInfo = UserInfo::where('user_id', auth()->id())->first();
 
-            if($userInfo != null){
+            if($userInfo){
+                $userInfo->user->update([
+                    'name' => $request->input('name')
+                ]);
                 $userInfo->update([
+                    'age' => $request->input('age'),
                     'professional_title' => $request->input('professional_title'),
                     'languages' => $request->input('languages'),
                     'current_salary' => $request->input('current_salary'),
@@ -41,6 +46,7 @@ class UserController extends Controller
             }else{
                 $userInfo = UserInfo::create([
                     'user_id' => auth()->id(),
+                    'age' => $request->input('age'),
                     'professional_title' => $request->input('professional_title'),
                     'languages' => $request->input('languages'),
                     'current_salary' => $request->input('current_salary'),

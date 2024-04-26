@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('user_info', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedInteger('age');
             $table->string('professional_title')->nullable();
             $table->string('languages')->nullable();
             $table->decimal('current_salary', 10, 2)->nullable();

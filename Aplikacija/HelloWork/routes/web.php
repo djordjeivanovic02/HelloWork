@@ -28,9 +28,11 @@ Route::get('/widgets', function () {
     return view('parts.widgets');
 });
 
-Route::get('/user', [UserController::class, 'show'])->middleware('auth');
-Route::get('/logout', [AuthController::class, 'signOut']);
-Route::post('/updateUserData', [UserController::class, 'updateUserData']);
+Route::middleware('auth')->group(function () {
+    Route::get('/user', [UserController::class, 'show']);
+    Route::get('/logout', [AuthController::class, 'signOut']);
+    Route::post('/updateUserData', [UserController::class, 'updateUserData']);
+});
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
