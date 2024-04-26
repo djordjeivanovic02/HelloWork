@@ -54,6 +54,7 @@
                 </div>
                 @yield('welcome-content')
                 @yield('search-job')
+                @yield('job')
                 {{-- @include('parts.login') --}}
             </div>
         </div>
@@ -75,7 +76,7 @@
             <div class="footer-content-container w-100 d-flex justify-content-between align-items-start">
                 <div class="footer-logo-info-container">
                     <div class="footer-logo d-flex align-items-center">
-                        <img src="{{ asset('images/logo.svg') }}" alt="Logo Icon">
+                        <img src="{{ asset('images/logo.svg') }}" alt="Logo Icon" style="width: 70px">
                         <h3 class="m-0 p-0">Hello <span>Work</span></h3>
                     </div>
                     <p class="p-0">Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>

@@ -27,14 +27,14 @@
 .welcome-right-container img{
     height: 100%;
 }
-.mt-100{
-    margin-top: 100px;
+.mt-200{
+    margin-top: 200px;
 }
 .purpleText{
     color: var(--main-color);
 }
-.site-tutorial h2{
-    color: black;
+.site-tutorial h2, .welcome-sector-text h2{
+    color: var(--black-text);
     font-size: 40px;
     line-height: 49px;
 }
@@ -45,4 +45,17 @@
 .site-tutorial .description{
     font-weight: normal;
     color: var(--grey-text);
+}
+.welcome-sector-container button, .welcome-quick-jobs button, .quick-jobs-cotnainer button{
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+}
+.welcome-quick-jobs button{
+    padding: 20px 30px;
+}
+.quick-jobs-cotnainer button{
+    margin-top: 20px;
 }

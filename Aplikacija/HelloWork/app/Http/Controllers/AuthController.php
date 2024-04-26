@@ -14,7 +14,7 @@ class AuthController extends Controller
             validator(request()->all(),[
                 'email' => ['required', 'email'],
                 'password' => ['required']
-            ])->validate();
+            ]);
 
             if(auth()->attempt(request()->only(['email', 'password']))){
                 return response()->json(['redirect' => '/user']);
