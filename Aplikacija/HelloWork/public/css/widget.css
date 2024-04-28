@@ -214,30 +214,30 @@
 
 .long-container
 {
-    width: 729px;
-    height: 126px;
     border: 1px solid #F0EEFC;
     border-radius: 10px;
     margin-top: 20px;
     position: relative;
+    padding: 20px;
 }
-
-.image-div
-{
-    padding-top: 20px;
-    padding-left: 26px;
-    height: 1px;
-
+.image-div{
+    width: 55px;
+    height: 55px;
 }
-
+.image-div img{
+    width: 100%;
+    height: 100%;
+}
 .above-text
 {
-    padding-top: 31px;
-    padding-left: 15px;
-    font-size: 16px;
+    font-size: 20px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    line-height: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.widget-types{
+    padding-left: 55px;
 }
 
 .all-informations
@@ -245,7 +245,6 @@
     font-size: 12px;
     font-family: 'Poppins', sans-serif;
     color: #7F93B6;
-    padding-left: 16px;
 }
 
 .text-in-span
@@ -273,11 +272,6 @@
     margin-left: 14px;
 }
 
-.save-it-div
-{
-    margin-top: 20px;
-    margin-left: 170px;
-}
 
 
 

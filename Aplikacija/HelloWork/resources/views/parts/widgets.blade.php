@@ -65,28 +65,37 @@
         </div> --}}
 
         {{-- Četvrti element --}}
+        <div style="width: 700px">
+        <div class="long-container d-flex flex-column">
+            <div class="prvi-red d-flex justify-content-between">
+                <div class="d-flex">
+                    <div class="image-div">
+                        <img src="/images/Windows-logo.svg"></img>
+                    </div>
+                    <div class="d-flex flex-column mx-3 my-0">
+                        <p class="above-text my-1">Senior Dizajner Proizvoda</p>
+                        <div class="all-informations d-flex flex-row">
+                            <img src="/images/Aktovka.svg"><span class="text-in-span">Start up</span></img>
+                            <img src="/images/Lokacija.svg"><span class="text-in-span">Beograd, Srbija</span></img>
+                            <img src="/images/Sat.svg"><span class="text-in-span">pre 12 sati</span></img>
+                            <img src="/images/Zarada.svg"><span class="text-in-span">€700 - €1800</span></img>
+                        </div>
+                    </div>
+                </div>
+                <div class="save-it-div d-flex justify-content-end align-items-start">
+                    <img src="/images/Sacuvaj.svg"></img>
+                </div>
+            </div>
 
-        {{-- <div class="long-container d-flex flex-column">
-            <div class="prvi-red d-flex flex-row">
-                <div class="image-div">
-                    <img src="/images/Windows-logo.svg"></img>
-                </div>
-                <div class="text d-flex flex-column">
-                    <p class="above-text">Senior Dizajner Proizvoda</p>
-                    <div class="all-informations d-flex flex-row">
-                        <img src="/images/Aktovka.svg"><span class="text-in-span">Start up</span></img>
-                        <img src="/images/Lokacija.svg"><span class="text-in-span">Beograd, Srbija</span></img>
-                        <img src="/images/Sat.svg"><span class="text-in-span">pre 12 sati</span></img>
-                        <img src="/images/Zarada.svg"><span class="text-in-span">€700 - €1800</span></img>
-                </div>
-                <div class="down-button d-flex align-items-center justify-content-center">
-                    <p class="down-button-text">Privremeni</p>
+            <div class="widget-types">
+                <div class="d-inline-block">
+                    <div class="down-button d-flex align-items-center justify-content-center">
+                        <p class="down-button-text">Privremeni</p>
+                    </div>
                 </div>
             </div>
-            <div class="save-it-div d-flex align-items-start">
-                <img src="/images/Sacuvaj.svg"></img>
-            </div>
-        </div> --}}
+        </div>
+    </div>
 
         {{-- Peti element - login --}}
 
@@ -209,13 +218,12 @@
 
 {{-- Sedmi element - Petar Petrovic --}}
 
-<div class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center">
+{{-- <div class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center">
     <div class="welcome-main-container w-100 d-flex bg-white">
         <div class="main-container w-100 h-100 d-flex flex-column align-items-center justify-content-center">
             <div class="navigation-container container d-flex justify-content-between bg-white">
                 <div class="header-logo-container d-flex align-items-center">
                     <img src="images/logo.svg" alt="logo">
-                    {{-- Dodati tekst za logo --}}
                 </div>
                 <div class="navigation-main d-flex align-items-center gap-5">
                     <a href="#">POČETNA</a>
@@ -232,7 +240,6 @@
             </div>
             @yield('welcome-content')
             @yield('search-job')
-            {{-- @include('parts.login') --}}
         </div>
     </div>
 </div>
@@ -326,7 +333,7 @@
             <input class="button-end" type="button" value="Sačuvaj izmene">
         </div>
     </div>
-</div>
+</div> --}}
 
 
         

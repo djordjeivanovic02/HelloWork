@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
@@ -35,3 +36,4 @@ Route::post('/updateUserData', [UserController::class, 'updateUserData']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job', [JobController::class, 'show']);
+Route::get('/company', [CompanyController::class, 'show']);
