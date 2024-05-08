@@ -1,5 +1,5 @@
 
-<div class="login-background-container w-100 h-100 position-fixed top-0 start-0 d-none justify-content-center align-items-center">
+<div class="login-background-container position-fixed top-0 start-0 d-none align-items-start justify-content-center">
     <div class="login-container d-flex flex-column align-items-center shadow bg-white">
         <div class="gornji-deo d-flex flex-row align-items-center justify-content-center">
             <p class="title">Prijavi se na Hello Work</p>

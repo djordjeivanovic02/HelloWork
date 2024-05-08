@@ -3,6 +3,8 @@
 .login-background-container{
     width: 200%;
     background-color: var(--background-color);
+    overflow: auto;
+    padding-top: 100px;
 }
 .login-background-container.deactive{
     display: none;

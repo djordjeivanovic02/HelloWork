@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\NewJobController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,7 @@ Route::get('/widgets', function () {
 
 Route::get('/user', [UserController::class, 'show'])->middleware('auth');
 Route::get('/logout', [AuthController::class, 'signOut']);
+Route::get('/new-job', [NewJobController::class, 'show']);
 Route::post('/updateUserData', [UserController::class, 'updateUserData']);
 
 Route::post('/register', [AuthController::class, 'register']);
