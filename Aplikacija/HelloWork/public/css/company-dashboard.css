@@ -1,0 +1,80 @@
+@import url('variables.css');
+
+.dashboard-main-container{
+    max-width: 1310px;
+    padding: 20px;
+}
+.dashboard-left-container{
+    width: 22%;
+}
+.dashboard-left-main{
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+}
+.dashboard-image{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid var(--main-color);
+    position: relative;
+    background-color: white;
+    z-index: 2;
+}
+.dashboard-image-main{
+    z-index: 3;
+    position: relative;
+    border-radius: 50%;
+    background-color: white;
+    padding: 20px;
+}
+.dashboard-image::before{
+    content: '';
+    width: 115%;
+    height: 2px;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 50%;
+    left: -7.5%;
+    z-index: 1;
+}
+.dashboard-image::after{
+    content: '';
+    height: 115%;
+    width: 2px;
+    background-color: var(--main-color);
+    position: absolute;
+    top: -7.5%;
+    left: 50%;
+    z-index: 1;
+}
+.change-image-container{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow);
+    z-index: 3;
+    cursor: pointer;
+    transition-duration: .3s;
+}
+.change-image-container:hover{
+    background-color: var(--main-color-hover);
+}
+.change-image-container img{
+    width: 26px;
+    height: 22px;
+}
+.hide-bottom-shadow{
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+}
+.navigation-list-container .navigation-item{
+    padding: 30px 20px;
+}

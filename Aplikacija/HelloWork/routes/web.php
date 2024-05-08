@@ -33,6 +33,9 @@ Route::get('/widgets', function () {
 Route::get('/user', [UserController::class, 'show'])->middleware('auth');
 Route::get('/logout', [AuthController::class, 'signOut']);
 Route::get('/new-job', [NewJobController::class, 'show']);
+Route::get('/company-dashboard', function () {
+    return view('/company-dashboard', ['user' => auth()->user()]);
+});
 Route::post('/updateUserData', [UserController::class, 'updateUserData']);
 
 Route::post('/register', [AuthController::class, 'register']);
