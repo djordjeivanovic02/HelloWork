@@ -53,5 +53,13 @@ class UserTest extends TestCase
         ]);
 
         $response->assertStatus(200);
-        }
+    }
+
+    public function test_delete_user_profile(){
+        $response = $this->post('/deleteUserData', [
+            'id' => 2
+        ]);
+
+        $response->assertStatus(200);
+    }
 }

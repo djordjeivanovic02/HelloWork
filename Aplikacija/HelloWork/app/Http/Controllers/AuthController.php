@@ -35,7 +35,7 @@ class AuthController extends Controller
             ]);
             $emailExist = User::where('email', $request->email)->exists();
             if($emailExist){
-                throw new \Exception("Već postoji korisnik sa unetom email adresom");
+                throw new Exception("Već postoji korisnik sa unetom email adresom");
             }
             $data = $request->all();
             $this->createUser($data);

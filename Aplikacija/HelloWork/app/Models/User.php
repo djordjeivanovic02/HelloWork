@@ -44,8 +44,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function userInfo()
-    {
+    public function userInfo(){
         return $this->hasOne(UserInfo::class);
+    }
+
+    public function companyInfo(){
+        return $this->hasOne(CompanyInfo::class);
     }
 }
