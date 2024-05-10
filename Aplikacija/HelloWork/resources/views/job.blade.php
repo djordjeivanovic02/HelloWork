@@ -2,20 +2,20 @@
 @section('job')
     <link rel="stylesheet" href="{{ asset('css/job.css') }}">
     <div class="info-container w-100 m-0 p-0 d-flex align-items-center justify-content-center">
-        <div class="info-job-main-container w-100 d-flex justify-content-between align-items-center">
+        <div class="info-job-main-container w-100 h-100 d-flex">
             <div class="job-head-container d-flex">
                 <div class="job-head-image">
                     <img src="{{ asset('images/Windows-logo.svg') }}" alt="Job Logo">
                 </div>
                 <div class="job-header-info d-flex flex-column mx-3">
                     <h3>Softver inženjer (Android), Biblioteke</h3>
-                    <div class="all-informations d-flex flex-row p-0">
+                    <div class="all-informations flex-row p-0">
                         <img src="/images/Aktovka.svg"><span class="text-in-span">Microsoft</span></img>
                         <img src="/images/Lokacija.svg"><span class="text-in-span">Beograd, Srbija</span></img>
                         <img src="/images/Sat.svg"><span class="text-in-span">pre 12 sati</span></img>
                         <img src="/images/Zarada.svg"><span class="text-in-span">€700 - €1800</span></img>
                     </div>
-                    <div class="identificator-container m-0 mt-3">
+                    <div class="identificator-container">
                         <div class="full-time d-inline-block">
                             <p class="m-0 text-center">Puno radno vreme</p>
                         </div>
@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <div class="info-job-main-container w-100 d-flex justify-content-between align-items-start mt-50">
+    <div class="info-job-main-container w-100 mt-50">
         <div class="job-info">
             <div>
                 <b>Opis Posla</b>

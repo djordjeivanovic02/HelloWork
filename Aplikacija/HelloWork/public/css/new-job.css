@@ -5,7 +5,7 @@
     padding: 20px;
 }
 .section-info{
-    margin-top: 100px;
+    width: 100%;
     border-bottom: 1px solid var(--border-color);
     color: var(--black-color);
     padding-bottom: 15px;
@@ -21,7 +21,9 @@
 }
 .row-element input, select{
     padding: 15px 20px;
-    border: 1px solid var(--border-color);
+    border: none;
+    /* border: 1px solid var(--border-color); */
+    box-shadow: var(--box-shadow);
     outline: none;
 }
 .row-element.error input{
@@ -39,7 +41,9 @@
     color: var(--black-color);
 }
 .info-row textarea{
-    border: 1px solid var(--border-color);
+    /* border: 1px solid var(--border-color); */
+    border: none;
+    box-shadow: var(--box-shadow);
     outline: none;
     min-height: 150px;
     padding: 15px 20px;
