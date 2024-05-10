@@ -55,13 +55,15 @@
                 @yield('welcome-content')
                 @yield('search-job')
                 @yield('job')
+                @yield('new-job')
+                @yield('company-dashboard')
                 {{-- @include('parts.login') --}}
             </div>
         </div>
     </div>
 
     {{-- Login Container --}}
-    <div class="login-background-container deactive fixed-top align-items-center justify-content-around h-100">
+    <div class="login-background-container deactive fixed-top align-items-start justify-content-around h-100">
         @include('parts.login-widget')
     </div>
 

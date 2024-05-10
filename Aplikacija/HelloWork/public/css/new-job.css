@@ -1,0 +1,78 @@
+@import url('variables.css');
+
+.new-job-main-container{
+    max-width: 1310px;
+    padding: 20px;
+}
+.section-info{
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--black-color);
+    padding-bottom: 15px;
+}
+.info-row{
+    justify-content: space-between;
+}
+.row-element{
+    width: 49%;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
+    position: relative;
+}
+.row-element input, select{
+    padding: 15px 20px;
+    border: none;
+    /* border: 1px solid var(--border-color); */
+    box-shadow: var(--box-shadow);
+    outline: none;
+}
+.row-element.error input{
+    border-color: red;
+}
+.row-element.error::before{
+    content: 'Ovo polje je obavezno';
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+}
+.row-element p{
+    color: var(--black-color);
+}
+.info-row textarea{
+    /* border: 1px solid var(--border-color); */
+    border: none;
+    box-shadow: var(--box-shadow);
+    outline: none;
+    min-height: 150px;
+    padding: 15px 20px;
+}
+.info-row .add-img{
+    padding: 20px 30px;
+    border: 2px solid var(--main-color);
+    background-color: white;
+    color: var(--main-color);
+    font-weight: 600;
+    transition-duration: .3s;
+}
+.info-row .add-img:hover{
+    background-color: var(--main-color);
+    color: white;
+}
+.info-row .add-ad{
+    padding: 20px 30px;
+    border: 2px solid var(--main-color);
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 650px) {
+    .info-row{
+        flex-direction: column;
+    }
+    .row-element{
+        width: 100%;
+    }
+}
