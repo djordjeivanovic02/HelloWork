@@ -4,8 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\NewJobController;
 use App\Http\Controllers\UserController;
-use App\Models\CompanyInfo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,10 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/user', [UserController::class, 'show']);
     Route::get('/logout', [AuthController::class, 'signOut']);
     Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
+    Route::post('/updateUserData', [UserController::class, 'updateUserData']);
+    Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
+    Route::get('/new-ad', function () {
+        return view('/new-ad', ['user' => auth()->user()]);
+    });
 });
-Route::post('/updateUserData', [UserController::class, 'updateUserData']);
-Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job', [JobController::class, 'show']);
+Route::get('/company', [CompanyController::class, 'show']);

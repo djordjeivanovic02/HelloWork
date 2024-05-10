@@ -8,6 +8,9 @@ use Exception;
 
 class CompanyController extends Controller
 {
+    public function show(){
+        return view('company', ['user' => auth()->user()]);
+    }
     public function updateCompanyData(Request $request){
         try{
             validator(request()->all(), [
