@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\UserInfo;
 use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -24,10 +27,12 @@ class UserController extends Controller
                 'country' => ['required'],
                 'city' => ['required']
             ]);
-            $userInfo = UserInfo::where('user_id', auth()->id())->first();
 
-            if($userInfo != null){
+            $userInfo = UserInfo::where('user_id', 2)->first();
+
+            if($userInfo){
                 $userInfo->update([
+                    'age' => $request->input('age'),
                     'professional_title' => $request->input('professional_title'),
                     'languages' => $request->input('languages'),
                     'current_salary' => $request->input('current_salary'),
@@ -40,7 +45,8 @@ class UserController extends Controller
                 ]);
             }else{
                 $userInfo = UserInfo::create([
-                    'user_id' => auth()->id(),
+                    'user_id' => 2,
+                    'age' => $request->input('age'),
                     'professional_title' => $request->input('professional_title'),
                     'languages' => $request->input('languages'),
                     'current_salary' => $request->input('current_salary'),
@@ -52,9 +58,23 @@ class UserController extends Controller
                     'full_address' => $request->input('full_address')
                 ]);
             }
+            $userInfo->user->update([
+                'name' => $request->input('name')
+            ]);
             return response()->json(['message' => 'Uspešno ažurirani korisnikovi podaci'], 200);
         }catch(Exception $ex){
             return response()->json(['message' => $ex->getMessage(), 500]);
+        }
+    }
+
+    public function deleteProfile(Request $request){
+        $user = User::findOrFail($request->input('id'));
+
+        if($user->delete()){
+            return response()->json(['message' => 'Profil korisnika je uspešno obrisan.'], 200);
+        }
+        else{
+            return response()->json(['message' => 'Došlo je do greške prilikom brisanja profila korisnika.'], 500);
         }
     }
 }
