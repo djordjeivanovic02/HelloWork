@@ -8,6 +8,8 @@ use App\Models\UserInfo;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -75,6 +77,30 @@ class UserController extends Controller
         }
         else{
             return response()->json(['message' => 'Došlo je do greške prilikom brisanja profila korisnika.'], 500);
+        }
+    }
+
+    public function changePassword(Request $request){
+        try{
+            $validator = Validator::make($request->all(), [
+                'old_password' => 'required',
+                'password' => 'required|min:8|different:old_password',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!', 500]);
+            }
+
+            $user = $request->user();
+            if(!Hash::check($request->old_password, $user->password)){
+                return response()->json(['type' => 'wrong-password','message' => "Stara lozinka nije ispravna!", 500]);
+            }
+
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return response()->json(['type' => 'success' ,'message' => 'Lozinka uspešno promenjena'], 200);
+        }catch(Exception $ex){
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage(), 500]);
         }
     }
 }

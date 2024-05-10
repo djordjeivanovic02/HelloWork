@@ -39,6 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/new-ad', function () {
         return view('/new-ad', ['user' => auth()->user()]);
     });
+    Route::get('/change-password', function () {
+        return view('/company-change-password', ['user' => auth()->user()]);
+    });
+
+    Route::post('/change-password', [UserController::class, 'changePassword']);
 });
 
 Route::post('/register', [AuthController::class, 'register']);
