@@ -30,12 +30,16 @@ Route::get('/widgets', function () {
     return view('parts.widgets');
 });
 
-Route::get('/user', [UserController::class, 'show'])->middleware('auth');
-Route::get('/logout', [AuthController::class, 'signOut']);
-Route::get('/new-ad', function () {
-    return view('/new-ad', ['user' => auth()->user()]);
+Route::middleware('auth')->group(function () {
+    Route::get('/user', [UserController::class, 'show']);
+    Route::get('/logout', [AuthController::class, 'signOut']);
+    Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
+    Route::post('/updateUserData', [UserController::class, 'updateUserData']);
+    Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
+    Route::get('/new-ad', function () {
+        return view('/new-ad', ['user' => auth()->user()]);
+    });
 });
-Route::post('/updateUserData', [UserController::class, 'updateUserData']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
