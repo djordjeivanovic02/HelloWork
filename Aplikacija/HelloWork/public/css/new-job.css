@@ -107,11 +107,28 @@
     border-color: green;
 }
 
-@media screen and (max-width: 650px) {
+/* RESPONSIVE */
+
+@media only screen and (max-width: 640px) {
     .info-row{
         flex-direction: column;
     }
     .row-element{
         width: 100%;
     }
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 1280px) {
+    
+}
+
+@media only screen and (max-width: 1500px) {
 }

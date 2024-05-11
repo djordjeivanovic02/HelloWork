@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/new-job.css') }}">
 <div class="w-100">
     <div class="section-info w-100">
-        <h4>Osnovne Informacije</h4>
+        <h4>Dodaj novi posao</h4>
     </div>
     <div class="info-row w-100 d-flex">
         <div class="row-element d-flex flex-column">

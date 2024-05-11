@@ -1,9 +1,9 @@
 @extends('parts.main')
 @section('company-dashboard')
 <link rel="stylesheet" href="{{ asset('css/company-dashboard.css') }}">
-<div class="dashboard-main-container w-100 d-flex justify-content-between align-items-start mt-4">
+<div class="dashboard-main-container w-100 mt-4">
     <div class="dashboard-left-container position-relative">
-        <div class="dashboard-left-main w-100 p-4 position-relative">
+        <div class="dashboard-left-main w-100 position-relative">
             <div class="dashboard-image-container w-100 d-flex align-items-center justify-content-center position-relative">
                 <div class="dashboard-image">
                     <div class="w-100 h-100 dashboard-image-main">
@@ -80,8 +80,7 @@
                 </svg>
                 <p class="mx-2 my-0 p-0">Promena lozinke</p>
             </div>
-
-            <div class="navigation-item w-100 d-flex align-items-center" onclick="logOut()">
+            <div class="navigation-item w-100 d-flex align-items-center" onclick="showDialog()">
                 <svg width="21" height="21"viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_231_68)">
                         <path d="M3.41406 9.5625H11C11.2652 9.5625 11.5196 9.45056 11.7071 9.2513C11.8946 9.05204 12 8.78179 12 8.5C12 8.21821 11.8946 7.94796 11.7071 7.7487C11.5196 7.54944 11.2652 7.4375 11 7.4375H3.41406L4.70703 6.06372C4.89369 5.8643 4.9983 5.59437 4.99793 5.31311C4.99756 5.03186 4.89224 4.76224 4.70507 4.56337C4.51789 4.36449 4.26413 4.25259 3.99942 4.2522C3.73471 4.25181 3.48066 4.36296 3.29296 4.56128L0.292965 7.74878C0.200087 7.84741 0.126409 7.96452 0.0761409 8.09342C0.025873 8.22232 0 8.36048 0 8.5C0 8.63953 0.025873 8.77768 0.0761409 8.90658C0.126409 9.03548 0.200087 9.15259 0.292965 9.25122L3.29296 12.4387C3.38572 12.5378 3.49597 12.6165 3.61739 12.6703C3.73882 12.724 3.86903 12.7518 4.00057 12.752C4.13212 12.7522 4.2624 12.7248 4.38397 12.6714C4.50553 12.618 4.61599 12.5396 4.709 12.4408C4.80202 12.342 4.87576 12.2246 4.92602 12.0955C4.97627 11.9663 5.00205 11.8279 5.00186 11.6881C5.00168 11.5483 4.97554 11.41 4.92495 11.281C4.87436 11.152 4.8003 11.0348 4.70703 10.9363L3.41406 9.5625Z"/>
@@ -101,6 +100,29 @@
         @include('parts.new-job')
     </div>
 </div>
+
+@component('dialogs.notification', 
+    [
+        'type' => 'success', 
+        'title' => 'Odjava', 
+        'message' => 'Da li ste sigurni da želite da se odjavite?',
+        'close' => true,
+        'actions' => [
+            [
+                'url' => 'logOut()', 
+                'type' => 'yes', 
+                'label' => 'DA'
+            ],
+            [
+                'url' => 'closeDialog()', 
+                'type' => 'cancel', 
+                'label' => 'Otkaži'
+            ],
+    ]
+])
+@endcomponent
+
+
 <script src="{{ asset('js/logout.js') }}"></script>
-<script src="{{ asset('js/company-dashboard-navigation.js') }}"></script>
+<script src="{{ asset('js/company-dashboard-navigation.js') }}"></script>  
 @endsection

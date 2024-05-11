@@ -1,0 +1,73 @@
+@import url('variables.css');
+
+.dialog-background{
+    background-color: var(--background-color);
+    padding: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--black-color);
+}
+.dialog-background.active{
+    display: flex;
+}
+.dialog-background.passive{
+    display: none;
+}
+.dialog-box{
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    scale: 0;
+}
+.dialog-box.active{
+    animation: showDialog .3s ease-in-out forwards;
+}
+.dialog-box.passive{
+    animation: hiddeDialog .3s ease-in-out forwards;
+}
+.dialog-box .title{
+    font-size: 20px;
+    font-weight: 600;
+}
+.dialog-btn{
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.dialog-btn-yes{
+    color: white;
+    background-color: var(--main-color);
+}
+.dialog-btn-yes:hover{
+    color: white;
+}
+.dialog-btn-cancel{
+    color: black;
+    background-color: rgb(212, 212, 212);
+}
+.dialog-btn-cancel:hover{
+    color: black;
+}
+.dialog-close{
+    right: 20px;
+    top: 20px;
+}
+
+@keyframes showDialog {
+    0%{
+        scale: 0;
+    }100%{
+        scale: 1;
+    }
+}
+@keyframes hiddeDialog {
+    0%{
+        scale: 1;
+    }100%{
+        scale: 0;
+    }
+}
