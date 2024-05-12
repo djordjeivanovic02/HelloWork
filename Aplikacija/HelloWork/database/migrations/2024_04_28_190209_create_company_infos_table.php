@@ -15,13 +15,16 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('logo')->nullable();
-            $table->unsignedBigInteger('size')->nullable();
+            $table->string('size')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
             $table->string('address')->nullable();
-            $table->string('about')->nullable();
+            $table->text('about')->nullable();
             $table->date('start_date')->nullable();
             $table->string('contact')->nullable();
+            $table->string('website')->nullable();
             $table->text('links')->nullable();
-            $table->string('activity')->nullable();
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }
