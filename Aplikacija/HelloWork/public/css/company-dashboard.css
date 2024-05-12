@@ -3,6 +3,10 @@
 .dashboard-main-container{
     max-width: 1310px;
     padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
 }
 .dashboard-left-container{
     width: 22%;
@@ -16,6 +20,7 @@
 .dashboard-left-main{
     box-shadow: var(--box-shadow);
     border-radius: 5px;
+    padding: 20px;
 }
 .dashboard-image{
     width: 150px;
@@ -114,4 +119,39 @@
 .navigation-list-container .navigation-item:hover p{
     left: 10px;
     color: var(--main-color);
+}
+
+
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 640px) {
+    
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+    .dashboard-main-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .dashboard-left-container, .dashboard-right-container{
+        width: 100%;
+    }
+    .dashboard-right-container{
+        margin-top: 50px;
+    }
+    .dashboard-left-main{
+        padding-top: 40px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    
+}
+
+@media only screen and (max-width: 1500px) {
 }
