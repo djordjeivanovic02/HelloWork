@@ -6,6 +6,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\NewJobController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,11 +37,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
     Route::post('/updateUserData', [UserController::class, 'updateUserData']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
+
     Route::get('/new-ad', function () {
         return view('/new-ad', ['user' => auth()->user()]);
     });
     Route::get('/change-password', function () {
         return view('/company-change-password', ['user' => auth()->user()]);
+    });
+    Route::get('/company-change-profile', function() {
+        return view('/company-change-profile', [
+            'user' => User::findOrFail(1)
+        ]);
     });
 
     Route::post('/change-password', [UserController::class, 'changePassword']);

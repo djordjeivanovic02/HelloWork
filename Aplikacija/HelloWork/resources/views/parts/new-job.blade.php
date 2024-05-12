@@ -107,7 +107,9 @@
         <h4>Dodaj fajlove</h4>
     </div>
     <div class="info-row w-100 d-flex">
+        <input type="file" name="inputImage" id="inputImage" accept="image/*" hidden>
         <button class="my-4 add-img">Dodaj naslovnu sliku</button>
+        <div class="image-container my-4"></div>
     </div>
 
     <div class="section-info w-100">

@@ -12,3 +12,7 @@ newAd.addEventListener('click', function(){
 changePasswordd.addEventListener('click', function(){
     window.location.href = '/change-password';
 });
+
+companyInfo.addEventListener('click', function(){
+    window.location.href = '/company-change-profile';
+});
