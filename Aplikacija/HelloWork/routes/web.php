@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\JobController;
+use App\Http\Controllers\AdController;
 use App\Http\Controllers\NewJobController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,10 +31,17 @@ Route::get('/widgets', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/user', [UserController::class, 'show']);
+    Route::middleware('check.type:0')->group(function(){
+        //only admin routes
+    });
+    Route::middleware('check.type:1')->group(function(){
+        Route::get('/user', [UserController::class, 'show']);
+        Route::post('/updateUserData', [UserController::class, 'updateUserData']);
+    });
+    Route::middleware('check.type:2')->group(function(){
+        Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
+    });
     Route::get('/logout', [AuthController::class, 'signOut']);
-    Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
-    Route::post('/updateUserData', [UserController::class, 'updateUserData']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
     Route::get('/new-ad', function () {
         return view('/new-ad', ['user' => auth()->user()]);
@@ -43,5 +50,5 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/job', [JobController::class, 'show']);
+Route::get('/job', [AdController::class, 'show']);
 Route::get('/company', [CompanyController::class, 'show']);

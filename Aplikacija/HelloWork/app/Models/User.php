@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function companyInfo(){
         return $this->hasOne(CompanyInfo::class);
     }
+
+    public function ads(){
+        return $this->hasMany(Ad::class);
+    }
 }
