@@ -24,7 +24,7 @@ Route::get('/searchjob', function () {
 
 // samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {
-    return view('parts.widgets');
+    return view('user-profile');
 });
 
 Route::get('/user', [UserController::class, 'show'])->middleware('auth');
