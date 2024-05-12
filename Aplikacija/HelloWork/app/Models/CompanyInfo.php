@@ -15,12 +15,15 @@ class CompanyInfo extends Model
         'user_id',
         'logo',
         'size',
+        'country',
+        'city',
         'address',
         'about',
         'start_date',
         'contact',
+        'website',
         'links',
-        'activity'
+        'category'
     ];
 
     public function company(){

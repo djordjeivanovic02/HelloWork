@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Ad extends Model
+{
+    use HasFactory;
+    protected $table = "ads";
+    protected $fillable = [
+        'user_id',
+        'title',
+        'address',
+        'job_type',
+        'min_salary',
+        'max_salary',
+        'job_category',
+        'working_time',
+        'number_of_jobs_needed',
+        'payment_method',
+        'description',
+        'ad_duration',
+        'image'
+    ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+}
