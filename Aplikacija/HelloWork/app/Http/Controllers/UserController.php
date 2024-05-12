@@ -87,21 +87,20 @@ class UserController extends Controller
                 'password' => 'required|min:8|different:old_password',
             ]);
             if ($validator->fails()) {
-                return response()->json(['message' => 'Neispravna nova lozinka', 500]);
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!', 500]);
             }
-    
+
             $user = $request->user();
             if(!Hash::check($request->old_password, $user->password)){
-                return response()->json(['message' => "Greška prilikom ažuriranja lozinke", 500]);
+                return response()->json(['type' => 'wrong-password','message' => "Stara lozinka nije ispravna!", 500]);
             }
-    
+
             $user->password = Hash::make($request->password);
             $user->save();
-    
-            return response()->json(['message' => 'Lozinka uspešno promenjena'], 200);
-        }
-        catch(Exception $ex){
-            return response()->json(['message' => $ex->getMessage(), 500]);
+
+            return response()->json(['type' => 'success' ,'message' => 'Lozinka uspešno promenjena'], 200);
+        }catch(Exception $ex){
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage(), 500]);
         }
     }
 }
