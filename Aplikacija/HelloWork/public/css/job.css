@@ -1,0 +1,232 @@
+@import url('variables.css');
+
+.info-container{
+    min-height: 250px;
+    background-image: linear-gradient(45deg, var(--background-light-start), var(--background-light) );
+    /* background-color: var(--background-light); */
+}
+.info-job-main-container{
+    max-width: 1310px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+.job-head-image img{
+    width: 100px;
+    height: 100px;
+}
+.identificator-container{
+    display: block;
+    margin-top: 10px;
+}
+.all-informations{
+    display: flex;
+}
+.all-informations img{
+    width: 20px;
+    height: 20px;
+}
+.job-info{
+    width: 60%;
+}
+.all-informations span{
+    font-size: 14px;
+}
+.identificator-container div{
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.identificator-container div p{
+    font-size: 12px;
+}
+.identificator-container .full-time{
+    background-color: var(--full-time-background);
+    color: var(--full-time-text);
+}
+.identificator-container .urgent{
+    background-color: var(--urgent-background);
+    color: var(--urgent-text);
+}
+.identificator-container .remote{
+    background-color: var(--remote-background);
+    color: var(--remote-text);
+}
+.job-actions button{
+    padding: 15px 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--main-color);
+    color: white;
+}
+.job-actions div{
+    padding: 10px 20px;
+    background-color: var(--full-time-background);
+    border-radius: 10px;
+    margin-left: 10px;
+}
+.mt-50{
+    margin-top: 50px;
+}
+.mt-30{
+    margin-top: 30px;
+}
+.job-info p, ul li{
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.job-right-container {
+    width: 30%;
+}
+.job-quick-info{
+    background-color: var(--background-light-container);
+    padding: 20px;
+    border-radius: 10px;
+}
+.quick-item-image img{
+    width: 20px;
+    height: 20px;
+}
+.quick-item-info{
+    margin-left: 20px;
+}
+.quick-item-info .head{
+    font-size: 14px;
+    font-weight: 500;
+}
+.quick-item-info .info{
+    font-size: 12px;
+    font-weight: 400;
+}
+.job-quick-info-header{
+    margin-top: 50px;
+}
+.job-quick-company-header img{
+    width: 35px;
+}
+.quick-item-info a{
+    font-size: 12px;
+    text-decoration: none;
+}
+.segment-title{
+    font-size: 14px;
+    font-weight: 500;
+}
+.segment-value{
+    font-size: 14px;
+    font-weight: 300px;
+    color: var(--grey-text);
+}
+.company-website button{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    background-color: var(--light-main);
+}
+.job-map{
+    width: 100%;
+    max-height: 250px;
+}
+.skill{
+    padding: 5px 15px;
+    font-size: 12px;
+    background-color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+.company-logo-container{
+    padding: 20px;
+    background-color: white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.company-logo-container img{
+    width: 100%;
+    height: 100%;
+}
+.company-gallery-image{
+    width: 23%;
+    height: 130px;
+    margin-right: 1%;
+    cursor: pointer;
+    overflow: hidden;
+}
+.company-gallery-image img{
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .2s;
+}
+.company-gallery img:hover{
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 1500px) {
+    
+}
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+    .info-job-main-container{ 
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+    .job-actions{
+        margin-top: 50px;
+    }
+    .job-info{
+        width: 100%;
+    }
+    .job-right-container{
+        width: 100%;
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 640px) {
+    .job-head-image img{
+        width: 50px;
+        height: 50px;
+    }
+    .job-header-info h3{
+        font-size: 20px;
+    }
+    .all-informations{
+        display: none;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .identificator-container{
+        display: none;
+    }
+    .job-actions{
+        margin-top: 20px;
+    }
+    .job-actions button{
+        font-size: 14px;
+    }
+}

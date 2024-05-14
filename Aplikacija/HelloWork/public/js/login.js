@@ -1,4 +1,5 @@
 const loginBtn = document.querySelector('#login-btn');
+const loginErrorContainer = document.querySelector('.login-error-container');
 
 loginBtn.addEventListener('click', login);
 
@@ -24,7 +25,7 @@ function login(){
             }
         },
         error:function(xhr, status, error){
-            console.log("Greska");
+            loginErrorContainer.classList.add('active');
             console.log(xhr.responseText);
         }
     });

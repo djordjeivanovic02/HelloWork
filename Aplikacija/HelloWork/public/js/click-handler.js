@@ -22,6 +22,8 @@ loginRegisterElement.addEventListener('click', function(){
     });
 
     openLoginBox();
+    //Diable-ovano skrolanje glavne stranice
+    document.body.style.overflow = "hidden";
 
     registerSlide.addEventListener('click', slideToRegister);
     loginSlide.addEventListener('click', slideToLogin);
@@ -60,6 +62,7 @@ function closeLoginBox(){
         loginBackgroundContainer.classList.remove('login');
         loginBackgroundContainer.classList.remove('register');
         loginBackgroundContainer.classList.add('deactive');
+        document.body.style.overflow = "auto";
     }, 300);
 }
 //#endregion

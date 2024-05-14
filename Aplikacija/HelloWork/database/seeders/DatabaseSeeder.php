@@ -24,17 +24,20 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Djordje Ivanovic',
             'email' => 'idjordje63@gmail.com',
-            'password' => Hash::make('djordje002')
+            'password' => Hash::make('djordje002'),
+            'type' => '1'
         ]);
         User::create([
             'name' => 'Aleksa Jovanovic',
             'email' => 'jaleksa388@gmail.com',
-            'password' => Hash::make('aleksa2002')
+            'password' => Hash::make('aleksa2002'),
+            'type' => '1'
         ]);
         User::create([
             'name' => 'David Stanojevic',
             'email' => 'david.stanojevic@elfak.rs',
-            'password' => Hash::make('david2002')
+            'password' => Hash::make('david2002'),
+            'type' => '1'
         ]);
     }
 }

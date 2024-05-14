@@ -1,0 +1,86 @@
+@import url('variables.css');
+
+.footer-container{
+    background-color: var(--light-main);
+    margin-top: 200px;
+    border-bottom: 1px solid var(--border-color);
+}
+.footer-main-container{
+    max-width: 1310px;
+    padding: 20px;
+    padding-top: 105px;
+}
+.newsletter-container{
+    background-color: var(--main-color);
+    padding: 0px 40px;
+    height: 170px;
+    top: -85px;
+    left: 0px;
+    border-radius: 10px;
+}
+.newsletter-container h2{
+    font-size: 36px;
+    line-height: 44px;
+    width: 60%;
+    color: white;
+}
+.newsletter-container button{
+    border: none;
+    border-radius: 10px;
+    color: var(--main-color);
+    padding: 20px 40px;
+    font-weight: 600;
+}
+.footer-content-container{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.footer-logo-info-container{
+    max-width: 300px;
+}
+.footer-logo img, .footer-logo svg{
+    margin-right: 20px;
+}
+.footer-logo svg{
+    width: 30px;
+}
+.footer-logo svg path{
+    fill: var(--main-color);
+}
+.footer-logo h3 span{
+    color: var(--main-color);
+}
+.footer-logo-info-container p{
+    margin-top: 20px;
+}
+.footer-logo-info-container p, .footer-logo-info-container a{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--black-color)
+}
+.footer-logo-info-container a{
+    margin-top: 5px;
+}
+.footer-content-container a:hover{
+    color: var(--main-color);
+}
+.footer-logo a{
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 16px;
+}
+.footer-logo-info-container h4{
+    font-size: 20px;
+    color: var(--black-color);
+}
+.footer2-container{
+    background-color: var(--light-main);
+    padding: 30px;
+}
+.footer2-container p{
+    color: var(--black-color);
+}
+.footer2-container p span{
+    color: var(--main-color);
+}

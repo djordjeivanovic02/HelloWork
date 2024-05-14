@@ -4,7 +4,7 @@
     <div class="info-container w-100 m-0 p-0 d-flex flex-column align-items-center justify-content-center">
         <h1 class="m-0">Pronađi posao</h1>
         <div class="info-navigation-container m-0 mt-2">
-            <a href="{{route('home')}}" class="m-0">Početna</a>
+            <a href="{{route('login')}}" class="m-0">Početna</a>
             <span>/</span>
             <a href="" class="main m-0">Poslovi</a>
         </div>
