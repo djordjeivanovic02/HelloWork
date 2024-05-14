@@ -41,21 +41,37 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('check.type:2')->group(function(){
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
+        Route::get('/new-ad', function () {
+            return view('/new-ad', ['user' => auth()->user()]);
+        });
+        Route::get('/change-password', function () {
+            return view('/company-change-password', ['user' => auth()->user()]);
+        });
+        Route::get('/company-change-profile', function() {
+            return view('/company-change-profile', [
+                'user' => User::findOrFail(auth()->id())
+            ]);
+        });
+        Route::get('/company-manage-jobs', function() {
+            return view('/company-manage-jobs' ,[
+                'user' => auth()->user()
+            ]);
+        });
+        Route::get('/company-applications', function() {
+            return view('/company-applications' ,[
+                'user' => auth()->user()
+            ]);
+        });
+        Route::get('/user', function(){
+            return view('/user' ,[
+                'user' => auth()->user()
+            ]);
+        });
     });
     Route::get('/logout', [AuthController::class, 'signOut']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
 
-    Route::get('/new-ad', function () {
-        return view('/new-ad', ['user' => auth()->user()]);
-    });
-    Route::get('/change-password', function () {
-        return view('/company-change-password', ['user' => auth()->user()]);
-    });
-    Route::get('/company-change-profile', function() {
-        return view('/company-change-profile', [
-            'user' => User::findOrFail(1)
-        ]);
-    });
+    
 
     Route::post('/change-password', [UserController::class, 'changePassword']);
 });

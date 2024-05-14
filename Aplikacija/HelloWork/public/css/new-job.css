@@ -149,9 +149,132 @@
     height: 100%;
     object-fit: cover;
 }
+.manage-jobs-container th, td{
+    padding: 15px 20px;
+    font-weight: 500;
+}
+.manage-jobs-container thead{
+    background-color: rgb(220, 211, 255);
+}
+.manage-jobs-container tr:nth-child(even) {
+    background-color: rgb(244, 241, 255);
+}
+.row-images{
+    display: flex;
+}
+.row-images svg{
+    width: 15px;
+    height: 16px;
+}
+.row-info{
+    font-size: 14px;
+    font-weight: 400;
+}
+.manage-jobs-container b{
+    font-weight: 600;
+}
+.manage-jobs-container b a{
+    text-decoration: none;
+    color: black;
+}
+.manage-jobs-container b a:hover{
+    text-decoration: underline;
+}
+.applications-text{
+    color: var(--main-color);
+}
+.ad-state.active{
+    color: var(--remote-text);
+}
+.ad-state.deactive{
+    color: red;
+}
+.ad-state.pending{
+    color: orange;
+}
+.action-btns{
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.look-btn{
+    background-color: var(--main-color);
+}
+.delete-btn{
+    background-color: red;
+}
+.aplications-column, .status-column{
+    display: table-cell;
+}
+.application-container{
+    background-color: rgb(244, 241, 255);
+    border-left: 5px solid var(--main-color-hover);
+    border-radius: 5px;
+    position: relative;
+    transition-duration: .3s;
+}
+.application-container:hover{
+    border-left: 5px solid var(--main-color);
+}
+.application-name{
+    font-size: 20px;
+    font-weight: 600;
+}
+.application-name a{
+    text-decoration: none;
+    color: black;
+}
+.application-name a:hover{
+    color: black;
+    text-decoration: underline;
+}
+.application-category{
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 14px;
+}
+.application-category:hover{
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+.application-job{
+    color: var(--grey-text);
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+}
+.application-skill{
+    background-color: rgb(220, 211, 255);
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+.application-skill p{
+    font-size: 14px;
+    color: var(--main-color);
+}
+.download-container{
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.download-container svg{
+    width: 70%;
+    height: 70%;
+}
 
 /* RESPONSIVE */
-
+@media only screen and (max-width: 640px) {
+    .status-column{
+        display: none;
+    }
+}
 @media only screen and (max-width: 640px) {
     .info-row{
         flex-direction: column;
@@ -162,7 +285,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-
+    .aplications-column{
+        display: none;
+    }
+    .row-images{
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 1024px) {

@@ -10,7 +10,7 @@
         <div class="row-element w-100 d-flex flex-column mt-4">
             <p class="my-1">Stara lozinka*</p>
             <input type="password" name="oldPassword" id="oldPassword" class="w-100">
-    </div>
+        </div>
     </div>
     <div class="info-row w-100 d-flex">
         <div class="row-element d-flex flex-column">
