@@ -23,9 +23,12 @@
     max-width: 1310px;
     margin-top: 100px;
 }
-.search-job-inputs{
+.search-inputs-main{
     width: 35%;
     max-width: 400px;
+}
+.search-job-inputs{
+    width: 100%;
     background-color: var(--background-light);
     border-radius: 10px;
     padding: 25px 30px;
@@ -46,4 +49,115 @@
 .search-job-input input::placeholder{
     color: var(--grey-text);
     font-weight: normal;
+}
+.search-job-input select{
+    outline: none;
+}
+.search-job-input span{
+    color: var(--black-color);
+    font-size: 14px;
+}
+.filter, .reset{
+    border-radius: 5px;
+    font-weight: 600;
+}
+.filter{
+    background-color: var(--main-color);
+    border: 2px solid var(--main-color);
+    color: whitesmoke;
+}
+.reset{
+    border: 2px solid red;
+    color: red;
+    transition-duration: .3s;
+}
+.reset:hover{
+    background-color: red;
+    color: white;
+}
+.add-new{
+    overflow: hidden;
+}
+.add-new img{
+    right: -15%;
+    top: 0;
+    height: 100%;
+
+}
+p.desc{
+    font-weight: normal;
+    color: var(--grey-color);
+    font-size: 14px;
+    width: 70%;
+}
+.add-new button{
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 10px;
+}
+.select-toggler-container{
+    width: 45px;
+    height: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0px 3px;
+    cursor: pointer;
+}
+.select-toggler{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+}
+.select-toggler.active{
+    animation: selectToggler .4s ease-in-out forwards;
+}
+.select-toggler-container.active{
+    animation: toggleBackground .4s ease-in-out forwards;
+}
+
+.select-toggler.close{
+    animation: selectTogglerBack .4s ease-in-out forwards;
+}
+.select-toggler-container.close{
+    animation: toggleBackgroundBack .4s ease-in-out forwards;
+}
+@keyframes selectToggler{
+ 0%{
+    left: 3px;
+    background-color: var(--border-color);
+ }100%{
+    left: 28px;
+    background-color: white;
+ }
+}
+@keyframes toggleBackground {
+    0%{
+        background-color: white;
+        border-color: var(--border-color);
+    }100%{
+        background-color: var(--main-color);
+        border-color: var(--main-color);
+    }
+}
+
+@keyframes selectTogglerBack{
+    0%{
+        left: 28px;
+        background-color: white;
+     }100%{
+       left: 3px;
+       background-color: var(--border-color);
+    }
+   }
+@keyframes toggleBackgroundBack {
+    0%{
+        background-color: var(--main-color);
+        border-color: var(--main-color);
+    }100%{
+        background-color: white;
+        border-color: var(--border-color);
+    }
 }
