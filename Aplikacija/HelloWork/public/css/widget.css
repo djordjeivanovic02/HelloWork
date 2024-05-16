@@ -236,6 +236,13 @@
     margin-top: 0px;
     margin-bottom: 10px;
 }
+.above-text a{
+    text-decoration: none;
+    color: black;
+}
+.above-text a:hover{
+    text-decoration: underline;
+}
 .widget-types{
     padding-left: 55px;
 }

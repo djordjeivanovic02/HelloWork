@@ -11,7 +11,6 @@
             <input class="form_control_container__time__input" type="number" id="fromInput" value="10" min="0" max="100"/>
             <div class="form_control_container__time">Max</div>
             <input class="form_control_container__time__input" type="number" id="toInput" value="30" min="0" max="100"/>
-
         </div>
 
         <div class="price-preview">

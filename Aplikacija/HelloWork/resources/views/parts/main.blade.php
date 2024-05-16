@@ -17,7 +17,7 @@
     <div class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center">
         <div class="welcome-main-container w-100 d-flex bg-white">
             <div class="main-container w-100 h-100 d-flex flex-column align-items-center justify-content-center">
-                <div class="navigation-container container d-flex justify-content-between bg-white">
+                <div class="navigation-container container d-flex justify-content-between bg-white align-items-center">
                     <div class="header-logo-container d-flex align-items-center">
                         <img src="images/logo.svg" alt="logo">
                         {{-- Dodati tekst za logo --}}
@@ -29,7 +29,7 @@
                         <a href="#">ZA KOMPANIJE</a>
                         <a href="#">O NAMA</a>
                     </div>
-                    <div class="actions-container d-flex align-items-center gap-4">
+                    <div class="actions-container align-items-center gap-4">
                         <a href="#" class="text-decoration-none add-your-cv">Dodajte Vaš CV</a>
 
                             <button class="login-register-button open-profile h-100 border-0 rounded p-3
@@ -40,16 +40,26 @@
                             @endif
                             "
                             >Pogledaj profil</button>
-                            <button class="login-register-button h-100 border-0 rounded p-3
+                            <button class="login-register-button login-register-button h-100 border-0 rounded p-3
                             @if ($user !== NULL)
                                 d-none
                             @else
                                 d-block
                             @endif
                             "
-                            id="login-register-button"
                             >Prijava / Registracija</button>
                         <button class="add-job-button h-100 border-0 rounded p-3 text-white">Postavi Posao</button>
+                    </div>
+                    <h3 class="site-name m-0 mx-2">Hello<span style="color: #613FE5">Work</span></h3>
+                    <div class="mobile-menu-actions align-items-center justify-content-center">
+                        <img src="{{ asset('images/person.svg')}}" alt="Profil" style="height: 26px; background: transparent"
+                        @if ($user !== NULL)
+                            class="open-profile"
+                        @else
+                            class="login-register-button"
+                        @endif
+                        >
+                        <img id="open-mobile-menu" src="{{ asset('images/hamburger.svg') }}" alt="Otvori menu">
                     </div>
                 </div>
                 @yield('welcome-content')
@@ -67,6 +77,7 @@
         @include('parts.login-widget')
     </div>
 
+    @include('parts.mobile-menu')
     
     {{-- FOOTER --}}
     <div class="footer-container container-fluid w-100 p-0 d-flex justify-content-center">
