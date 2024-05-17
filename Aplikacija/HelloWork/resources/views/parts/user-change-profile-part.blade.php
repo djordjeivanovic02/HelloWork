@@ -5,14 +5,12 @@
     </div>
     <div class="info-row w-100 d-flex">
         <div class="row-element d-flex flex-column">
-            <p class="my-1">Ime kompanije*</p>
-            <input type="text" name="companyName" id="companyName" class="w-100" placeholder="Unesite ime kompanije" onchange="focusOut(this)"
-                value="{{ $user->name }}">
+            <p class="my-1">Puno ime*</p>
+            <input type="text" name="userFullName" id="userFullName" class="w-100" placeholder="Unesite svoje puno ime">
         </div>
         <div class="row-element d-flex flex-column">
-            <p class="my-1">Velicina*</p>
-            <input type="text" name="companySize" id="companySize" class="w-100" placeholder="npr. 120"
-                value="{{ $user->companyInfo->size }}">
+            <p class="my-1">Profesija*</p>
+            <input type="text" name="userProfesy" id="userProfesy" class="w-100" placeholder="npr. Web developer">
         </div>
     </div>
     {{-- @php
@@ -20,38 +18,28 @@
     @endphp --}}
     <div class="info-row w-100 d-flex">
         <div class="row-element d-flex flex-column">
-            <p class="my-1">Websajt*</p>
-            <input type="text" name="companyWebsite" id="companyWebsite" class="w-100" placeholder="Unesite websajt kompanije" onchange="focusOut(this)"
-                value="{{ $user->companyInfo->website }}">
+            <p class="my-1">Godine*</p>
+            <input type="text" name="userYears" id="userYears" class="w-100" placeholder="Unesite broj vaših godina">
         </div>
         <div class="row-element d-flex flex-column">
-            <p class="my-1">Datum osnivanja*</p>
-            <input type="text" name="companyFounded" id="companyFounded" class="w-100" placeholder="npr. 16/09/2018"
-                value="{{ date("d/m/Y", strtotime($user->companyInfo->start_date ))}}">
+            <p class="my-1">Jezici*</p>
+            <input type="text" name="userLanguages" id="userLanguages" class="w-100" placeholder="npr. Engleski">
         </div>
     </div>
     <div class="info-row w-100 d-flex">
         <div class="row-element d-flex flex-column">
-            <p class="my-1">Kategorija*</p>
-            {{-- <input type="text" name="jobTitle" id="jobTitle" class="w-100" > --}}
-            <select name="companyCategorycompanyCountry" id="companyCategorycompanyCountry" 
-                value="{{ $user->companyInfo->category }}">
-                <option value="0" selected disabled>IT</option>
-                <option value="1">Trgovina</option>
-                <option value="2">Industrija</option>
-            </select>
+            <p class="my-1">Trenutna plata (€)*</p>
+            <input type="text" name="currentSalary" id="currentSalary" class="w-100" placeholder="npr. 1000">
         </div>
         <div class="row-element d-flex flex-column">
-            <p class="my-1">Zemlja*</p>
-            <input type="text" name="companyCountry" id="companyCountry" class="w-100" placeholder="npr. Srbija"
-                value="{{ $user->companyInfo->country }}">
+            <p class="my-1">Očekivana plata (€)*</p>
+            <input type="text" name="expectedSalary" id="expectedSalary" class="w-100" placeholder="npr. 1500">
         </div>
     </div>
     <div class="info-row w-100 d-flex">
         <div class="d-flex flex-column w-100">
-            <p class="my-1">Opis*</p>
-            <textarea name="companyDescription" id="companyDescription" class="w-100" placeholder="Unesite opis kompanije">
-                {{ $user->companyInfo->about }}
+            <p class="my-1">Nepišite nešto o sebi*</p>
+            <textarea name="userDescription" id="userDescription" class="w-100" placeholder="Unesite opis kompanije">
             </textarea>
         </div>
     </div>
@@ -63,13 +51,23 @@
         <div class="info-row w-100 d-flex">
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Broj Telefona*</p>
-                <input type="text" name="companyNumber" id="companyNumber" class="w-100" placeholder="+381 61...." onchange="focusOut(this)"
-                    value="{{ $user->companyInfo->contact }}">
+                <input type="text" name="userNumber" id="userNumber" class="w-100" placeholder="+381 61....">
             </div>
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Email adresa*</p>
-                <input type="text" name="companyEmailcompanyCity" id="companyEmailcompanyCity" class="w-100" placeholder="npr. kompanija@gmail.com"
-                    value="{{ $user->email }}">
+                <input type="text" name="userEmail" id="userEmail" class="w-100" placeholder="npr. korisnik@gmail.com">
+            </div>
+        </div>
+    </div>
+    <div class="info-row w-100 d-flex">
+        <div class="info-row w-100 d-flex">
+            <div class="row-element d-flex flex-column">
+                <p class="my-1">Zemlja*</p>
+                <input type="text" name="userCountry" id="userCountry" class="w-100" placeholder="npr. Srbija">
+            </div>
+            <div class="row-element d-flex flex-column">
+                <p class="my-1">Poštanski broj*</p>
+                <input type="text" name="userPostal" id="userPostal" class="w-100" placeholder="npr. 18000">
             </div>
         </div>
     </div>
@@ -77,13 +75,11 @@
         <div class="info-row w-100 d-flex">
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Grad*</p>
-                <input type="text" name="companyCity" id="companyCity" class="w-100" placeholder="npr. Kragujevac" onchange="focusOut(this)"
-                value="{{ $user->companyInfo->city }}">
+                <input type="text" name="userCity" id="userCity" class="w-100" placeholder="npr. Kragujevac">
             </div>
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Adresa*</p>
-                <input type="text" name="companyAddress" id="companyAddress" class="w-100" placeholder="npr. Njegoseva 5"
-                value="{{ $user->companyInfo->address }}">
+                <input type="text" name="userAddress" id="userAddress" class="w-100" placeholder="npr. Njegoseva 5">
             </div>
         </div>
     </div>

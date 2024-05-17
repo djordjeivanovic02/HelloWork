@@ -212,6 +212,15 @@ p.desc{
 #filter-triger{
     display: none;
 }
+.close-mobile-filter{
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+}
+
+
 @keyframes showMobileFilter {
     0%{
         left: -400px;

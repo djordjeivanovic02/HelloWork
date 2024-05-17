@@ -38,6 +38,11 @@ Route::middleware('auth')->group(function () {
     Route::middleware('check.type:1')->group(function(){
         Route::get('/user', [UserController::class, 'show']);
         Route::post('/updateUserData', [UserController::class, 'updateUserData']);
+        Route::get('/user-change-profile', function() {
+            return view('/user-change-profile', [
+                'user' => auth()->user()
+            ]);
+        });
     });
     Route::middleware('check.type:2')->group(function(){
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
@@ -62,16 +67,14 @@ Route::middleware('auth')->group(function () {
                 'user' => auth()->user()
             ]);
         });
-        Route::get('/user', function(){
-            return view('/user' ,[
-                'user' => auth()->user()
-            ]);
-        });
+    });
+    Route::get('/user', function(){
+        return view('/user' ,[
+            'user' => auth()->user()
+        ]);
     });
     Route::get('/logout', [AuthController::class, 'signOut']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
-
-    
 
     Route::post('/change-password', [UserController::class, 'changePassword']);
 });

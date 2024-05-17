@@ -2,6 +2,9 @@
     <div class="mobile-search position-absolute w-100 bg-white">
         <div class="w-100 d-flex flex-column">
             <div class="search-job-inputs w-100">
+                <div class="close-mobile-filter position-absolute">
+                    <img src="{{ asset('images/close.svg') }}" alt="Zatvori" class="w-100 h-100">
+                </div>
                 <div class="w-100">
                     <p class="mb-3">Pretraži poslove</p>
                     <div class="search-job-input d-flex align-items-center w-100 bg-white">
@@ -101,7 +104,7 @@
                     <button class="reset w-100 p-2 mt-2">Resetuj filtere</button>
                 </div>
             </div>
-            <div class="search-job-inputs add-new w-100 p-4 my-4 position-relative">
+            <div class="search-job-inputs add-new w-100 p-4 mt-4 position-relative">
                 <img class="position-absolute" src="{{ asset('images/ads-bg-4.png') }}" alt="Dodaj svoj oglas za posao">
                 <p>Zapošljavate?</p>
                 <p class="desc">

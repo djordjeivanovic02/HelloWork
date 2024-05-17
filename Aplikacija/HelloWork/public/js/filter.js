@@ -1,9 +1,11 @@
 const mobileBackground = document.querySelector('.mobile-background');
 const mobileSearch = mobileBackground.querySelector('.mobile-search');
 const filterTriger = document.querySelector('#filter-triger');
+const closeFilterIcon = document.querySelector('.close-mobile-filter');
 
 filterTriger.addEventListener('click', openMobileFilters);
-mobileBackground.addEventListener('click', hideMobileFilters)
+mobileBackground.addEventListener('click', hideMobileFilters);
+closeFilterIcon.addEventListener('click', hideMobileFilters);
 mobileSearch.addEventListener('click', function(event){
     event.stopPropagation();
 })

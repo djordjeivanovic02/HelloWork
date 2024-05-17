@@ -13,6 +13,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
+    @if ($user !== NULL)
+        <p id="user-type" hidden>{{$user->type}}</p>        
+    @else
+        <p id="user-type" hidden>-1</p>
+    @endif
     {{-- HEADER --}}
     <div class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center">
         <div class="welcome-main-container w-100 d-flex bg-white">
@@ -31,7 +36,7 @@
                     </div>
                     <div class="actions-container align-items-center gap-4">
                         <a href="#" class="text-decoration-none add-your-cv">Dodajte Vaš CV</a>
-
+                        
                             <button class="login-register-button open-profile h-100 border-0 rounded p-3
                             @if($user !== NULL)
                                 d-block
@@ -40,7 +45,7 @@
                             @endif
                             "
                             >Pogledaj profil</button>
-                            <button class="login-register-button login-register-button h-100 border-0 rounded p-3
+                            <button class="login-register-button login-register h-100 border-0 rounded p-3
                             @if ($user !== NULL)
                                 d-none
                             @else

@@ -1,8 +1,9 @@
 //#region OTVARANJE/ZATVANJE LOGIN BOX-A
-const loginRegisterElement = document.querySelectorAll('.login-register-button');
+const loginRegisterElement = document.querySelectorAll('.login-register');
 const loginBackgroundContainer = document.querySelector('.login-background-container');
 const loginContainers = loginBackgroundContainer.querySelectorAll('.login-container');
 const openProfileElement = document.querySelectorAll('.open-profile');
+const userType = document.querySelector('#user-type').innerHTML;
 
 loginRegisterElement.forEach((element) => {
     element.addEventListener('click', function(){
@@ -112,7 +113,11 @@ function changeProfileTypes(x){
 //#region OTVORI PROFIL
 
 function openProfile(){
-    document.location.href = '/user';
+    if(userType == '1'){
+        document.location.href = '/user-change-profile';
+    }else if(userType == '2'){
+        document.location.href = '/company-change-profile';
+    }
 }
 
 //#endregion

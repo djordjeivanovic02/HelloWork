@@ -379,8 +379,49 @@
     margin-top: 25px;
 }
 
+.wide-widget .all-informations{
+    display: flex;
+}
+.wide-widget{
+    justify-content: start;
+}
+.last-info{
+    display: block;
+}
+/* RESPONSIVE */
 
+@media only screen and (max-width: 640px) {
+    .wide-widget .all-informations{
+        display: none;
+    }
+    .down-button{
+        margin: 0;
+    }
+}
 
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (max-width: 1024px) {
+    .last-info{
+        display: none;
+    }
+    .wide-widget{
+        justify-content: center;
+        margin-bottom: 0;
+    }
+    
+    .image-div{
+        width: 40px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    
+}
+
+@media only screen and (max-width: 1500px) {
+}
 
 
 
