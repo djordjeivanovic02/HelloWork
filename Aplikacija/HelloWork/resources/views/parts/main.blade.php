@@ -24,18 +24,18 @@
             <div class="main-container w-100 h-100 d-flex flex-column align-items-center justify-content-center">
                 <div class="navigation-container container d-flex justify-content-between bg-white align-items-center">
                     <div class="header-logo-container d-flex align-items-center">
-                        <img src="images/logo.svg" alt="logo">
+                        <img src="images/logo.svg" alt="logo" class="logo" style="cursor: pointer;">
                         {{-- Dodati tekst za logo --}}
                     </div>
                     <div class="navigation-main align-items-center gap-5">
-                        <a href="#">POČETNA</a>
-                        <a href="#">PRONAĐI POSAO</a>
-                        <a href="#">ZA KANDIDATE</a>
-                        <a href="#">ZA KOMPANIJE</a>
+                        <a href="/">POČETNA</a>
+                        <a href="/searchjob">PRONAĐI POSAO</a>
+                        <a href="#">KREIRAJ CV</a>
                         <a href="#">O NAMA</a>
+                        <a href="#">PODRŠKA</a>
                     </div>
                     <div class="actions-container align-items-center gap-4">
-                        <a href="#" class="text-decoration-none add-your-cv">Dodajte Vaš CV</a>
+                        {{-- <a href="#" class="text-decoration-none add-your-cv">Dodajte Vaš CV</a> --}}
                         
                             <button class="login-register-button open-profile h-100 border-0 rounded p-3
                             @if($user !== NULL)
@@ -53,7 +53,10 @@
                             @endif
                             "
                             >Prijava / Registracija</button>
-                        <button class="add-job-button h-100 border-0 rounded p-3 text-white">Postavi Posao</button>
+
+                            @if ($user !== NULL && $user->type == 2)
+                                <button class="add-job-button h-100 border-0 rounded p-3 text-white">Postavi Posao</button>
+                            @endif
                     </div>
                     <h3 class="site-name m-0 mx-2">Hello<span style="color: #613FE5">Work</span></h3>
                     <div class="mobile-menu-actions align-items-center justify-content-center">

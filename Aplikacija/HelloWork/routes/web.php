@@ -20,17 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, '__invoke'])->name('login');
-
-Route::get('/searchjob', function () {
-    return view('search-jobs', ['user' => auth()->user()]);
-})->name('searchjob');
-
-// samo za priakaz Davidovih vidzeta
-Route::get('/widgets', function () {
-    return view('parts.widgets');
-});
-
 Route::middleware('auth')->group(function () {
     Route::middleware('check.type:0')->group(function(){
         //only admin routes
@@ -103,3 +92,11 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job', [AdController::class, 'show']);
 Route::get('/company', [CompanyController::class, 'show']);
+Route::get('/', [IndexController::class, '__invoke'])->name('login');
+Route::get('/searchjob', function () {
+    return view('search-jobs', ['user' => auth()->user()]);
+})->name('searchjob');
+// samo za priakaz Davidovih vidzeta
+Route::get('/widgets', function () {
+    return view('parts.widgets');
+});

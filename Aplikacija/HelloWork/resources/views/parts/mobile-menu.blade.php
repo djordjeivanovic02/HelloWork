@@ -10,13 +10,13 @@
             </div>
         </div>
         <div class="mobile-menu-main w-100 d-flex flex-column">
-            <a href="#" class="mobile-menu-item w-100">
+            <a href="/" class="mobile-menu-item w-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="m-0">Početna</p>
                     <p class="m-0">></p>
                 </div>
             </a>
-            <a href="#" class="mobile-menu-item w-100">
+            <a href="searchjob" class="mobile-menu-item w-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="m-0">Pronađi posao</p>
                     <p class="m-0">></p>
@@ -36,14 +36,16 @@
             </a>
             <a href="#" class="mobile-menu-item w-100">
                 <div class="d-flex justify-content-between align-items-center">
-                    <p class="m-0">Kontrolna tabla</p>
+                    <p class="m-0">Podrška</p>
                     <p class="m-0">></p>
                 </div>
             </a>
         </div>
-        <div class="mobile-menu-add-job w-100">
-            <button class="w-100">Postavi Posao</button>
-        </div>
+        @if ($user !== NULL && $user->type == '2')
+            <div class="mobile-menu-add-job w-100">
+                <button class="w-100">Postavi Posao</button>
+            </div>
+        @endif
         <div class="mobile-menu-about w-100">
             <div class="footer2-container container-fluid w-100 d-flex justify-content-center">
                 <p class="m-0 p-0">© 2024 HelloWork. Napravljeno od strane <span>Aurora Team</span>. Sva prava zadržana. </p>

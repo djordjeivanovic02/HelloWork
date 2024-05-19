@@ -4,6 +4,10 @@ const loginBackgroundContainer = document.querySelector('.login-background-conta
 const loginContainers = loginBackgroundContainer.querySelectorAll('.login-container');
 const openProfileElement = document.querySelectorAll('.open-profile');
 const userType = document.querySelector('#user-type').innerHTML;
+const addPost = document.querySelector('.add-job-button');
+const addPostMobile = document.querySelector('.mobile-menu-add-job');
+const logo = document.querySelector('.logo');
+const siteName = document.querySelector('.site-name');
 
 loginRegisterElement.forEach((element) => {
     element.addEventListener('click', function(){
@@ -47,7 +51,6 @@ openProfileElement.forEach((element) => {
 
 //#region OTVORI LOGIN/REGISTER PROZOR
 function openLoginBox(){
-    console.log("Tu sam");
     loginBackgroundContainer.classList.remove('deactive');
     loginBackgroundContainer.classList.add('active');
 
@@ -157,4 +160,19 @@ function hideMobileMenu(){
     }, 300);
 }
 
+//#endregion
+
+
+//#region OTVOR DODAJ NOVI OGLAS
+if(addPost !== undefined){
+    addPost.addEventListener('click', () => window.location.href="/new-ad");
+}
+if(addPostMobile !== undefined){
+    addPostMobile.addEventListener('click', () => window.location.href="/new-ad");
+}
+//#endregion
+
+//#region VRATI NA POCETNU
+logo.addEventListener('click', () => window.location.href="/");
+siteName.addEventListener('click', () => window.location.href="/");
 //#endregion

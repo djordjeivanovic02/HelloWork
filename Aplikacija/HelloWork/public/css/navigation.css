@@ -137,6 +137,7 @@
 }
 .site-name{
     display: none;
+    cursor: pointer;
 }
 
 
