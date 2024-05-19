@@ -53,6 +53,6 @@ class User extends Authenticatable
     }
 
     public function ads(){
-        return $this->hasMany(Ad::class);
+        return $this->belongsToMany(Ad::class, 'applications')->withPivot('status')->withTimestamps();
     }
 }

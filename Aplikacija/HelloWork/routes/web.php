@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\NewJobController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -53,9 +54,10 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/company-change-profile', function() {
         return view('/company-change-profile', [
-            'user' => User::findOrFail(1)
+            'user' => User::findOrFail(auth()->id())
         ]);
     });
+    Route::post('/apply/{ad}', [ApplicationsController::class, 'apply']);
 
     Route::post('/change-password', [UserController::class, 'changePassword']);
 });

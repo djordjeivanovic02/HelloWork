@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\CompanyInfo;
 use Exception;
 
@@ -15,7 +16,6 @@ class CompanyController extends Controller
         try{
             validator(request()->all(), [
                 'name' => ['required'],
-                'logo' => ['required'],
                 'size' => ['required'],
                 'address' => ['required'],
                 'about' => ['required'],
@@ -29,7 +29,6 @@ class CompanyController extends Controller
     
             if($companyInfo){
                 $companyInfo->update([
-                    'logo' => $request->input('logo'),
                     'size' => $request->input('size'),
                     'address' => $request->input('address'),
                     'about' => $request->input('about'),
@@ -42,7 +41,6 @@ class CompanyController extends Controller
                 $companyInfo = CompanyInfo::create([
                     'user_id' => auth()->id(),
                     'name' => $request->input('name'),
-                    'logo' => $request->input('logo'),
                     'size' => $request->input('size'),
                     'address' => $request->input('address'),
                     'about' => $request->input('about'),
@@ -61,4 +59,28 @@ class CompanyController extends Controller
         }
     }
     
+    public function uploadLogo(Request $request){
+        try{
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+            $user = auth()->user();
+            $companyInfo = $user->companyInfo;
+            $logo = $request->file('image');
+            $imageName = Str::random(20) . "." . $logo->getClientOriginalExtension();
+            $logo->storeAs('public/uploads/logo', $imageName);
+            
+            if(!$companyInfo){
+                $companyInfo = new CompanyInfo();
+                $companyInfo->user_id = $user->id;
+                $companyInfo->save();
+            }
+
+            $companyInfo->logo = $imageName;
+            $companyInfo->save();
+        }
+        catch(Exception $ex){
+            return response()->json(['message' => $ex->getMessage()], 500);
+        }
+    }
 }

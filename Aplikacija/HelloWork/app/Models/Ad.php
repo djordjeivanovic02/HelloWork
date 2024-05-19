@@ -10,7 +10,6 @@ class Ad extends Model
     use HasFactory;
     protected $table = "ads";
     protected $fillable = [
-        'user_id',
         'title',
         'address',
         'job_type',
@@ -25,7 +24,7 @@ class Ad extends Model
         'image'
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function users(){
+        return $this->belongsToMany(User::class, 'applications')->withPivot('status')->withTimestamps();
     }
 }

@@ -65,7 +65,7 @@ class UserController extends Controller
             ]);
             return response()->json(['message' => 'Uspešno ažurirani korisnikovi podaci'], 200);
         }catch(Exception $ex){
-            return response()->json(['message' => $ex->getMessage(), 500]);
+            return response()->json(['message' => $ex->getMessage()], 500);
         }
     }
 
@@ -100,7 +100,7 @@ class UserController extends Controller
 
             return response()->json(['type' => 'success' ,'message' => 'Lozinka uspešno promenjena'], 200);
         }catch(Exception $ex){
-            return response()->json(['type' => 'error', 'message' => $ex->getMessage(), 500]);
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
     }
 }
