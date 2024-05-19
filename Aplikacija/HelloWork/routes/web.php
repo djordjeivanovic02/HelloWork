@@ -43,6 +43,26 @@ Route::middleware('auth')->group(function () {
                 'user' => auth()->user()
             ]);
         });
+        Route::get('/user-cv', function() {
+            return view('/user-cv', [
+                'user' => auth()->user()
+            ]);
+        });
+        Route::get('/user-change-password', function() {
+            return view('/user-change-password', [
+                'user' => auth()->user()
+            ]);
+        });
+        Route::get('/user-applications', function() {
+            return view('/user-applications', [
+                'user' => auth()->user()
+            ]);
+        });
+        Route::get('/user-saved-ads', function() {
+            return view('/user-saved', [
+                'user' => auth()->user()
+            ]);
+        });
     });
     Route::middleware('check.type:2')->group(function(){
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);

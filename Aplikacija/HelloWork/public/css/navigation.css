@@ -62,7 +62,7 @@
 .mobile-menu-main{
     padding-top: 20px;
 } 
-.mobile-menu-main a, p{
+.mobile-menu-main a, .mobile-menu-main p{
     text-decoration: none;
     color: black;
     font-size: 18px;

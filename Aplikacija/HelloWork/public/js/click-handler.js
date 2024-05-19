@@ -47,6 +47,7 @@ openProfileElement.forEach((element) => {
 
 //#region OTVORI LOGIN/REGISTER PROZOR
 function openLoginBox(){
+    console.log("Tu sam");
     loginBackgroundContainer.classList.remove('deactive');
     loginBackgroundContainer.classList.add('active');
 

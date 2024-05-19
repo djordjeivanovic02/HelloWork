@@ -160,7 +160,7 @@
     background-color: rgb(244, 241, 255);
 }
 .row-images{
-    display: flex;
+    display: block;
 }
 .row-images svg{
     width: 15px;
@@ -251,6 +251,25 @@
     padding: 3px 5px;
     border-radius: 5px;
 }
+.cancel-application{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(220, 211, 255);
+    border-radius: 5px;
+}
+.cancel-application button{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+}
+.cancel-application p{
+    font-size: 16px;
+}
+.cancel-application p span{
+    color: var(--main-color);
+}
 .application-skill p{
     font-size: 14px;
     color: var(--main-color);
@@ -268,6 +287,16 @@
     width: 70%;
     height: 70%;
 }
+.row-company-image{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.saved-date{
+    font-size: 14px;
+    color: var(--grey-text);
+}
 
 /* RESPONSIVE */
 @media only screen and (max-width: 640px) {
@@ -282,6 +311,10 @@
     .row-element{
         width: 100%;
     }
+    .row-company-image{
+        width: 30px;
+        height: 30px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -290,6 +323,10 @@
     }
     .row-images{
         display: none;
+    }
+    .row-company-image{
+        width: 40px;
+        height: 40px;
     }
 }
 

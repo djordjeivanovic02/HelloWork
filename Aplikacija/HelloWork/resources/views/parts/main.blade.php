@@ -61,7 +61,7 @@
                         @if ($user !== NULL)
                             class="open-profile"
                         @else
-                            class="login-register-button"
+                            class="login-register"
                         @endif
                         >
                         <img id="open-mobile-menu" src="{{ asset('images/hamburger.svg') }}" alt="Otvori menu">
