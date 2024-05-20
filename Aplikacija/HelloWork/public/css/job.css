@@ -227,6 +227,19 @@
     font-weight: 500;
     color: var(--main-color);
 }
+.save-job{
+    cursor: pointer;
+}
+.save-job.active{
+    background-color: var(--main-color);
+}
+.save-job path{
+    fill: black;
+}
+.save-job.active path{
+    fill: white;
+}
+
 /* RESPONSIVE */
 
 @media only screen and (max-width: 1500px) {

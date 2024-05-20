@@ -26,13 +26,18 @@
     box-shadow: var(--box-shadow);
     outline: none;
 }
-.row-element.error input, 
+.textarea-cont.error textarea{
+    border: 1px solid transparent;
+}
+.row-element.error input,
+.textarea-cont.error textarea, 
 .row-element.not-verified input, 
 .row-element.short input,
 .row-element.same input{
     border-color: red;
 }
 .row-element.error::before, 
+.textarea-cont.error::before,
 .row-element.not-verified::before, 
 .row-element.short::before,
 .row-element.same::before{
@@ -44,6 +49,9 @@
 }
 .row-element.error::before{
     content: 'Ovo polje je obavezno';
+}
+.textarea-cont.error::before{
+    content: "Ovo polje je obavezno";
 }
 .row-element.not-verified::before{
     content: 'Lozinke se ne poklapaju';

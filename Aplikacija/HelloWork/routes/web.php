@@ -5,6 +5,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\NewJobController;
+use App\Http\Controllers\SavedAdController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -84,8 +85,9 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/logout', [AuthController::class, 'signOut']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
-
     Route::post('/change-password', [UserController::class, 'changePassword']);
+    Route::post('/save-ad', [SavedAdController::class, 'saveAd']);
+    Route::post('/check-is-saved', [SavedAdController::class, 'checkIsSaved']);
 });
 
 Route::post('/register', [AuthController::class, 'register']);

@@ -1,8 +1,3 @@
-function focusOut(x){
-    console.log("Fokus otiso");
-    x.parentElement.classList.add('error');
-}
-
 const inputImage = document.querySelector('#inputImage');
 const openBtn = document.querySelector('.add-img');
 var imageContainer = document.querySelector('.image-container');
