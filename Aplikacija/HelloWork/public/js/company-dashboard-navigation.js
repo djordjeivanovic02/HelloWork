@@ -16,3 +16,11 @@ changePasswordd.addEventListener('click', function(){
 companyInfo.addEventListener('click', function(){
     window.location.href = '/company-change-profile';
 });
+
+editJob.addEventListener('click', function(){
+    window.location.href = '/company-manage-jobs';
+});
+
+applications.addEventListener('click', function(){
+    window.location.href = '/company-applications';
+});

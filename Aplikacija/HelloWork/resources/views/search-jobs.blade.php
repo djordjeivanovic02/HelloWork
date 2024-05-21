@@ -10,35 +10,28 @@
         </div>
     </div>
     <div class="search-job-main-container w-100 d-flex">
-        <div class="search-job-inputs">
-            <div class="w-100">
-                <p class="mb-3">Pretraži poslove</p>
-                <div class="search-job-input d-flex align-items-center w-100 bg-white">
-                    <div class="search-job-input-image">
-                        <img src="{{ asset('images/search-icon.svg') }}" alt="search icon">
-                    </div>
-                    <input type="text" class="w-100 h-100 px-2 border-0" placeholder="Ime posla, kompanije">
+        @include('parts.filters')
+        
+        <div class="search-job-main d-flex flex-column position-relative">
+            <div class="search-job-main-header w-100 d-flex justify-content-between align-items-center">
+                <p class="search-showing m-0">Prikazuje se <b>10</b> oglasa</p>
+                <img id="filter-triger" src="{{ asset('images/filter.svg') }}" alt="Filtriraj">
+                <div>
+                    <select name="sorting" id="sorting">
+                        <option value="0">Sortiraj podrazumevano</option>
+                        <option value="1">Najnoviji</option>
+                        <option value="2">Najstariji</option>
+                    </select>
                 </div>
             </div>
-            <div class="w-100 mt-4">
-                <p class="mb-3">Lokacija</p>
-                <div class="search-job-input d-flex align-items-center w-100 bg-white">
-                    <div class="search-job-input-image">
-                        <img src="{{ asset('images/location-icon.svg') }}" alt="location icon">
-                    </div>
-                    <input type="text" class="w-100 h-100 px-2 border-0" placeholder="Grad ili okrug">
-                </div>
-            </div>
-            <div class="w-100 mt-4">
-                <p class="mb-3">Vaše veštine</p>
-                <div class="search-job-input d-flex align-items-center w-100 bg-white">
-                    <div class="search-job-input-image">
-                        <img src="{{ asset('images/skills-icon.svg') }}" alt="skills icon">
-                    </div>
-                    <input type="text" class="w-100 h-100 px-2 border-0" placeholder="Npr. kuvanje kafe">
-                </div>
+            <div class="w-100 mt-3">
+                @for ($i = 0; $i < 7; $i++)
+                @include('parts.wide-widget')
+                @endfor
             </div>
         </div>
-        <div class="search-job-main"></div>
+        @include('parts.mobile-filters')
     </div>
+    <script src="{{ asset('js/widgets.js') }}"></script>
+    <script src="{{ asset('js/filter.js') }}"></script>
 @endsection

@@ -19,6 +19,9 @@
 .navigation-main a:hover{
     color: var(--main-color);
 }
+.actions-container{
+    display: flex;
+}
 .actions-container a{
     color: var(--main-color);
 }
@@ -37,13 +40,114 @@
 
 
 
+.mobile-menu-background{
+    background-color: var(--background-color);
+    display: none;
+}
+.mobile-menu-background.active{
+    display: block;
+}
+
+.mobile-menu-header{
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+.mobile-menu-header img{
+    width: 50px;
+}
+.mobile-menu-close-container img{
+    width: 30px;
+    cursor: pointer;
+}
+.mobile-menu-main{
+    padding-top: 20px;
+} 
+.mobile-menu-main a, .mobile-menu-main p{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+}
+.mobile-menu-item{
+    transition-duration: .3s;
+}
+.mobile-menu-item div{
+    padding: 15px 20px;
+}
+.mobile-menu-item:hover{
+    background-color: var(--main-color-hover);
+}
+.mobile-menu-add-job{
+    margin-top: 20px;
+    padding: 20px
+}
+.mobile-menu-add-job button{
+    padding: 15px;
+    border: none;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+}
+
+.mobile-menu-about{
+    padding: 0px 20px;
+}
+.mobile-menu-about p{
+    font-size: 14px;
+    color: var(--grey-color);
+}
+
+
+.mobile-menu-container{
+    max-width: 330px;
+}
+.mobile-menu-container.show{
+    left: -330px;
+    animation: showMobileMenu .3s ease-in-out forwards;
+}
+.mobile-menu-container.hide{
+    left: 0px;
+    animation: hideMobileMenu .3s ease-in-out forwards;
+}
+
+/* ANIMACIJE */
+@keyframes showMobileMenu {
+    0%{
+        left: -330px;
+    }100%{
+        left: 0px;
+    }
+}
+@keyframes hideMobileMenu {
+    0%{
+        left: 0px;
+    }100%{
+        left: -330px;
+    }
+}
+
+.mobile-menu-actions{
+    display: none;
+}
+.mobile-menu-actions img{
+    height: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.site-name{
+    display: none;
+    cursor: pointer;
+}
 
 
 
 /* RESPONSIVE */
 
 @media only screen and (max-width: 640px) {
-
+    .site-name{
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -51,10 +155,7 @@
 }
 
 @media only screen and (max-width: 1024px) {
-    .navigation-main {
-        display: none;
-    }
-
+    
 }
 
 @media only screen and (max-width: 1280px) {
@@ -62,7 +163,16 @@
 }
 
 @media only screen and (max-width: 1500px) {
-    .add-job-button, .add-your-cv{
+    .navigation-main {
         display: none;
+    }
+    .actions-container{
+        display: none;
+    }
+    .mobile-menu-actions{
+        display: flex;
+    }
+    .site-name{
+        display: block;
     }
 }

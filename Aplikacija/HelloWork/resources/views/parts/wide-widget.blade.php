@@ -4,18 +4,18 @@
             <div class="image-div">
                 <img src="/images/Windows-logo.svg"></img>
             </div>
-            <div class="d-flex flex-column mx-3 my-0">
-                <h2 class="above-text">Senior Dizajner Proizvoda</h2>
-                <div class="all-informations d-flex flex-row">
+            <div class="wide-widget d-flex flex-column mx-3 my-0">
+                <h2 class="above-text"><a href="#">Senior Dizajner Proizvoda</a></h2>
+                <div class="all-informations flex-row">
                     <img src="/images/Aktovka.svg"><span class="text-in-span">Start up</span></img>
                     <img src="/images/Lokacija.svg"><span class="text-in-span">Beograd, Srbija</span></img>
                     <img src="/images/Sat.svg"><span class="text-in-span">pre 12 sati</span></img>
-                    <img src="/images/Zarada.svg"><span class="text-in-span">€700 - €1800</span></img>
+                    <img class="last-info" src="/images/Zarada.svg"><span class="text-in-span last-info">€700 - €1800</span></img>
                 </div>
             </div>
         </div>
         <div class="save-it-div d-flex justify-content-end align-items-start">
-            <img src="/images/Sacuvaj.svg"></img>
+            <img src="/images/Sacuvaj.svg" style="cursor: pointer;">
         </div>
     </div>
 
