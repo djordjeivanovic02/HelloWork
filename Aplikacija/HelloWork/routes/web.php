@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
                 'user' => auth()->user()
             ]);
         });
+        Route::post('/apply/{ad}', [ApplicationsController::class, 'apply']);
     });
     Route::middleware('check.type:2')->group(function(){
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
