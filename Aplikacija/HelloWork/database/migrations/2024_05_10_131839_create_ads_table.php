@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title')->nullable();
             $table->string('address')->nullable();
             $table->unsignedInteger('job_type')->nullable();
