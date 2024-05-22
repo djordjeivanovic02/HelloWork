@@ -74,10 +74,9 @@
                 <h4>Svi poslovi kompanije</h4>
                 <p class="m-0">10 dostupnih poslova - 3 dodata danas</p>
                 <div class="w-100">
-                    @include('parts.wide-widget')
-                    @include('parts.wide-widget')
-                    @include('parts.wide-widget')
-                    @include('parts.wide-widget')
+                    @component('parts.wide-widget', ["active" => false])
+                        
+                    @endcomponent
                 </div>
             </div>
         </div>

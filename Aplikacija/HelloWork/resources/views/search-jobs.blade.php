@@ -25,9 +25,14 @@
                 </div>
             </div>
             <div class="w-100 mt-3">
-                @for ($i = 0; $i < 7; $i++)
-                @include('parts.wide-widget')
-                @endfor
+                @component('parts.wide-widget', [
+                    'active' => false
+                ])
+                @endcomponent
+                @component('parts.wide-widget', [
+                    'active' => true
+                ])
+                @endcomponent
             </div>
         </div>
         @include('parts.mobile-filters')

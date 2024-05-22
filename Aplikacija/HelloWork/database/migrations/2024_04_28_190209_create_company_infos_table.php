@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('company_info', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('logo')->nullable();
-            $table->string('size')->nullable();
-            $table->string('country')->nullable();
-            $table->string('city')->nullable();
-            $table->string('address')->nullable();
-            $table->text('about')->nullable();
-            $table->date('start_date')->nullable();
-            $table->string('contact')->nullable();
-            $table->string('website')->nullable();
-            $table->text('links')->nullable();
-            $table->string('category')->nullable();
+            $table->string('logo')->nullable(); //ima
+            $table->string('size')->nullable(); //ima
+            $table->string('country')->nullable(); //ima
+            $table->string('city')->nullable(); //ima
+            $table->string('address')->nullable(); //ima
+            $table->text('about')->nullable(); //ima
+            $table->date('start_date')->nullable(); //ima
+            $table->string('contact')->nullable(); //ima
+            $table->string('website')->nullable(); //ima
+            $table->text('links')->nullable(); //ima
+            $table->string('category')->nullable(); //ima
             $table->timestamps();
         });
     }

@@ -16,11 +16,15 @@ class Ad extends Model
         'min_salary',
         'max_salary',
         'job_category',
+        'responsibilities',
+        'experience',
+        'skills',
         'working_time',
         'number_of_jobs_needed',
         'payment_method',
         'description',
         'ad_duration',
+        'tags',
         'image'
     ];
 

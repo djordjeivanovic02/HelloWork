@@ -12,7 +12,7 @@
         <div class="row-element d-flex flex-column">
             <p class="my-1">Velicina kompanije*</p>
             <input type="text" name="companySize" id="companySize" class="w-100" placeholder="npr. 120" onchange="focusOut(this)"
-                @if ($user->companyInfo->size !== null) value="{{ $user->companyInfo->size }}" @endif>
+                @if ($user->companyInfo !== null && $user->companyInfo->size !== null) value="{{ $user->companyInfo->size }}" @endif>
         </div>
     </div>
     <div class="info-row w-100 d-flex">
@@ -20,7 +20,7 @@
             <p class="my-1">Primarna industrija*</p>
             {{-- <input type="text" name="jobTitle" id="jobTitle" class="w-100" > --}}
             <select name="companyCategorycompanyCountry" id="companyCategorycompanyCountry"
-                value="{{ $user->companyInfo->category }}">
+            @if ($user->companyInfo !== null && $user->companyInfo->name !== null) value="{{ $user->companyInfo->category }}" @endif>
                 <option value="0" selected disabled>Tehnološka kompanije</option>
                 <option value="1">Automobilska kompanija</option>
                 <option value="2">Maloprodajna kompanija</option>
@@ -33,7 +33,7 @@
         <div class="row-element d-flex flex-column">
             <p class="my-1">Zemlja*</p>
             <input type="text" name="companyCountry" id="companyCountry" class="w-100" placeholder="npr. Srbija" onchange="focusOut(this)"
-                @if ($user->companyInfo->country !== null) value="{{ $user->companyInfo->country }}" @endif>
+                @if ($user->companyInfo !== null && $user->companyInfo->country !== null) value="{{ $user->companyInfo->country }}" @endif>
         </div>
     </div>
     <div class="info-row w-100 d-flex">
@@ -41,19 +41,19 @@
             <p class="my-1">Websajt</p>
             <input type="text" name="companyWebsite" id="companyWebsite" class="w-100"
                 placeholder="Unesite websajt kompanije"
-                @if ($user->companyInfo->website !== null) value="{{ $user->companyInfo->website }}" @endif>
+                @if ($user->companyInfo !== null && $user->companyInfo->website !== null) value="{{ $user->companyInfo->website }}" @endif>
         </div>
         <div class="row-element d-flex flex-column">
             <p class="my-1">Datum osnivanja*</p>
             <input type="text" name="companyFounded" id="companyFounded" class="w-100" placeholder="npr. 16/09/2018" onchange="focusOut(this)"
-                @if ($user->companyInfo->start_date !== null) value="{{ date('d/m/Y', strtotime($user->companyInfo->start_date)) }}" @endif>
+                @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ date('d/m/Y', strtotime($user->companyInfo->start_date)) }}" @endif>
         </div>
     </div>
     <div class="info-row w-100 d-flex">
         <div class="textarea-cont d-flex flex-column w-100 position-relative">
             <p class="my-1">Opis*</p>
             <textarea name="companyDescription" id="companyDescription" class="w-100" placeholder="Unesite opis kompanije" onchange="focusOut(this)">
-                @if ($user->companyInfo->about !== null)
+                @if ($user->companyInfo !== null && $user->companyInfo->about !== null)
 {{ $user->companyInfo->about }}
 @endif
                 </textarea>
@@ -69,7 +69,7 @@
                 <p class="my-1">Broj Telefona*</p>
                 <input type="text" name="companyNumber" id="companyNumber" class="w-100" placeholder="+381 61...."
                     onchange="focusOut(this)"
-                    @if ($user->companyInfo->contact !== null) value="{{ $user->companyInfo->contact }}" @endif>
+                    @if ($user->companyInfo !== null && $user->companyInfo->contact !== null) value="{{ $user->companyInfo->contact }}" @endif>
             </div>
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Email adresa*</p>
@@ -85,13 +85,13 @@
                 <p class="my-1">Grad*</p>
                 <input type="text" name="companyCity" id="companyCity" class="w-100" placeholder="npr. Kragujevac"
                     onchange="focusOut(this)"
-                    @if ($user->companyInfo->city !== null) value="{{ $user->companyInfo->city }}" @endif>
+                    @if ($user->companyInfo !== null && $user->companyInfo->city !== null) value="{{ $user->companyInfo->city }}" @endif>
             </div>
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Adresa*</p>
                 <input type="text" name="companyAddress" id="companyAddress" class="w-100"
                     placeholder="npr. Njegoseva 5" onchange="focusOut(this)"
-                    @if ($user->companyInfo->address !== null) value="{{ $user->companyInfo->address }}" @endif>
+                    @if ($user->companyInfo !== null && $user->companyInfo->address !== null) value="{{ $user->companyInfo->address }}" @endif>
             </div>
         </div>
     </div>
@@ -132,8 +132,15 @@
             </div>
         </div>
     </div>
+    <div class="section-info w-100 mt-3">
+        <h4>Galerija</h4>
+    </div>
+    <div class="info-row images-container w-100">
+        <input type="file" name="inputImages" id="inputImages" accept="image/*" hidden>
+        <button class="my-4 add-img2" onclick="importImages()">Dodaj slike</button>
+    </div>
     <div class="info-row w-100 d-flex flex-column align-items-start">
-        <button class="my-4 add-ad" onclick="updateCompanyData()">Ažuriraj podatke</button>
+        <button class="my-4 add-ad w-100" onclick="updateCompanyData()">Ažuriraj podatke</button>
     </div>
     <div class="section-info w-100 mt-3">
         <h4>Ostale akcije</h4>
@@ -143,4 +150,3 @@
             nalog</button>
     </div>
 </div>
-<script src="{{ asset('js/company/update-profile-data.js') }}"></script>

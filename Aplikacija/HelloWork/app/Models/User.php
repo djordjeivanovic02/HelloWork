@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function ads(){
         return $this->belongsToMany(Ad::class, 'applications')->withPivot('status')->withTimestamps();
     }
+
+    public function previousJobs(){
+        return $this->hasMany(UserPreviousJobs::class);
+    }
 }

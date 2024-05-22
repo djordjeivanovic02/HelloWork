@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\NewJobController;
 use App\Http\Controllers\SavedAdController;
 use App\Http\Controllers\UserController;
@@ -78,6 +79,7 @@ Route::middleware('auth')->group(function () {
                 'user' => auth()->user()
             ]);
         });
+        Route::post('/company-upload-logo', [CompanyController::class, 'uploadLogo']);
     });
     Route::get('/user', function(){
         return view('/user' ,[

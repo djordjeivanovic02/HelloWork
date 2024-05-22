@@ -19,11 +19,15 @@ return new class extends Migration
             $table->unsignedInteger('min_salary')->nullable();
             $table->unsignedInteger('max_salary')->nullable();
             $table->unsignedInteger('job_category')->nullable();
+            $table->string('responsibilities')->nullable();
+            $table->string('experience')->nullable();
+            $table->string('skills')->nullable();
             $table->unsignedInteger('working_time')->nullable();
             $table->unsignedBigInteger('number_of_jobs_needed')->nullable();
             $table->unsignedInteger('payment_method')->nullable();
             $table->text('description')->nullable();
             $table->unsignedInteger('ad_duration')->nullable();
+            $table->string('tabs')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

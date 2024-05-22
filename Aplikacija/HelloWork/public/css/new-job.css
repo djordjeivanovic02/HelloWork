@@ -73,7 +73,7 @@
     min-height: 150px;
     padding: 15px 20px;
 }
-.info-row .add-img{
+.info-row .add-img, .info-row .add-img2{
     padding: 20px 30px;
     border: 2px solid var(--main-color);
     background-color: white;
@@ -82,10 +82,14 @@
     transition-duration: .3s;
     display: block;
 }
-.info-row .add-img.hidden{
+.info-row .add-img2{
+    display: inline-block;
+    height: 150px;
+}
+.info-row .add-img.hidden, .info-row .add-img2.hidden{
     display: none;
 }
-.info-row .add-img:hover{
+.info-row .add-img:hover, .info-row .add-img2:hover{
     background-color: var(--main-color);
     color: white;
 }
@@ -151,6 +155,10 @@
 
 .image-container.active{
     display: block;
+}
+.image-container2.active{
+    display: inline-block;
+    margin: 10px;
 }
 .image-container img{
     width: 100%;

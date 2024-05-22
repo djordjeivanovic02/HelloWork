@@ -7,14 +7,23 @@
             <div class="dashboard-image-container w-100 d-flex align-items-center justify-content-center position-relative">
                 <div class="dashboard-image">
                     <div class="w-100 h-100 dashboard-image-main">
-                        <img src="{{ asset('images/udemy-logo.png') }}" alt="Company Logo" class="w-100 h-100">
+                        @if ($user !== null && $user->companyInfo !== null && $user->companyInfo->logo !== null)
+                        <img src="{{ asset('storage/uploads/logo/' . $user->companyInfo->logo) }}" id="companyLogoImage" alt="Company Logo" class="w-100 h-100">
+                        @else
+                        <img src="{{ asset('images/udemy-logo.png') }}" id="companyLogoImage" alt="Company Logo" class="w-100 h-100">
+                        @endif
                     </div>
-                    <div class="change-image-container d-flex justify-content-center align-items-center">
+                    <input type="file" name="companyLogo" id="companyLogo"  accept=".jpg, .jpeg, .png" hidden>
+                    <div class="change-image-container d-flex justify-content-center align-items-center" onclick="openLogoInput()">
                         <img src="{{ asset('images/camera.svg') }}" alt="Camera Icon">
                     </div>
                 </div>
             </div>
-            <div class="w-100 d-flex justify-content-center my-4 dashboard-head-container">
+            <div class="save-change-logo w-100 justify-content-center align-items-center">
+                {{-- <button>Sačuvaj</button> --}}
+                <input type="button" value="Sačuvaj" onclick="updateCompanyLogo(this)">
+            </div>
+            <div class="w-100 d-flex justify-content-center my-3 dashboard-head-container">
                 <h3>@UDEMY</h3>
             </div>
             <div class="hide-bottom-shadow"></div>
@@ -122,5 +131,7 @@
 ])
 @endcomponent
 <script src="{{ asset('js/logout.js') }}"></script>
-<script src="{{ asset('js/company-dashboard-navigation.js') }}"></script>  
+<script src="{{ asset('js/company/change-logo.js') }}"></script>
+<script src="{{ asset('/js/company/update-profile-data.js') }}"></script>  
+<script src="{{ asset('js/company-dashboard-navigation.js') }}"></script>
 @endsection

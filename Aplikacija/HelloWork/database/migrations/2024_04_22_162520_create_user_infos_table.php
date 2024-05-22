@@ -17,7 +17,13 @@ return new class extends Migration
             $table->unsignedInteger('age');
             $table->string('professional_title')->nullable();
             $table->string('languages')->nullable();
+            $table->string('skills')->nullable();
+            $table->decimal('expirience', 10, 2)->nullable();
             $table->decimal('current_salary', 10, 2)->nullable();
+            $table->string('educaton')->nullable();
+            $table->string('about')->nullable();
+            $table->string('responsibilities')->nullable();
+            $table->string('social_medias')->nullable();
             $table->decimal('expected_salary', 10, 2)->nullable();
             $table->string('phone')->nullable();
             $table->string('country')->nullable();

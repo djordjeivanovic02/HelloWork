@@ -388,6 +388,22 @@
 .last-info{
     display: block;
 }
+.save-it-div{
+    width: 30px;
+    height: 30px; 
+    cursor: pointer;
+    border-radius: 5px;
+}
+.save-it-div svg path{
+    fill: black;
+}
+.save-it-div.active{
+    background-color: var(--main-color);
+    fill: white;
+}
+.save-it-div.active svg path{
+    fill: white;
+}
 /* RESPONSIVE */
 
 @media only screen and (max-width: 640px) {
