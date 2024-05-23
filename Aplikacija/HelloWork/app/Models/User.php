@@ -44,19 +44,23 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function userInfo(){
+    public function userInfo()
+    {
         return $this->hasOne(UserInfo::class);
     }
 
-    public function companyInfo(){
+    public function companyInfo()
+    {
         return $this->hasOne(CompanyInfo::class);
     }
 
-    public function ads(){
+    public function ads()
+    {
         return $this->belongsToMany(Ad::class, 'applications')->withPivot('status')->withTimestamps();
     }
 
-    public function previousJobs(){
+    public function previousJobs()
+    {
         return $this->hasMany(UserPreviousJobs::class);
     }
 }

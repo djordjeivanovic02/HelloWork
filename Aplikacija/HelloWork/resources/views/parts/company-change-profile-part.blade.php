@@ -3,6 +3,11 @@
     <div class="section-info w-100">
         <h4>Osnovne informacije</h4>
     </div>
+    <div class="update-profile-notification-container error w-100 p-4">
+        <b class="m-0 p-0">Vaš oglas je uspešno poslat na pregled. Administrator će ga pregledati u najkraćem mogućem
+            roku, a nakon
+            odobrenja, oglas će biti objavljen. Hvala vam na strpljenju i poverenju.</b>
+    </div>
     <div class="info-row w-100 d-flex">
         <div class="row-element d-flex flex-column">
             <p class="my-1">Ime kompanije*</p>
@@ -11,7 +16,8 @@
         </div>
         <div class="row-element d-flex flex-column">
             <p class="my-1">Velicina kompanije*</p>
-            <input type="text" name="companySize" id="companySize" class="w-100" placeholder="npr. 120" onchange="focusOut(this)"
+            <input type="text" name="companySize" id="companySize" class="w-100" placeholder="npr. 120"
+                onchange="focusOut(this)"
                 @if ($user->companyInfo !== null && $user->companyInfo->size !== null) value="{{ $user->companyInfo->size }}" @endif>
         </div>
     </div>
@@ -20,7 +26,7 @@
             <p class="my-1">Primarna industrija*</p>
             {{-- <input type="text" name="jobTitle" id="jobTitle" class="w-100" > --}}
             <select name="companyCategorycompanyCountry" id="companyCategorycompanyCountry"
-            @if ($user->companyInfo !== null && $user->companyInfo->name !== null) value="{{ $user->companyInfo->category }}" @endif>
+                @if ($user->companyInfo !== null && $user->companyInfo->name !== null) value="{{ $user->companyInfo->category }}" @endif>
                 <option value="0" selected disabled>Tehnološka kompanije</option>
                 <option value="1">Automobilska kompanija</option>
                 <option value="2">Maloprodajna kompanija</option>
@@ -32,7 +38,8 @@
         </div>
         <div class="row-element d-flex flex-column">
             <p class="my-1">Zemlja*</p>
-            <input type="text" name="companyCountry" id="companyCountry" class="w-100" placeholder="npr. Srbija" onchange="focusOut(this)"
+            <input type="text" name="companyCountry" id="companyCountry" class="w-100" placeholder="npr. Srbija"
+                onchange="focusOut(this)"
                 @if ($user->companyInfo !== null && $user->companyInfo->country !== null) value="{{ $user->companyInfo->country }}" @endif>
         </div>
     </div>
@@ -45,14 +52,17 @@
         </div>
         <div class="row-element d-flex flex-column">
             <p class="my-1">Datum osnivanja*</p>
-            <input type="text" name="companyFounded" id="companyFounded" class="w-100" placeholder="npr. 16/09/2018" onchange="focusOut(this)"
-                @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ date('d/m/Y', strtotime($user->companyInfo->start_date)) }}" @endif>
+            <input type="text" name="companyFounded" id="companyFounded" class="w-100" placeholder="npr. 16/09/2018"
+                onchange="focusOut(this)"
+                @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ $user->companyInfo->start_date }}" @endif>
+            {{-- @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ date('d/m/Y', strtotime($user->companyInfo->start_date)) }}" @endif> --}}
         </div>
     </div>
     <div class="info-row w-100 d-flex">
         <div class="textarea-cont d-flex flex-column w-100 position-relative">
             <p class="my-1">Opis*</p>
-            <textarea name="companyDescription" id="companyDescription" class="w-100" placeholder="Unesite opis kompanije" onchange="focusOut(this)">
+            <textarea name="companyDescription" id="companyDescription" class="w-100" placeholder="Unesite opis kompanije"
+                onchange="focusOut(this)">
                 @if ($user->companyInfo !== null && $user->companyInfo->about !== null)
 {{ $user->companyInfo->about }}
 @endif
@@ -138,6 +148,15 @@
     <div class="info-row images-container w-100">
         <input type="file" name="inputImages" id="inputImages" accept="image/*" hidden>
         <button class="my-4 add-img2" onclick="importImages()">Dodaj slike</button>
+        @if (!empty($images))
+            @foreach ($images as $image)
+                <div class="image-container2 image-container my-4 w-100 active"
+                    onclick="removeImage(this, '{{ $image }}');">
+                    <img src="{{ $image }}" alt="Galerija kompanije">
+                </div>
+            @endforeach
+        @endif
+
     </div>
     <div class="info-row w-100 d-flex flex-column align-items-start">
         <button class="my-4 add-ad w-100" onclick="updateCompanyData()">Ažuriraj podatke</button>

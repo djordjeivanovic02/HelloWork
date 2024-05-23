@@ -26,7 +26,8 @@ class CompanyInfo extends Model
         'category'
     ];
 
-    public function company(){
+    public function company()
+    {
         return $this->belongsTo(User::class);
     }
 }

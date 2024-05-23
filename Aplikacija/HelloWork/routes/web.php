@@ -23,40 +23,40 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::middleware('check.type:0')->group(function(){
+    Route::middleware('check.type:0')->group(function () {
         //only admin routes
     });
-    Route::middleware('check.type:1')->group(function(){
+    Route::middleware('check.type:1')->group(function () {
         Route::get('/user', [UserController::class, 'show']);
         Route::post('/updateUserData', [UserController::class, 'updateUserData']);
-        Route::get('/user-change-profile', function() {
+        Route::get('/user-change-profile', function () {
             return view('/user-change-profile', [
                 'user' => auth()->user()
             ]);
         });
-        Route::get('/user-cv', function() {
+        Route::get('/user-cv', function () {
             return view('/user-cv', [
                 'user' => auth()->user()
             ]);
         });
-        Route::get('/user-change-password', function() {
+        Route::get('/user-change-password', function () {
             return view('/user-change-password', [
                 'user' => auth()->user()
             ]);
         });
-        Route::get('/user-applications', function() {
+        Route::get('/user-applications', function () {
             return view('/user-applications', [
                 'user' => auth()->user()
             ]);
         });
-        Route::get('/user-saved-ads', function() {
+        Route::get('/user-saved-ads', function () {
             return view('/user-saved', [
                 'user' => auth()->user()
             ]);
         });
         Route::post('/apply/{ad}', [ApplicationsController::class, 'apply']);
     });
-    Route::middleware('check.type:2')->group(function(){
+    Route::middleware('check.type:2')->group(function () {
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
         Route::get('/new-ad', function () {
             return view('/new-ad', ['user' => auth()->user()]);
@@ -64,25 +64,22 @@ Route::middleware('auth')->group(function () {
         Route::get('/change-password', function () {
             return view('/company-change-password', ['user' => auth()->user()]);
         });
-        Route::get('/company-change-profile', function() {
-            return view('/company-change-profile', [
-                'user' => User::findOrFail(auth()->id())
-            ]);
-        });
-        Route::get('/company-manage-jobs', function() {
-            return view('/company-manage-jobs' ,[
+        Route::get('/company-change-profile', [CompanyController::class, 'showDashboard']);
+        Route::get('/company-manage-jobs', function () {
+            return view('/company-manage-jobs', [
                 'user' => auth()->user()
             ]);
         });
-        Route::get('/company-applications', function() {
-            return view('/company-applications' ,[
+        Route::get('/company-applications', function () {
+            return view('/company-applications', [
                 'user' => auth()->user()
             ]);
         });
         Route::post('/company-upload-logo', [CompanyController::class, 'uploadLogo']);
+        Route::post('/company-update-profile', [CompanyController::class, 'updateCompanyData']);
     });
-    Route::get('/user', function(){
-        return view('/user' ,[
+    Route::get('/user', function () {
+        return view('/user', [
             'user' => auth()->user()
         ]);
     });

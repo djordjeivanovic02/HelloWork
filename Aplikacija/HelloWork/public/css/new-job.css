@@ -1,71 +1,86 @@
 @import url('variables.css');
 
-.new-job-main-container{
+.new-job-main-container {
     max-width: 1310px;
     padding: 20px;
 }
-.section-info{
+
+.section-info {
     width: 100%;
     border-bottom: 1px solid var(--border-color);
     color: var(--black-color);
     padding-bottom: 15px;
 }
-.info-row{
+
+.info-row {
     justify-content: space-between;
 }
-.row-element{
+
+.row-element {
     width: 49%;
     margin-top: .75rem;
     margin-bottom: .75rem;
     position: relative;
 }
-.row-element input, select{
+
+.row-element input,
+select {
     padding: 15px 20px;
     border: none;
     border: 1px solid transparent;
     box-shadow: var(--box-shadow);
     outline: none;
 }
-.textarea-cont.error textarea{
+
+.textarea-cont.error textarea {
     border: 1px solid transparent;
 }
+
 .row-element.error input,
-.textarea-cont.error textarea, 
-.row-element.not-verified input, 
+.textarea-cont.error textarea,
+.row-element.not-verified input,
 .row-element.short input,
-.row-element.same input{
+.row-element.same input {
     border-color: red;
 }
-.row-element.error::before, 
+
+.row-element.error::before,
 .textarea-cont.error::before,
-.row-element.not-verified::before, 
+.row-element.not-verified::before,
 .row-element.short::before,
-.row-element.same::before{
+.row-element.same::before {
     font-size: 12px;
     color: red;
     position: absolute;
     bottom: 0px;
     right: 5px;
 }
-.row-element.error::before{
+
+.row-element.error::before {
     content: 'Ovo polje je obavezno';
 }
-.textarea-cont.error::before{
+
+.textarea-cont.error::before {
     content: "Ovo polje je obavezno";
 }
-.row-element.not-verified::before{
+
+.row-element.not-verified::before {
     content: 'Lozinke se ne poklapaju';
 }
-.row-element.short::before{
+
+.row-element.short::before {
     content: 'Lozinka mora biti duža od 7 karaktera';
 }
-.row-element.same::before{
+
+.row-element.same::before {
     content: 'Nova lozinka ne može biti kao stara';
 }
-.row-element p{
+
+.row-element p {
     color: var(--black-color);
 }
-.info-row textarea{
+
+.info-row textarea {
     /* border: 1px solid var(--border-color); */
     border: none;
     box-shadow: var(--box-shadow);
@@ -73,7 +88,9 @@
     min-height: 150px;
     padding: 15px 20px;
 }
-.info-row .add-img, .info-row .add-img2{
+
+.info-row .add-img,
+.info-row .add-img2 {
     padding: 20px 30px;
     border: 2px solid var(--main-color);
     background-color: white;
@@ -82,53 +99,65 @@
     transition-duration: .3s;
     display: block;
 }
-.info-row .add-img2{
+
+.info-row .add-img2 {
     display: inline-block;
     height: 150px;
 }
-.info-row .add-img.hidden, .info-row .add-img2.hidden{
+
+.info-row .add-img.hidden,
+.info-row .add-img2.hidden {
     display: none;
 }
-.info-row .add-img:hover, .info-row .add-img2:hover{
+
+.info-row .add-img:hover,
+.info-row .add-img2:hover {
     background-color: var(--main-color);
     color: white;
 }
-.info-row .add-ad{
+
+.info-row .add-ad {
     padding: 20px 30px;
     border: 2px solid var(--main-color);
     background-color: var(--main-color);
     color: white;
     font-weight: 600;
 }
-.info-row .change-password{
+
+.info-row .change-password {
     padding: 10px 20px;
     border: 2px solid var(--main-color);
     background-color: var(--main-color);
     color: white;
     font-weight: 600;
 }
-.notification{
+
+.notification {
     padding: 20px 30px;
     border: 1px solid transparent;
     display: none;
 }
-.notification.error{
+
+.notification.error {
     display: block;
     background-color: var(--notification-error);
     border-color: red;
 }
-.notification.success{
+
+.notification.success {
     display: block;
     background-color: rgb(237, 255, 237);
     border-color: green;
 }
-.image-container{
+
+.image-container {
     width: 100%;
     max-width: 300px;
     height: 150px;
     display: none;
     position: relative;
 }
+
 .image-container::before {
     content: '\00D7';
     color: white;
@@ -153,144 +182,179 @@
     opacity: 1;
 }
 
-.image-container.active{
+.image-container.active {
     display: block;
 }
-.image-container2.active{
+
+.image-container2.active {
     display: inline-block;
     margin: 10px;
 }
-.image-container img{
+
+.image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.manage-jobs-container th, td{
+
+.manage-jobs-container th,
+td {
     padding: 15px 20px;
     font-weight: 500;
 }
-.manage-jobs-container thead{
+
+.manage-jobs-container thead {
     background-color: rgb(220, 211, 255);
 }
+
 .manage-jobs-container tr:nth-child(even) {
     background-color: rgb(244, 241, 255);
 }
-.row-images{
+
+.row-images {
     display: block;
 }
-.row-images svg{
+
+.row-images svg {
     width: 15px;
     height: 16px;
 }
-.row-info{
+
+.row-info {
     font-size: 14px;
     font-weight: 400;
 }
-.manage-jobs-container b{
+
+.manage-jobs-container b {
     font-weight: 600;
 }
-.manage-jobs-container b a{
+
+.manage-jobs-container b a {
     text-decoration: none;
     color: black;
 }
-.manage-jobs-container b a:hover{
+
+.manage-jobs-container b a:hover {
     text-decoration: underline;
 }
-.applications-text{
+
+.applications-text {
     color: var(--main-color);
 }
-.ad-state.active{
+
+.ad-state.active {
     color: var(--remote-text);
 }
-.ad-state.deactive{
+
+.ad-state.deactive {
     color: red;
 }
-.ad-state.pending{
+
+.ad-state.pending {
     color: orange;
 }
-.action-btns{
+
+.action-btns {
     width: 30px;
     height: 30px;
     padding: 6px;
     border-radius: 5px;
     cursor: pointer;
 }
-.look-btn{
+
+.look-btn {
     background-color: var(--main-color);
 }
-.delete-btn{
+
+.delete-btn {
     background-color: red;
 }
-.aplications-column, .status-column{
+
+.aplications-column,
+.status-column {
     display: table-cell;
 }
-.application-container{
+
+.application-container {
     background-color: rgb(244, 241, 255);
     border-left: 5px solid var(--main-color-hover);
     border-radius: 5px;
     position: relative;
     transition-duration: .3s;
 }
-.application-container:hover{
+
+.application-container:hover {
     border-left: 5px solid var(--main-color);
 }
-.application-name{
+
+.application-name {
     font-size: 20px;
     font-weight: 600;
 }
-.application-name a{
+
+.application-name a {
     text-decoration: none;
     color: black;
 }
-.application-name a:hover{
+
+.application-name a:hover {
     color: black;
     text-decoration: underline;
 }
-.application-category{
+
+.application-category {
     text-decoration: none;
     color: var(--main-color);
     font-size: 14px;
 }
-.application-category:hover{
+
+.application-category:hover {
     color: var(--main-color);
     text-decoration: underline;
 }
 
-.application-job{
+.application-job {
     color: var(--grey-text);
     font-size: 14px;
     font-weight: normal;
     text-decoration: none;
 }
-.application-skill{
+
+.application-skill {
     background-color: rgb(220, 211, 255);
     padding: 3px 5px;
     border-radius: 5px;
 }
-.cancel-application{
+
+.cancel-application {
     margin-top: 20px;
     padding: 10px;
     background-color: rgb(220, 211, 255);
     border-radius: 5px;
 }
-.cancel-application button{
+
+.cancel-application button {
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
     background-color: red;
     color: white;
 }
-.cancel-application p{
+
+.cancel-application p {
     font-size: 16px;
 }
-.cancel-application p span{
+
+.cancel-application p span {
     color: var(--main-color);
 }
-.application-skill p{
+
+.application-skill p {
     font-size: 14px;
     color: var(--main-color);
 }
-.download-container{
+
+.download-container {
     top: 20px;
     right: 20px;
     width: 35px;
@@ -299,60 +363,74 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.download-container svg{
+
+.download-container svg {
     width: 70%;
     height: 70%;
 }
-.row-company-image{
+
+.row-company-image {
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 5px;
 }
-.saved-date{
+
+.saved-date {
     font-size: 14px;
     color: var(--grey-text);
+    margin: 10px 0px;
+}
+
+.update-profile-notification-container.success {
+    border: 2px solid var(--remote-text);
+    background-color: var(--light-green);
+}
+
+.update-profile-notification-container.error {
+    border: 2px solid red;
+    background-color: var(--light-red);
 }
 
 /* RESPONSIVE */
 @media only screen and (max-width: 640px) {
-    .status-column{
+    .status-column {
         display: none;
     }
 }
+
 @media only screen and (max-width: 640px) {
-    .info-row{
+    .info-row {
         flex-direction: column;
     }
-    .row-element{
+
+    .row-element {
         width: 100%;
     }
-    .row-company-image{
+
+    .row-company-image {
         width: 30px;
         height: 30px;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .aplications-column{
+    .aplications-column {
         display: none;
     }
-    .row-images{
+
+    .row-images {
         display: none;
     }
-    .row-company-image{
+
+    .row-company-image {
         width: 40px;
         height: 40px;
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {}
 
-}
+@media only screen and (max-width: 1280px) {}
 
-@media only screen and (max-width: 1280px) {
-    
-}
-
-@media only screen and (max-width: 1500px) {
-}
+@media only screen and (max-width: 1500px) {}
