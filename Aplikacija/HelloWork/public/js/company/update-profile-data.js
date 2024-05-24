@@ -16,9 +16,15 @@ const companyLinkedinElement = document.querySelector('#companyLinkedin');
 
 const companyLogo = document.querySelector('#companyLogoImage');
 
+const updateNotification = document.querySelector('.update-profile-notification-container');
+const updateCompanyDataBtn = document.querySelector('.updateCompanyDataBtn');
+
 let companyFormData = new FormData();
 
+updateCompanyDataBtn.addEventListener("click", updateCompanyData);
+
 async function updateCompanyData() {
+    updateCompanyDataBtn.disabed = true;
     if (validateInput()) {
         const links = companyFacebookElement.value + ','
             + companyInstagramElement.value + ','
@@ -30,13 +36,16 @@ async function updateCompanyData() {
         companyFormData.append('country', companyCountryElement.value);
         companyFormData.append('city', companyCityElement.value);
         companyFormData.append('address', companyAddressElement.value);
+        companyFormData.append('website', companyWebsiteElement.value);
         companyFormData.append('about', companyDescriptionElement.value);
-        companyFormData.append('start_date', companyFoundedElement.value);
+        companyFormData.append('start_date', convertDateFormat(companyFoundedElement.value));
         companyFormData.append('contact', companyNumberElement.value);
         companyFormData.append('links', links);
         companyFormData.append('category', companyCategorycompanyCountryElement.value);
 
         await updateData();
+    } else {
+        updateCompanyDataBtn.disabed = false;
     }
 }
 
@@ -59,10 +68,43 @@ async function updateData() {
         }
 
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
+        updateCompanyDataBtn.disabed = false;
+        if (jsonResponse.type == 'success') {
+            if (jsonResponse.message == 'The start date field must be a valid date.') {
+                updateNotification.classList.remove('success');
+                updateNotification.classList.add('error');
+                updateNotification.querySelector('b').innerHTML = 'Neispravan format datuma. Unesite format kao što je dd.mm.yyyy (npr. 16.10.2023)';
+            } else {
+                updateNotification.classList.remove('error');
+                updateNotification.classList.add('success');
+                // updateNotification.querySelector('b').innerHTML = 'Vaš oglas je uspešno poslat na pregled. Administrator će ga pregledati u najkraćem mogućem roku, a nakon odobrenja, oglas će biti objavljen. Hvala vam na strpljenju i poverenju.';
+                updateNotification.querySelector('b').innerHTML = 'Vaš profil je uspešno ažuriran.';
+            }
+        } else if (jsonResponse.type == 'error') {
+            updateNotification.classList.remove('success');
+            updateNotification.classList.add('error');
+            updateNotification.querySelector('b').innerHTML = 'Došlo je do greške, molimo pokušajte kasnije.';
+
+        }
+        updateNotification.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (error) {
-        console.error('Error:', error);
+        updateNotification.classList.remove('success');
+        updateNotification.classList.add('error');
+        updateNotification.querySelector('b').innerHTML = 'Neispravan format datuma. Unesite format kao što je dd.mm.yyyy (npr. 16.10.2023)';
+        updateNotification.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // console.error('Error:', error);
     }
+}
+
+function convertDateFormat(dateString) {
+    const parts = dateString.split('.');
+
+    if (parts.length === 3) {
+        const [year, month, day] = parts;
+
+        return `${day}-${month}-${year}`;
+    }
+    return dateString;
 }
 
 function validateInput() {
@@ -153,8 +195,8 @@ const openBtn2 = document.querySelector('.add-img2');
 function importImages() {
     inputImages.click();
 }
-
-let imageCount = 0;
+const imageContainer2Main = document.querySelectorAll('.image-container2');
+let imageCount = imageContainer2Main.length;
 
 inputImages.addEventListener('change', function (event) {
     const files = event.target.files;
@@ -191,15 +233,17 @@ inputImages.addEventListener('change', function (event) {
     }
 });
 
-function removeImage(imageContainer, file) {
+
+function removeImage(imageContainer) {
+    const fileName = imageContainer.dataset.fileName;
+
     imageContainer.style.display = 'none';
     imageCount--;
     openBtn2.classList.remove('hidden');
 
-    // Kreiranje novog FormData objekta i kopiranje trenutnih podataka osim uklonjene slike
     const newFormData = new FormData();
     companyFormData.forEach((value, key) => {
-        if (key !== 'images[]' || value !== file) {
+        if (!(key === 'images[]' && value.name === fileName)) {
             newFormData.append(key, value);
         }
     });
@@ -207,13 +251,17 @@ function removeImage(imageContainer, file) {
     companyFormData = newFormData;
 }
 
-const imageContainer2Main = document.querySelectorAll('.image-container2');
 
+
+console.log(imageContainer2Main.length);
 if (imageContainer2Main.length > 0) {
     for (let i = 0; i < imageContainer2Main.length; i++) {
         const imgEl = imageContainer2Main[i].querySelector('img');
-        const imgUrl = imgEl.src; // Dobijamo URL slike
-        sendImageFormData(imgUrl);// Prosleđujemo i sam element slike
+        const imgUrl = imgEl.src;
+        sendImageFormData(imgUrl, imageContainer2Main[i]);
+    }
+    if (imageContainer2Main.length === 4) {
+        openBtn2.classList.add('hidden');
     }
 }
 
@@ -238,12 +286,13 @@ function getImageBlobFromSrc(src, callback) {
     };
     xhr.send();
 }
-function sendImageFormData(src) {
+function sendImageFormData(src, element) {
     getImageBlobFromSrc(src, function (blob) {
-        companyFormData.append('images[]', blob, generateRandomString(10) + '.jpg'); // 'image' je ime polja koje šaljemo, 'image.jpg' je ime datoteke
+        const randomFileName = generateRandomString(10) + '.jpg';
+        companyFormData.append('images[]', blob, randomFileName);
+        element.dataset.fileName = randomFileName;
+        element.addEventListener('click', () => removeImage(element));
     });
 }
-
-
 
 // The start date field must be a valid date.

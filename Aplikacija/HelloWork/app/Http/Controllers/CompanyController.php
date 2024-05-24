@@ -29,9 +29,20 @@ class CompanyController extends Controller
                 $images[] = asset('storage/uploads/company_' . auth()->id() . '/images/' . $file->getFilename());
             }
         }
+
+        $socialNetworks = [];
+        if (auth()->user()->companyInfo != null) {
+            $data = auth()->user()->companyInfo->links;
+            if ($data != null) {
+                $dataArray = explode(',', $data);
+                $socialNetworks = $dataArray;
+            }
+        }
+
         return view('company-change-profile', [
             'user' => auth()->user(),
-            'images' => $images
+            'images' => $images,
+            'socialNetworks' => $socialNetworks,
         ]);
     }
 

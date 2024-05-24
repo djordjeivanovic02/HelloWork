@@ -3,10 +3,8 @@
     <div class="section-info w-100">
         <h4>Osnovne informacije</h4>
     </div>
-    <div class="update-profile-notification-container error w-100 p-4">
-        <b class="m-0 p-0">Vaš oglas je uspešno poslat na pregled. Administrator će ga pregledati u najkraćem mogućem
-            roku, a nakon
-            odobrenja, oglas će biti objavljen. Hvala vam na strpljenju i poverenju.</b>
+    <div class="update-profile-notification-container w-100 p-4">
+        <b class="m-0 p-0"></b>
     </div>
     <div class="info-row w-100 d-flex">
         <div class="row-element d-flex flex-column">
@@ -53,9 +51,8 @@
         <div class="row-element d-flex flex-column">
             <p class="my-1">Datum osnivanja*</p>
             <input type="text" name="companyFounded" id="companyFounded" class="w-100" placeholder="npr. 16/09/2018"
-                onchange="focusOut(this)"
-                @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ $user->companyInfo->start_date }}" @endif>
-            {{-- @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ date('d/m/Y', strtotime($user->companyInfo->start_date)) }}" @endif> --}}
+                onchange="focusOut(this)" {{-- @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ $user->companyInfo->start_date }}" @endif> --}}
+                @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ date('d.m.Y', strtotime($user->companyInfo->start_date)) }}" @endif>
         </div>
     </div>
     <div class="info-row w-100 d-flex">
@@ -119,12 +116,12 @@
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Facebook</p>
                 <input type="text" name="companyFacebook" id="companyFacebook" class="w-100"
-                    placeholder="www.facebook.com/...">
+                    placeholder="www.facebook.com/..." value="{{ $socialNetworks[0] }}">
             </div>
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Instagram</p>
                 <input type="text" name="companyInstagram" id="companyInstagram" class="w-100"
-                    placeholder="www.isntagram.com/...">
+                    placeholder="www.instagram.com/..." value="{{ $socialNetworks[1] }}">
             </div>
         </div>
     </div>
@@ -133,12 +130,12 @@
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Threads</p>
                 <input type="text" name="companyThreads" id="companyThreads" class="w-100"
-                    placeholder="www.threads.com/...">
+                    placeholder="www.threads.com/..." value="{{ $socialNetworks[2] }}">
             </div>
             <div class="row-element d-flex flex-column">
                 <p class="my-1">LinkedIn</p>
                 <input type="text" name="companyLinkedin" id="companyLinkedin" class="w-100"
-                    placeholder="www.linkedin.com/...">
+                    placeholder="www.linkedin.com/..." value="{{ $socialNetworks[3] }}">
             </div>
         </div>
     </div>
@@ -150,8 +147,7 @@
         <button class="my-4 add-img2" onclick="importImages()">Dodaj slike</button>
         @if (!empty($images))
             @foreach ($images as $image)
-                <div class="image-container2 image-container my-4 w-100 active"
-                    onclick="removeImage(this, '{{ $image }}');">
+                <div class="image-container2 image-container my-4 w-100 active">
                     <img src="{{ $image }}" alt="Galerija kompanije">
                 </div>
             @endforeach
@@ -159,7 +155,7 @@
 
     </div>
     <div class="info-row w-100 d-flex flex-column align-items-start">
-        <button class="my-4 add-ad w-100" onclick="updateCompanyData()">Ažuriraj podatke</button>
+        <button class="updateCompanyDataBtn my-4 add-ad w-100" onclick="updateCompanyData()">Ažuriraj podatke</button>
     </div>
     <div class="section-info w-100 mt-3">
         <h4>Ostale akcije</h4>

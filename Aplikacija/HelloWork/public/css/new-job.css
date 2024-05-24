@@ -382,12 +382,18 @@ td {
     margin: 10px 0px;
 }
 
+.update-profile-notification-container {
+    display: none;
+}
+
 .update-profile-notification-container.success {
+    display: block;
     border: 2px solid var(--remote-text);
     background-color: var(--light-green);
 }
 
 .update-profile-notification-container.error {
+    display: block;
     border: 2px solid red;
     background-color: var(--light-red);
 }
