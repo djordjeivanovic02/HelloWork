@@ -246,9 +246,10 @@ function postNewJob() {
         newAdData.append('ad_duration', adDurationElement.value);
         newAdData.append('tabs', tags.join('&'));
 
-        const imageElement = document.querySelector('.uploaded-job-class').src;
-        sendImageFormData(imageElement);
-
+        const imageElement = document.querySelector('.uploaded-job-class');
+        if (imageElement !== null) {
+            sendImageFormData(imageElement.src);
+        }
         setTimeout(adNewJob, 300);
     }
 }

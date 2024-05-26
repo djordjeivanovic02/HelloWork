@@ -2,6 +2,10 @@ function showDialog(element) {
     const dialogBackground = document.querySelector(`#${element}_background`);
     const dialogBox = document.querySelector(`#${element}_main`);
 
+    dialogBox.addEventListener('click', function (event) {
+        event.stopPropagation();
+    })
+
     dialogBackground.classList.remove('passive');
     dialogBackground.classList.add('active');
 
@@ -12,7 +16,6 @@ function showDialog(element) {
 }
 
 function closeDialog(element) {
-    console.log(element);
     const dialogBackground = document.querySelector(`#${element}_background`);
     const dialogBox = document.querySelector(`#${element}_main`);
 

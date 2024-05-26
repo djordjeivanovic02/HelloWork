@@ -54,11 +54,14 @@ class User extends Authenticatable
         return $this->hasOne(CompanyInfo::class);
     }
 
-    public function ads()
+    public function appliedAds()
     {
         return $this->belongsToMany(Ad::class, 'applications')->withPivot('status')->withTimestamps();
     }
-
+    public function ads()
+    {
+        return $this->hasMany(Ad::class);
+    }
     public function previousJobs()
     {
         return $this->hasMany(UserPreviousJobs::class);
@@ -73,5 +76,9 @@ class User extends Authenticatable
     public function activities()
     {
         return $this->hasMany(LastActivity::class);
+    }
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
     }
 }

@@ -25,11 +25,22 @@ class Ad extends Model
         'description',
         'ad_duration',
         'tags',
-        'image'
+        'image',
+        'user_id'
     ];
+
+    public function appliedUsers()
+    {
+        return $this->belongsToMany(User::class, 'applications')->withPivot('status')->withTimestamps();
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'applications')->withPivot('status')->withTimestamps();
+        return $this->belongsTo(User::class);
     }
 }

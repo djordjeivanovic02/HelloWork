@@ -65,11 +65,7 @@ Route::middleware('auth')->group(function () {
             return view('/company-change-password', ['user' => auth()->user()]);
         });
         Route::get('/company-change-profile', [CompanyController::class, 'showDashboard']);
-        Route::get('/company-manage-jobs', function () {
-            return view('/company-manage-jobs', [
-                'user' => auth()->user()
-            ]);
-        });
+        Route::get('/company-manage-jobs', [AdController::class, 'showManageAds']);
         Route::get('/company-applications', function () {
             return view('/company-applications', [
                 'user' => auth()->user()
@@ -78,6 +74,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/company-upload-logo', [CompanyController::class, 'uploadLogo']);
         Route::post('/company-update-profile', [CompanyController::class, 'updateCompanyData']);
         Route::post('/company-add-new-job', [AdController::class, 'createAd']);
+        Route::delete('/company-delete-job/{id}', [AdController::class, 'deleteAd']);
     });
     Route::get('/user', function () {
         return view('/user', [

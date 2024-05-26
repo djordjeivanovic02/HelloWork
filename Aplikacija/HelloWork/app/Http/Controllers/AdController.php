@@ -19,6 +19,18 @@ class AdController extends Controller
         ]);
     }
 
+    public function showManageAds()
+    {
+        $ads = auth()->user()->ads()
+            ->withCount('applications')
+            ->get();
+
+        return view('company-manage-jobs', [
+            'user' => auth()->user(),
+            'ads' => $ads
+        ]);
+    }
+
     public function createAd(Request $request)
     {
         try {
@@ -41,6 +53,7 @@ class AdController extends Controller
             }
 
             $ad = new Ad();
+            $ad->user_id = auth()->id();
             $ad->title = $request->title;
             $ad->address = $request->address;
             $ad->job_type = $request->job_type;
@@ -79,7 +92,7 @@ class AdController extends Controller
             $ad = Ad::findOrFail($id);
 
             if ($ad->user_id !== auth()->id()) {
-                return response()->json(['message' => 'Nemate prava da obrisete ovaj oglas.'], 403);
+                return response()->json(['type' => 'permission-fail', 'message' => 'Nemate prava da obrisete ovaj oglas.'], 403);
             }
 
             if ($ad->image_path) {
@@ -88,9 +101,9 @@ class AdController extends Controller
 
             $ad->delete();
 
-            return response()->json(['message' => 'Oglas uspesno obrisan'], 200);
+            return response()->json(['type' => 'success', 'message' => 'Oglas uspesno obrisan'], 200);
         } catch (Exception $ex) {
-            return response()->json(['message' => $ex->getMessage()], 500);
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
     }
 }

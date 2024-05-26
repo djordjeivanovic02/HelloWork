@@ -8,12 +8,12 @@
                     class="dashboard-image-container w-100 d-flex align-items-center justify-content-center position-relative">
                     <div class="dashboard-image">
                         <div class="w-100 h-100 dashboard-image-main">
-                            @if ($user !== null && $user->companyInfo !== null && $user->companyInfo->logo !== null)
+                            @if ($user != null && $user->companyInfo != null && $user->companyInfo->logo != null)
                                 <img src="{{ asset('storage/uploads/company_' . auth()->id() . '/logo/' . $user->companyInfo->logo) }}"
                                     id="companyLogoImage" alt="Company Logo" class="w-100 h-100">
                             @else
-                                <img src="{{ asset('images/udemy-logo.png') }}" id="companyLogoImage" alt="Company Logo"
-                                    class="w-100 h-100">
+                                <img src="{{ asset('images/unknown-company.svg') }}" id="companyLogoImage"
+                                    alt="Company Logo" class="w-100 h-100">
                             @endif
                         </div>
                         <input type="file" name="companyLogo" id="companyLogo" accept=".jpg, .jpeg, .png" hidden>
@@ -27,8 +27,12 @@
                     {{-- <button>Sačuvaj</button> --}}
                     <input type="button" value="Sačuvaj" onclick="updateCompanyLogo(this)">
                 </div>
-                <div class="w-100 d-flex justify-content-center my-3 dashboard-head-container">
-                    <h3>@UDEMY</h3>
+                <div class="w-100 d-flex justify-content-center my-4 dashboard-head-container">
+                    @if ($user->name != null)
+                        <h3>{{ $user->name }}</h3>
+                    @else
+                        <h3>Poslodavac</h3>
+                    @endif
                 </div>
                 <div class="hide-bottom-shadow"></div>
             </div>
