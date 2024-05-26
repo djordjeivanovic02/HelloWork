@@ -28,7 +28,8 @@ class Ad extends Model
         'image'
     ];
 
-    public function users(){
+    public function users()
+    {
         return $this->belongsToMany(User::class, 'applications')->withPivot('status')->withTimestamps();
     }
 }

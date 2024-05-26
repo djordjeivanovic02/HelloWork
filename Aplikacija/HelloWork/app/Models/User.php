@@ -63,4 +63,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserPreviousJobs::class);
     }
+    public function logActivity($type, $description = null)
+    {
+        $this->activities()->create([
+            'activity_type' => $type,
+            'description' => $description,
+        ]);
+    }
+    public function activities()
+    {
+        return $this->hasMany(LastActivity::class);
+    }
 }

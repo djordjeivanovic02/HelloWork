@@ -40,15 +40,21 @@ select {
 .textarea-cont.error textarea,
 .row-element.not-verified input,
 .row-element.short input,
-.row-element.same input {
+.row-element.same input,
+.row-el.error input {
     border-color: red;
+}
+
+.row-el {
+    position: relative;
 }
 
 .row-element.error::before,
 .textarea-cont.error::before,
 .row-element.not-verified::before,
 .row-element.short::before,
-.row-element.same::before {
+.row-element.same::before,
+.row-el.error::before {
     font-size: 12px;
     color: red;
     position: absolute;
@@ -56,7 +62,8 @@ select {
     right: 5px;
 }
 
-.row-element.error::before {
+.row-element.error::before,
+.row-el.error::before {
     content: 'Ovo polje je obavezno';
 }
 
@@ -396,6 +403,39 @@ td {
     display: block;
     border: 2px solid red;
     background-color: var(--light-red);
+}
+
+.resp-element,
+.exp-element,
+.tags-element {
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: var(--background-light);
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    transition-duration: .3s;
+}
+
+.exp-element {
+    background-color: var(--main-color-hover);
+}
+
+.tags-element {
+    background-color: var(--urgent-background);
+}
+
+.resp-element p,
+.exp-element p,
+.tags-element p {
+    font-size: 14px;
+}
+
+.resp-element:hover,
+.exp-element:hover,
+.tags-element:hover {
+    background-color: red;
+    color: white;
 }
 
 /* RESPONSIVE */

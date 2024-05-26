@@ -161,7 +161,31 @@
         <h4>Ostale akcije</h4>
     </div>
     <div class="info-row w-100 d-flex">
-        <button class="my-4 add-ad" style="background-color: red; border-color: red" onclick="showDialog()">Obrišite
+        <button class="my-4 add-ad" style="background-color: red; border-color: red"
+            onclick="showDialog('delete_company_account_dialog')">Obrišite
             nalog</button>
     </div>
 </div>
+
+
+@component('dialogs.notification', [
+    'id' => 'delete_company_account_dialog',
+    'type' => 'success',
+    'title' => 'Brisanje naloga',
+    'message' =>
+        'Da li ste sigurni da želite da obrišete svoj nalog? Ukoliko obrišete nalog ne postoji način da vam isti bude vraćen!',
+    'close' => true,
+    'actions' => [
+        [
+            'url' => "alert('Povezati sa funkcijom za brisanje naloga')",
+            'type' => 'yes',
+            'label' => 'DA',
+        ],
+        [
+            'url' => "closeDialog('delete_company_account_dialog')",
+            'type' => 'cancel',
+            'label' => 'Otkaži',
+        ],
+    ],
+])
+@endcomponent

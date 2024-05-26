@@ -108,7 +108,7 @@
                     </svg>
                     <p class="mx-2 my-0 p-0">Promena lozinke</p>
                 </div>
-                <div class="navigation-item w-100 d-flex align-items-center" onclick="showDialog()">
+                <div class="navigation-item w-100 d-flex align-items-center" onclick="showDialog('logout_dialog')">
                     <svg width="21" height="21"viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_231_68)">
                             <path
@@ -132,6 +132,7 @@
     </div>
 
     @component('dialogs.notification', [
+        'id' => 'logout_dialog',
         'type' => 'success',
         'title' => 'Odjava',
         'message' => 'Da li ste sigurni da želite da se odjavite?',
@@ -143,13 +144,14 @@
                 'label' => 'DA',
             ],
             [
-                'url' => 'closeDialog()',
+                'url' => "closeDialog('logout_dialog')",
                 'type' => 'cancel',
                 'label' => 'Otkaži',
             ],
         ],
     ])
     @endcomponent
+    <script src="{{ asset('js/dialogs/actions.js') }}"></script>
     <script src="{{ asset('js/logout.js') }}"></script>
     <script src="{{ asset('js/company/change-logo.js') }}"></script>
     <script src="{{ asset('/js/company/update-profile-data.js') }}"></script>

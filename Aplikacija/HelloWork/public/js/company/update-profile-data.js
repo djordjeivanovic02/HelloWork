@@ -253,7 +253,6 @@ function removeImage(imageContainer) {
 
 
 
-console.log(imageContainer2Main.length);
 if (imageContainer2Main.length > 0) {
     for (let i = 0; i < imageContainer2Main.length; i++) {
         const imgEl = imageContainer2Main[i].querySelector('img');

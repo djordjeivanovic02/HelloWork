@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::post('/company-upload-logo', [CompanyController::class, 'uploadLogo']);
         Route::post('/company-update-profile', [CompanyController::class, 'updateCompanyData']);
+        Route::post('/company-add-new-job', [AdController::class, 'createAd']);
     });
     Route::get('/user', function () {
         return view('/user', [
