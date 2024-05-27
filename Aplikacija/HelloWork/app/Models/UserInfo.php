@@ -9,13 +9,14 @@ class UserInfo extends Model
 {
     use HasFactory;
     protected $table = 'user_info';
-    
+
     protected $fillable = [
         'user_id',
         'age',
+        'logo',
         'professional_title',
         'skills',
-        'experience',
+        'expirience',
         'languages',
         'current_salary',
         'education',

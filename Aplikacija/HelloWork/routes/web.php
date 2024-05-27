@@ -29,11 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('check.type:1')->group(function () {
         Route::get('/user', [UserController::class, 'show']);
         Route::post('/updateUserData', [UserController::class, 'updateUserData']);
-        Route::get('/user-change-profile', function () {
-            return view('/user-change-profile', [
-                'user' => auth()->user()
-            ]);
-        });
+        Route::get('/user-change-profile', [UserController::class, 'showDashboard']);
         Route::get('/user-cv', function () {
             return view('/user-cv', [
                 'user' => auth()->user()
@@ -49,12 +45,11 @@ Route::middleware('auth')->group(function () {
                 'user' => auth()->user()
             ]);
         });
-        Route::get('/user-saved-ads', function () {
-            return view('/user-saved', [
-                'user' => auth()->user()
-            ]);
-        });
+        Route::get('/user-saved-ads', [SavedAdController::class, 'show']);
         Route::post('/apply/{ad}', [ApplicationsController::class, 'apply']);
+        Route::post('/user-upload-logo', [UserController::class, 'uploadLogo']);
+        Route::post('/user-update-profile', [UserController::class, 'updateUserData']);
+        Route::post('/delete-saved-ad', [SavedAdController::class, 'deleteSavedAd']);
     });
     Route::middleware('check.type:2')->group(function () {
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);

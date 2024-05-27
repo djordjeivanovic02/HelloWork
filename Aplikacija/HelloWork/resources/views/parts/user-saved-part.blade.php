@@ -15,22 +15,25 @@
                 </tr>
             </thead>
             <tbody>
-                @component('parts.manage-saved-ads', [
-                    'title' => 'PHP Developer',
-                    'companyName' => 'Udemy',
-                    'date' => '10. januar 2024.'
-                ])@endcomponent
-                @component('parts.manage-saved-ads', [
-                    'title' => 'PHP Developer',
-                    'companyName' => 'Udemy',
-                    'date' => '10. januar 2024.'
-                ])@endcomponent
-                @component('parts.manage-saved-ads', [
-                    'title' => 'PHP Developer',
-                    'companyName' => 'Udemy',
-                    'date' => '10. januar 2024.'
-                ])@endcomponent
+
+                @if ($savedAds != null)
+                    @foreach ($savedAds as $item)
+                        @php
+                            $companyInfo = json_decode($item->companyInfo, true);
+                        @endphp
+                        @component('parts.manage-saved-ads', [
+                            'id' => $item->ad->id,
+                            'folderId' => $item->ad->user_id,
+                            'image' => $companyInfo[0]['logo'],
+                            'title' => $item->ad->title,
+                            'companyName' => $item->ad->users->name,
+                            'date' => $item->save_date,
+                        ])
+                        @endcomponent
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>
 </div>
+<script src="{{ asset('js/user/delete-saved-ad.js') }}"></script>

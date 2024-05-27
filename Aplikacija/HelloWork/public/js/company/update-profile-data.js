@@ -156,38 +156,6 @@ function focusOut(x) {
     }
 }
 
-
-async function updateCompanyLogo(x) {
-    try {
-        const response = await fetch('/company-upload-logo', {
-            method: 'POST',
-            body: logoFormData,
-            headers: {
-                'Accept': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-
-        const data = await response.json();
-        if (data.type == 'success') {
-            x.parentElement.classList.remove('active');
-        } else {
-            alert("Došlo je do greške, molimo pokušajte kasnije");
-        }
-    } catch (error) {
-        alert("Došlo je do greške, molimo pokušajte kasnije");
-    } finally {
-        // button.classList.remove('loading');
-        // button.disabled = false;
-    }
-}
-
-
-
 const inputImages = document.querySelector('#inputImages');
 const imagesContainerr = document.querySelector('.images-container');
 const openBtn2 = document.querySelector('.add-img2');

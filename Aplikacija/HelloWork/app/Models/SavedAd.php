@@ -17,11 +17,13 @@ class SavedAd extends Model
         'save_date'
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function ad(){
+    public function ad()
+    {
         return $this->belongsTo(Ad::class, 'ad_id');
     }
 }
