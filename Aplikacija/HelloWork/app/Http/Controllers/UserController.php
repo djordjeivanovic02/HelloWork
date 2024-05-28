@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\UserInfo;
 use Exception;
@@ -12,9 +13,47 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function show()
+    public function show($id)
     {
-        return view('user-profile');
+        $user = User::find($id);
+
+        if ($user->userInfo != null) {
+            Carbon::setLocale('sr');
+            $formattedDate = '';
+            if ($user != null) {
+                $date = $user->created_at;
+                $formattedDate = Carbon::parse($date)->translatedFormat('d. F Y');
+            }
+
+            $responsibilities = [];
+            if ($user->userInfo != null && $user->userInfo->responsibilities != null) {
+                $responsibilities = explode('&', $user->userInfo->responsibilities);
+            }
+
+            $languages = [];
+            if ($user->userInfo != null && $user->userInfo->languages != null) {
+                $languages = explode('&', $user->userInfo->languages);
+            }
+
+            $social = [];
+            if ($user->userInfo != null && $user->userInfo->social_medias != null) {
+                $social = explode('&', $user->userInfo->social_medias);
+            }
+
+            return view('user', [
+                'currentUser' => auth()->user(),
+                'user' => $user,
+                'date' => $formattedDate,
+                'responsibilities' => $responsibilities,
+                'languages' => $languages,
+                'social' => $social
+            ]);
+        } else {
+            return view('index', [
+                'user' => auth()->user(),
+                'currentUser' => auth()->user()
+            ]);
+        }
     }
 
     public function showDashboard()
@@ -45,6 +84,7 @@ class UserController extends Controller
         }
 
         return view('user-change-profile', [
+            'currentUser' => auth()->user(),
             'user' => auth()->user(),
             'languages' => $languagesArray,
             'responsibilities' => $responsibilities,

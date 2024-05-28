@@ -27,21 +27,23 @@ Route::middleware('auth')->group(function () {
         //only admin routes
     });
     Route::middleware('check.type:1')->group(function () {
-        Route::get('/user', [UserController::class, 'show']);
         Route::post('/updateUserData', [UserController::class, 'updateUserData']);
         Route::get('/user-change-profile', [UserController::class, 'showDashboard']);
         Route::get('/user-cv', function () {
             return view('/user-cv', [
+                'currentUser' => auth()->user(),
                 'user' => auth()->user()
             ]);
         });
         Route::get('/user-change-password', function () {
             return view('/user-change-password', [
+                'currentUser' => auth()->user(),
                 'user' => auth()->user()
             ]);
         });
         Route::get('/user-applications', function () {
             return view('/user-applications', [
+                'currentUser' => auth()->user(),
                 'user' => auth()->user()
             ]);
         });
@@ -54,15 +56,22 @@ Route::middleware('auth')->group(function () {
     Route::middleware('check.type:2')->group(function () {
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
         Route::get('/new-ad', function () {
-            return view('/new-ad', ['user' => auth()->user()]);
+            return view('/new-ad', [
+                'currentUser' => auth()->user(),
+                'user' => auth()->user()
+            ]);
         });
         Route::get('/change-password', function () {
-            return view('/company-change-password', ['user' => auth()->user()]);
+            return view('/company-change-password', [
+                'currentUser' => auth()->user(),
+                'user' => auth()->user()
+            ]);
         });
         Route::get('/company-change-profile', [CompanyController::class, 'showDashboard']);
         Route::get('/company-manage-jobs', [AdController::class, 'showManageAds']);
         Route::get('/company-applications', function () {
             return view('/company-applications', [
+                'currentUser' => auth()->user(),
                 'user' => auth()->user()
             ]);
         });
@@ -71,11 +80,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/company-add-new-job', [AdController::class, 'createAd']);
         Route::delete('/company-delete-job/{id}', [AdController::class, 'deleteAd']);
     });
-    Route::get('/user', function () {
-        return view('/user', [
-            'user' => auth()->user()
-        ]);
-    });
     Route::get('/logout', [AuthController::class, 'signOut']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
     Route::post('/change-password', [UserController::class, 'changePassword']);
@@ -83,13 +87,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/check-is-saved', [SavedAdController::class, 'checkIsSaved']);
 });
 
+Route::get('/user/{id}', [UserController::class, 'show']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/job', [AdController::class, 'show']);
-Route::get('/company', [CompanyController::class, 'show']);
+Route::get('/job/{id}', [AdController::class, 'show']);
+Route::get('/company/{id}', [CompanyController::class, 'show']);
 Route::get('/', [IndexController::class, '__invoke'])->name('login');
 Route::get('/searchjob', function () {
-    return view('search-jobs', ['user' => auth()->user()]);
+    return view('search-jobs', ['currentuser' => auth()->user()]);
 })->name('searchjob');
 // samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {

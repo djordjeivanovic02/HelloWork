@@ -6,6 +6,7 @@ const langPreviewCont = document.querySelector('.tags-preview');
 const languageInput = document.querySelector('#jobLanguages');
 
 langPreviewCont.querySelectorAll('.tags-element').forEach(element => {
+    languages.push(element.querySelector('p').innerHTML);
     element.addEventListener('click', () => deleteLang(element));
 });
 
@@ -55,6 +56,7 @@ const respPreviewCont = document.querySelector('.resp-preview');
 const responsibilitiesInput = document.querySelector('#userResp');
 
 respPreviewCont.querySelectorAll('.resp-element').forEach(element => {
+    responsibilities.push(element.querySelector('p').innerHTML);
     element.addEventListener('click', () => deleteResp(element));
 });
 
@@ -104,6 +106,7 @@ const skillsPreviewCont = document.querySelector('.skills-preview');
 const skillsInput = document.querySelector('#userSkills');
 
 skillsPreviewCont.querySelectorAll('.skills-element').forEach(element => {
+    skills.push(element.querySelector('p').innerHTML);
     element.addEventListener('click', () => deleteSkill(element));
 });
 

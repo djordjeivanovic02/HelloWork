@@ -41,14 +41,15 @@
                 </div>
             </a>
         </div>
-        @if ($user !== NULL && $user->type == '2')
+        @if ($currentUser !== null && $currentUser->type == '2')
             <div class="mobile-menu-add-job w-100">
                 <button class="w-100">Postavi Posao</button>
             </div>
         @endif
         <div class="mobile-menu-about w-100">
             <div class="footer2-container container-fluid w-100 d-flex justify-content-center">
-                <p class="m-0 p-0">© 2024 HelloWork. Napravljeno od strane <span>Aurora Team</span>. Sva prava zadržana. </p>
+                <p class="m-0 p-0">© 2024 HelloWork. Napravljeno od strane <span>Aurora Team</span>. Sva prava zadržana.
+                </p>
             </div>
         </div>
     </div>

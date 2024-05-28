@@ -1,44 +1,45 @@
 @import url('variables.css');
-.allaround-container
-{
+
+.allaround-container {
     width: 298px;
     height: 274px;
     border-radius: 20px;
 }
-.allaround-container .hover-indicator{
+
+.allaround-container .hover-indicator {
     background-color: var(--main-color);
     border-radius: 20px;
 }
 
-.allaround-container:hover .hover-indicator{
+.allaround-container:hover .hover-indicator {
     animation: prosiriHeight .3s ease-in-out forwards;
 }
+
 @keyframes prosiriHeight {
-    0%{
+    0% {
         height: 0%;
-    }100%{
+    }
+
+    100% {
         height: 100%;
     }
 }
 
-.img-container
-{
+.img-container {
     background-color: rgb(97, 63, 229);
     width: 70px;
     height: 70px;
     border-radius: 15px;
 }
 
-.text-pretraga
-{
+.text-pretraga {
     font-size: 20px;
     font-family: 'Rubik', sans-serif;
     margin: 20px 10px 10px 10px;
     font-weight: bold;
 }
 
-.text-pronadji
-{
+.text-pronadji {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     margin: 10px 10px;
@@ -46,15 +47,13 @@
     color: #7F93B6;
 }
 
-.centaar
-{
+.centaar {
     padding: 10%;
 }
 
 /* Drugi deo */
 
-.spoljni-container
-{
+.spoljni-container {
     width: 298px;
     height: 150px;
     background-color: #F0EEFC;
@@ -62,15 +61,14 @@
     margin-top: 15px;
     position: relative;
 }
-.gornji-text
-{
+
+.gornji-text {
     font-weight: bold;
     font-family: 'Rubik', sans-serif;
     font-size: 20px;
 }
 
-.donji-text
-{
+.donji-text {
     color: #613FE5;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -78,8 +76,7 @@
 
 /* Treći deo */
 
-.out-container
-{
+.out-container {
     width: 397px;
     /* he÷ight: 273px; */
     border: 2px solid transparent;
@@ -90,13 +87,11 @@
     padding: 20px;
 }
 
-.out-container:hover
-{
-    border-color:#613FE5;
+.out-container:hover {
+    border-color: #613FE5;
 }
 
-.full-time-div
-{   
+.full-time-div {
     background-color: #F0EEFC;
     border-radius: 5px;
     width: 58px;
@@ -106,8 +101,7 @@
     position: relative;
 }
 
-.full-time-text
-{
+.full-time-text {
     font-size: 11px;
     font-family: 'Poppins', sans-serif;
     color: #613FE5;
@@ -116,8 +110,7 @@
     margin-top: 1px;
 }
 
-.before2
-{
+.before2 {
     width: 60px;
     font-family: 'Poppins', sans-serif;
     color: #7F93B6;
@@ -127,16 +120,14 @@
     margin-right: 5px;
 }
 
-.logo-container
-{
+.logo-container {
     width: 70px;
     height: 70px;
     border: 1px solid #DDDDDD;
     border-radius: 10px;
 }
 
-.top-text
-{
+.top-text {
     font-size: 16px;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
@@ -144,8 +135,7 @@
     line-height: 15px;
 }
 
-.bottom-text
-{
+.bottom-text {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     margin-left: 13px;
@@ -154,38 +144,33 @@
 
 }
 
-.third-row
-{
+.third-row {
     margin-top: 18px;
 }
 
-.text-third-row
-{
+.text-third-row {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     color: #7F93B6;
 }
 
-.button
-{
+.button {
     padding: 10px 20px;
     height: 42px;
     background-color: #613FE5;
-    border-radius: 10px;    
+    border-radius: 10px;
     margin-bottom: 10px;
 }
 
-.button-text
-{
+.button-text {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     color: white;
     margin: 0px;
 }
 
-.price
-{
-    color:#613FE5;
+.price {
+    color: #613FE5;
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -194,17 +179,15 @@
     padding-top: 10px;
 }
 
-.month
-{
-    color:#7F93B6;
+.month {
+    color: #7F93B6;
     font-size: 13px;
     font-family: 'Poppins', sans-serif;
     font-weight: 450;
     margin: 0px;
 }
 
-.pricemonth-div
-{
+.pricemonth-div {
     padding-right: 20px;
     position: relative;
     padding-top: 10px;
@@ -212,56 +195,58 @@
 
 /* Četvrti deo */
 
-.long-container
-{
+.long-container {
     border: 1px solid #F0EEFC;
     border-radius: 10px;
     margin-top: 20px;
     position: relative;
     padding: 20px;
 }
-.image-div{
+
+.image-div {
     width: 55px;
     height: 55px;
 }
-.image-div img{
+
+.image-div img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
-.above-text
-{
+
+.above-text {
     font-size: 20px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     margin-top: 0px;
     margin-bottom: 10px;
 }
-.above-text a{
+
+.above-text a {
     text-decoration: none;
     color: black;
 }
-.above-text a:hover{
+
+.above-text a:hover {
     text-decoration: underline;
 }
-.widget-types{
+
+.widget-types {
     padding-left: 55px;
 }
 
-.all-informations
-{
+.all-informations {
     font-size: 12px;
     font-family: 'Poppins', sans-serif;
     color: #7F93B6;
 }
 
-.text-in-span
-{
+.text-in-span {
     padding-left: 5px;
     padding-right: 20px;
 }
 
-.down-button-text
-{
+.down-button-text {
     color: #613FE5;
     font-size: 12px;
     font-family: 'Poppins', sans-serif;
@@ -269,10 +254,8 @@
     margin: 0px;
 }
 
-.down-button
-{
-    width: 103px;
-    height: 20px;
+.down-button {
+    padding: 2px 10px;
     background-color: #F3F6FB;
     border-radius: 20px;
     margin-top: 17px;
@@ -285,36 +268,31 @@
 
 /* Sedmi deo - Petar Petrovic */
 
-.whole-container
-{
+.whole-container {
     margin-top: 40px;
 }
 
-.left-div
-{
+.left-div {
     width: 20%;
     height: 40%;
     padding-right: 20px;
     border-radius: 15px;
 }
 
-.right-div
-{
+.right-div {
     width: 60%;
     padding: 40px;
     border-radius: 15px;
 }
 
-.osnovne-kontakt-informacije
-{
+.osnovne-kontakt-informacije {
     font-size: 20px;
     font-family: 'Poppines', sans-serif;
     font-weight: 600;
 }
 
 
-.textarea
-{   
+.textarea {
     height: 200px;
     width: 97.5%;
     background-color: white;
@@ -329,15 +307,13 @@
 }
 
 
-.tekst-neki
-{
+.tekst-neki {
     width: 100%;
     padding-bottom: 35px;
 }
 
 
-.isti-text
-{
+.isti-text {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -345,13 +321,11 @@
     margin-top: 15px;
 }
 
-.ime-zanimanje-desni
-{
+.ime-zanimanje-desni {
     width: 100%;
 }
 
-.isti-input
-{
+.isti-input {
     width: 99%;
     max-width: 700px;
     height: 40px;
@@ -364,8 +338,7 @@
     box-shadow: 0px, 0px, 5px, 0px, red;
 }
 
-.button-end
-{
+.button-end {
     width: 100%;
     background-color: #613FE5;
     border-radius: 12px;
@@ -379,71 +352,67 @@
     margin-top: 25px;
 }
 
-.wide-widget .all-informations{
+.wide-widget .all-informations {
     display: flex;
 }
-.wide-widget{
+
+.wide-widget {
     justify-content: start;
 }
-.last-info{
+
+.last-info {
     display: block;
 }
-.save-it-div{
+
+.save-it-div {
     width: 30px;
-    height: 30px; 
+    height: 30px;
     cursor: pointer;
     border-radius: 5px;
 }
-.save-it-div svg path{
+
+.save-it-div svg path {
     fill: black;
 }
-.save-it-div.active{
+
+.save-it-div.active {
     background-color: var(--main-color);
     fill: white;
 }
-.save-it-div.active svg path{
+
+.save-it-div.active svg path {
     fill: white;
 }
+
 /* RESPONSIVE */
 
 @media only screen and (max-width: 640px) {
-    .wide-widget .all-informations{
+    .wide-widget .all-informations {
         display: none;
     }
-    .down-button{
+
+    .down-button {
         margin: 0;
     }
 }
 
-@media only screen and (max-width: 768px) {
-}
+@media only screen and (max-width: 768px) {}
 
 @media only screen and (max-width: 1024px) {
-    .last-info{
+    .last-info {
         display: none;
     }
-    .wide-widget{
+
+    .wide-widget {
         justify-content: center;
         margin-bottom: 0;
     }
-    
-    .image-div{
+
+    .image-div {
         width: 40px;
     }
 }
 
-@media only screen and (max-width: 1280px) {
-    
-}
+@media only screen and (max-width: 1280px) {}
 
-@media only screen and (max-width: 1500px) {
-}
-
-
-
-
-
-
-
-
-
+@media only screen and (max-width: 1500px) {}

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SavedAd;
 use App\Models\User;
+use Carbon\Carbon;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -12,11 +14,52 @@ use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
-    public function show()
+    public function show($id)
     {
-        return view('company', [
-            'user' => auth()->user()
-        ]);
+        $company = User::find($id);
+        if ($company != null) {
+            $ads = $company->ads;
+
+            $folderPath = public_path('storage/uploads/company_' . $id . '/images/');
+            $images = [];
+            if (File::exists($folderPath)) {
+
+                $files = File::files($folderPath);
+                foreach ($files as $file) {
+                    $images[] = asset('storage/uploads/company_' . $id . '/images/' . $file->getFilename());
+                }
+            }
+
+            $todayAds = 0;
+            foreach ($ads as $item) {
+                if (Carbon::parse($item->created_at)->isToday()) {
+                    $todayAds++;
+                }
+                $savedAds[$item->id] = SavedAd::where('user_id', auth()->id())
+                    ->where('ad_id', $item->id)
+                    ->exists() ? true : false;
+            }
+
+            $social = [];
+            if ($company->companyInfo != null && $company->companyInfo->links != null) {
+                $social = explode(',', $company->companyInfo->links);
+            }
+
+            return view('company', [
+                'currentUser' => auth()->user(),
+                'company' => $company,
+                'ads' => $ads,
+                'images' => $images,
+                'todayAds' => $todayAds,
+                'social' => $social,
+                'savedAds' => $savedAds
+            ]);
+        } else {
+            return view('index', [
+                'user' => auth()->user(),
+                'currentUser' => auth()->user()
+            ]);
+        }
     }
     public function showDashboard()
     {
@@ -41,6 +84,7 @@ class CompanyController extends Controller
 
         return view('company-change-profile', [
             'user' => auth()->user(),
+            'currentUser' => auth()->user(),
             'images' => $images,
             'socialNetworks' => $socialNetworks,
         ]);

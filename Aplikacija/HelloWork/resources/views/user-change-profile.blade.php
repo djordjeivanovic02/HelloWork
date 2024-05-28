@@ -151,13 +151,14 @@
                 'label' => 'DA',
             ],
             [
-                'url' => 'closeDialog()',
+                'url' => "closeDialog('logout_dialog')",
                 'type' => 'cancel',
                 'label' => 'Otkaži',
             ],
         ],
     ])
     @endcomponent
+    <script src="{{ asset('js/dialogs/actions.js') }}"></script>
     <script src="{{ asset('js/logout.js') }}"></script>
     <script src="{{ asset('js/user-dashboard-navigation.js') }}"></script>
 @endsection

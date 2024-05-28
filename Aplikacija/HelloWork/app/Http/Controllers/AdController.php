@@ -12,11 +12,26 @@ use App\Models\Ad;
 
 class AdController extends Controller
 {
-    public function show()
+    public function show($id)
     {
-        return view('job', [
-            'user' => auth()->user()
-        ]);
+        $ad = Ad::find($id);
+        if ($ad != null) {
+            $social = [];
+            if ($ad->users->companyInfo != null && $ad->users->companyInfo->links != null) {
+                $social = explode(',', $ad->users->companyInfo->links);
+            }
+            return view('job', [
+                'currentUser' => auth()->user(),
+                'ad' => $ad,
+                'social' => $social
+            ]);
+        } else {
+            return view('index', [
+                'user' => auth()->user(),
+                'currentUser' => auth()->user()
+            ]);
+
+        }
     }
 
     public function showManageAds()
@@ -26,7 +41,7 @@ class AdController extends Controller
             ->get();
 
         return view('company-manage-jobs', [
-            'user' => auth()->user(),
+            'currentUser' => auth()->user(),
             'ads' => $ads
         ]);
     }

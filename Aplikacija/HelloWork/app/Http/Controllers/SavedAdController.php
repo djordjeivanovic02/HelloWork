@@ -17,7 +17,7 @@ class SavedAdController extends Controller
             $item->companyInfo = CompanyInfo::where('user_id', $item->ad->user_id)->get();
         }
         return view('user-saved', [
-            'user' => auth()->user(),
+            'currentUser' => auth()->user(),
             'savedAds' => $savedAds,
         ]);
     }
