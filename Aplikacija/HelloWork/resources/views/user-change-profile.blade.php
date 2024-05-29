@@ -115,7 +115,7 @@
                     </svg>
                     <p class="mx-2 my-0 p-0">Promena lozinke</p>
                 </div>
-                <div class="navigation-item w-100 d-flex align-items-center" onclick="showDialog()">
+                <div class="navigation-item w-100 d-flex align-items-center" onclick="showDialog('logout_dialog')">
                     <svg width="21" height="21"viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_231_68)">
                             <path

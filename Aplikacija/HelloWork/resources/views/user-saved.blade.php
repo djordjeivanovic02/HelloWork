@@ -8,10 +8,13 @@
                     class="dashboard-image-container w-100 d-flex align-items-center justify-content-center position-relative">
                     <div class="dashboard-image">
                         <div class="w-100 h-100 dashboard-image-main">
-                            <img src="{{ asset('images/programmer.jpeg') }}" alt="User Logo" class="w-100 h-100">
-                        </div>
-                        <div class="change-image-container d-flex justify-content-center align-items-center">
-                            <img src="{{ asset('images/camera.svg') }}" alt="Camera Icon">
+                            @if ($user != null && $user->userInfo != null && $user->userInfo->logo != null)
+                                <img src="{{ asset('storage/uploads/user_' . auth()->id() . '/logo/' . $user->userInfo->logo) }}"
+                                    id="companyLogoImage" alt="Company Logo" class="w-100 h-100">
+                            @else
+                                <img src="{{ asset('images/unknown-company.svg') }}" id="companyLogoImage"
+                                    alt="Company Logo" class="w-100 h-100">
+                            @endif
                         </div>
                     </div>
                 </div>

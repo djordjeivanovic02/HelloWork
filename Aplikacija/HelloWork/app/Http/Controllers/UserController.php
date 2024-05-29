@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Storage;
 
 class UserController extends Controller
 {
@@ -58,29 +59,34 @@ class UserController extends Controller
 
     public function showDashboard()
     {
+
         $userInfo = auth()->user()->userInfo;
-        $languages = $userInfo->languages;
+
         $languagesArray = [];
-        if ($languages != null) {
-            $languagesArray = explode('&', $languages);
-        }
-
-        $respons = $userInfo->responsibilities;
         $responsibilities = [];
-        if ($respons != null) {
-            $responsibilities = explode('&', $respons);
-        }
-
-        $skills = $userInfo->skills;
         $skillsArray = [];
-        if ($skills != null) {
-            $skillsArray = explode('&', $skills);
-        }
-
-        $socials = $userInfo->social_medias;
         $socialsArray = [];
-        if ($socials != null) {
-            $socialsArray = explode('&', $socials);
+
+        if ($userInfo) {
+            $languages = $userInfo->languages;
+            if ($languages != null) {
+                $languagesArray = explode('&', $languages);
+            }
+
+            $respons = $userInfo->responsibilities;
+            if ($respons != null) {
+                $responsibilities = explode('&', $respons);
+            }
+
+            $skills = $userInfo->skills;
+            if ($skills != null) {
+                $skillsArray = explode('&', $skills);
+            }
+
+            $socials = $userInfo->social_medias;
+            if ($socials != null) {
+                $socialsArray = explode('&', $socials);
+            }
         }
 
         return view('user-change-profile', [
@@ -93,6 +99,19 @@ class UserController extends Controller
         ]);
     }
 
+    public function showUserCV()
+    {
+        $user = auth()->user();
+        $cv = null;
+        if ($user->userInfo) {
+            $cv = $user->userInfo->cv;
+        }
+        return view('/user-cv', [
+            'currentUser' => $user,
+            'user' => $user,
+            'cv' => $cv,
+        ]);
+    }
     public function updateUserData(Request $request)
     {
         try {
@@ -138,7 +157,7 @@ class UserController extends Controller
                 ]);
             } else {
                 $userInfo = UserInfo::create([
-                    'user_id' => 2,
+                    'user_id' => auth()->id(),
                     'age' => $request->input('age'),
                     'professional_title' => $request->input('professional_title'),
                     'languages' => $request->input('languages'),
@@ -224,6 +243,63 @@ class UserController extends Controller
             $userInfo->logo = $imageName;
             $userInfo->save();
             return response()->json(['type' => 'success', 'message' => "Uspešno ažuriran logo"], 200);
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
+    }
+
+    public function uploadCV(Request $request)
+    {
+        try {
+            $request->validate([
+                'cv' => 'required|file|mimes:pdf|max:2048',
+            ]);
+
+            $user = auth()->user();
+            $cv = $request->file('cv');
+
+            $folderPath = 'public/uploads/user_' . $user->id . '/cv';
+
+            if (Storage::exists($folderPath))
+                Storage::deleteDirectory($folderPath);
+
+            if (!Storage::exists($folderPath))
+                Storage::makeDirectory($folderPath);
+
+            $userInfo = $user->userInfo;
+
+            if (!$userInfo) {
+                $userInfo = new UserInfo();
+                $userInfo->user_id = $user->id;
+                $userInfo->save();
+            }
+
+            $fileName = Str::random(20) . "." . $cv->getClientOriginalExtension();
+            $userInfo->cv = $fileName;
+            $userInfo->save();
+
+            $cv->storeAs($folderPath . '/' . $fileName);
+            return response()->json(['type' => 'success', 'message' => "Uspešno sačuvan cv"], 200);
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
+    }
+
+    public function deleteCV(Request $request)
+    {
+        try {
+            $user = auth()->user();
+
+            $folderPath = 'public/uploads/user_' . $user->id . '/cv';
+
+            if (Storage::exists($folderPath))
+                Storage::deleteDirectory($folderPath);
+
+            $userInfo = $user->userInfo;
+            $userInfo->cv = null;
+            $userInfo->save();
+
+            return response()->json(['type' => 'success', 'message' => "Uspešno obrisan cv"], 200);
         } catch (Exception $ex) {
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }

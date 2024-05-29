@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SavedAd;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,10 +21,24 @@ class AdController extends Controller
             if ($ad->users->companyInfo != null && $ad->users->companyInfo->links != null) {
                 $social = explode(',', $ad->users->companyInfo->links);
             }
+            $isSaved = false;
+            $applications = false;
+            if (auth()->user()) {
+                $isSaved = SavedAd::where('user_id', auth()->user()->id)
+                    ->where('ad_id', $ad->id)
+                    ->exists();
+
+                $applications = auth()->user()->appliedAds()
+                    ->where('ad_id', $id)
+                    ->exists();
+            }
+
             return view('job', [
                 'currentUser' => auth()->user(),
                 'ad' => $ad,
-                'social' => $social
+                'social' => $social,
+                'isSaved' => $isSaved,
+                'isApplied' => $applications,
             ]);
         } else {
             return view('index', [
@@ -42,6 +57,7 @@ class AdController extends Controller
 
         return view('company-manage-jobs', [
             'currentUser' => auth()->user(),
+            'user' => auth()->user(),
             'ads' => $ads
         ]);
     }

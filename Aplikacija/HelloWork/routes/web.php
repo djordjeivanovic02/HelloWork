@@ -29,12 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('check.type:1')->group(function () {
         Route::post('/updateUserData', [UserController::class, 'updateUserData']);
         Route::get('/user-change-profile', [UserController::class, 'showDashboard']);
-        Route::get('/user-cv', function () {
-            return view('/user-cv', [
-                'currentUser' => auth()->user(),
-                'user' => auth()->user()
-            ]);
-        });
+        Route::get('/user-cv', [UserController::class, 'showUserCV']);
         Route::get('/user-change-password', function () {
             return view('/user-change-password', [
                 'currentUser' => auth()->user(),
@@ -52,6 +47,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/user-upload-logo', [UserController::class, 'uploadLogo']);
         Route::post('/user-update-profile', [UserController::class, 'updateUserData']);
         Route::post('/delete-saved-ad', [SavedAdController::class, 'deleteSavedAd']);
+        Route::post('/upload-cv', [UserController::class, 'uploadCV']);
+        Route::delete('/delete-cv', [UserController::class, 'deleteCV']);
+        Route::post('/apply-for-job', [ApplicationsController::class, 'apply']);
     });
     Route::middleware('check.type:2')->group(function () {
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);

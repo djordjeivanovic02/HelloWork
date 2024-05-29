@@ -1,5 +1,4 @@
-checkIsSaved(1, 1);
-async function checkIsSaved(ad_id, screen){
+async function checkIsSaved(ad_id, screen) {
     const url = '/check-is-saved';
     const data = { ad_id: ad_id };
     var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -19,17 +18,17 @@ async function checkIsSaved(ad_id, screen){
         }
 
         const jsonResponse = await response.json();
-        if(jsonResponse['type'] == 'success'){
-            if(jsonResponse['message']){
-                if(screen == 1){
+        if (jsonResponse['type'] == 'success') {
+            if (jsonResponse['message']) {
+                if (screen == 1) {
                     const element = document.querySelector('.save-job');
                     element.classList.add('active');
-                }else{}
-            }else if(jsonResponse['message']){
-                if(screen == 1){
+                } else { }
+            } else if (jsonResponse['message']) {
+                if (screen == 1) {
                     const element = document.querySelector('.save-job');
                     element.classList.remove('active');
-                }else{}
+                } else { }
             }
         }
     } catch (error) {
@@ -38,7 +37,7 @@ async function checkIsSaved(ad_id, screen){
 }
 
 
-async function saveJob(ad_id, screen){
+async function saveJob(ad_id, screen) {
     const url = '/save-ad';
     const data = { ad_id: ad_id };
     var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -58,10 +57,10 @@ async function saveJob(ad_id, screen){
         }
 
         const jsonResponse = await response.json();
-        if(jsonResponse['type'] == 'success'){
-            if(jsonResponse['message'] == 'Uspešno sačuvan oglas'){
+        if (jsonResponse['type'] == 'success') {
+            if (jsonResponse['message'] == 'Uspešno sačuvan oglas') {
                 screen.classList.add('active');
-            }else if(jsonResponse['message'] == 'Uspešno obrisan oglas'){
+            } else if (jsonResponse['message'] == 'Uspešno obrisan oglas') {
                 screen.classList.remove('active');
             }
         }

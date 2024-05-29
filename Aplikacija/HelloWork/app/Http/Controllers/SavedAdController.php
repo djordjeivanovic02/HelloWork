@@ -18,6 +18,7 @@ class SavedAdController extends Controller
         }
         return view('user-saved', [
             'currentUser' => auth()->user(),
+            'user' => auth()->user(),
             'savedAds' => $savedAds,
         ]);
     }

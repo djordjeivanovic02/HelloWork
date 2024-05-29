@@ -14,6 +14,7 @@ class UserInfo extends Model
         'user_id',
         'age',
         'logo',
+        'cv',
         'professional_title',
         'skills',
         'expirience',

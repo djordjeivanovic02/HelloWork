@@ -9,7 +9,7 @@ class Application extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'ad_id', 'status'];
+    protected $fillable = ['user_id', 'ad_id', 'status', 'message'];
 
     public function user()
     {

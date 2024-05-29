@@ -137,8 +137,36 @@
                 </div>
             </div>
             <div class="job-actions d-flex">
-                <button>Apliciraj za Posao</button>
-                <div class="save-job d-flex align-items-center justify-content-center" onclick="saveJob(1, this)">
+                <button
+                    @if (!$currentUser) onclick="showDialog('not-signed')"
+                    @else
+                        @if (!$currentUser->userInfo)
+                            onclick="showDialog('no-user-info')"
+                        @else
+                            @if (!$currentUser->userInfo->cv)
+                                onclick="showDialog('no-cv')"
+                            @else
+                                onclick="showDialog('apply-for-job')" @endif
+                    @endif
+                    @endif
+                    >
+                    {{ $isAplied }}
+                    @if (!$currentUser)
+                        @if ($isApplied)
+                            Otkazi aplikaciju
+                        @else
+                            Apliciraj za posao
+                        @endif
+                    @else
+                        Apliciraj za Posao
+
+                    @endif
+
+                </button>
+                <div @if ($isSaved) class="save-job active d-flex align-items-center justify-content-center"
+                @else
+                class="save-job d-flex align-items-center justify-content-center" @endif
+                    @if ($currentUser) onclick="saveJob({{ $ad->id }}, this)" @endif>
                     <svg width="13" height="15" viewBox="0 0 13 15" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -433,6 +461,89 @@
             </div>
         </div>
     </div>
+    @component('dialogs.notification', [
+        'id' => 'not-signed',
+        'type' => 'success',
+        'title' => 'Obaveštenje',
+        'message' => 'Morate biti prijavljeni da biste aplicirali za posao!',
+        'close' => true,
+        'actions' => [
+            [
+                'url' => "closeDialog('not-signed')",
+                'type' => 'yes',
+                'label' => 'OK',
+            ],
+        ],
+    ])
+    @endcomponent
 
+    @component('dialogs.notification', [
+        'id' => 'no-user-info',
+        'type' => 'success',
+        'title' => 'Obeveštenje',
+        'message' => 'Da biste aplicirali za posao prvo morate ažurirati podatke na svom profilu!',
+        'close' => true,
+        'actions' => [
+            [
+                'url' => "window.location.href='../user-change-profile'",
+                'type' => 'yes',
+                'label' => 'Ažuriraj podatke',
+            ],
+            [
+                'url' => "closeDialog('no-user-info')",
+                'type' => 'cancel',
+                'label' => 'Otkaži',
+            ],
+        ],
+    ])
+    @endcomponent
+
+    @component('dialogs.notification', [
+        'id' => 'no-cv',
+        'type' => 'success',
+        'title' => 'Nedostaje CV',
+        'message' =>
+            'Da biste aplicirali morate prvo dodati CV na svoj profil. Ukoliko nemate CV možete ga veoma lako kreirati klikom na Kreiraj/dodaj CV',
+        'close' => true,
+        'actions' => [
+            [
+                'url' => "window.location.href='../user-cv'",
+                'type' => 'yes',
+                'label' => 'Kreiraj/dodaj CV',
+            ],
+            [
+                'url' => "closeDialog('no-cv')",
+                'type' => 'cancel',
+                'label' => 'Otkaži',
+            ],
+        ],
+    ])
+    @endcomponent
+
+    @component('dialogs.notification', [
+        'id' => 'apply-for-job',
+        'type' => 'success',
+        'title' => 'Apliciranje za posao',
+        'message' =>
+            'Da li ste sigurni da želite da aplicirate za posao ' .
+            $ad->title .
+            '? Nakon što aplicirate poslodavac će moći da vidi vašu aplikaciju.',
+        'close' => true,
+        'actions' => [
+            [
+                'url' => "applyForJob('" . $ad->id . "')",
+                'type' => 'yes',
+                'label' => 'Apliciraj',
+            ],
+            [
+                'url' => "closeDialog('apply-for-job')",
+                'type' => 'cancel',
+                'label' => 'Otkaži',
+            ],
+        ],
+    ])
+    @endcomponent
+    <script src="{{ asset('js/dialogs/actions.js') }}"></script>
     <script src="{{ asset('js/save-ad.js') }}"></script>
+    <script src="{{ asset('js/user/apply-for-job.js') }}"></script>
 @endsection
