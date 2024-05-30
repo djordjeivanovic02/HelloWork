@@ -12,6 +12,10 @@
     padding-bottom: 15px;
 }
 
+.company-name {
+    text-align: center;
+}
+
 .info-row {
     justify-content: space-between;
 }

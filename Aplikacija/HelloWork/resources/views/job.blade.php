@@ -136,45 +136,49 @@
                     </div>
                 </div>
             </div>
-            <div class="job-actions d-flex">
-                <button
-                    @if (!$currentUser) onclick="showDialog('not-signed')"
+            @if (($currentUser && $currentUser->type != 2) || !$currentUser)
+
+                <div class="job-actions d-flex">
+                    <button
+                        @if (!$currentUser) onclick="showDialog('not-signed')"
                     @else
-                        @if (!$currentUser->userInfo)
-                            onclick="showDialog('no-user-info')"
+                        @if (!$currentUser->userInfo) onclick="showDialog('no-user-info')"
                         @else
                             @if (!$currentUser->userInfo->cv)
                                 onclick="showDialog('no-cv')"
                             @else
-                                onclick="showDialog('apply-for-job')" @endif
-                    @endif
-                    @endif
-                    >
-                    {{ $isAplied }}
-                    @if (!$currentUser)
-                        @if ($isApplied)
-                            Otkazi aplikaciju
-                        @else
-                            Apliciraj za posao
+                                @if ($isApplied)
+                                    style="background-color:red"
+                                    onclick="showDialog('remove-application')"
+                                @else
+                                    onclick="showDialog('apply-for-job')" @endif
                         @endif
-                    @else
-                        Apliciraj za Posao
+            @endif
+            @endif
+            >
+            @if ($currentUser)
+                @if ($isApplied)
+                    Otkaži apliciranje
+                @else
+                    Apliciraj za posao
+                @endif
+            @else
+                Apliciraj za Posao
+            @endif
 
-                    @endif
-
-                </button>
-                <div @if ($isSaved) class="save-job active d-flex align-items-center justify-content-center"
+            </button>
+            <div @if ($isSaved) class="save-job active d-flex align-items-center justify-content-center"
                 @else
                 class="save-job d-flex align-items-center justify-content-center" @endif
-                    @if ($currentUser) onclick="saveJob({{ $ad->id }}, this)" @endif>
-                    <svg width="13" height="15" viewBox="0 0 13 15" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12.0714 0H0.928571C0.682299 0 0.446113 0.0790165 0.271972 0.219667C0.0978315 0.360317 2.01065e-09 0.55108 2.01065e-09 0.74999V14.2498C-1.16771e-05 14.3932 0.0508567 14.5335 0.146579 14.6543C0.242301 14.775 0.378866 14.8711 0.540094 14.9311C0.701323 14.991 0.88046 15.0124 1.05628 14.9927C1.23211 14.973 1.39725 14.913 1.53214 14.8198L6.5 11.4523L11.4121 14.7823C11.4989 14.8518 11.6018 14.9068 11.7149 14.9441C11.8281 14.9814 11.9492 15.0004 12.0714 14.9998C12.1932 15.0023 12.3141 14.9818 12.4243 14.9398C12.5939 14.8835 12.739 14.788 12.8415 14.6652C12.9439 14.5424 12.9991 14.3979 13 14.2498V0.74999C13 0.55108 12.9022 0.360317 12.728 0.219667C12.5539 0.0790165 12.3177 0 12.0714 0ZM11.1429 12.6448L7.09429 9.89986C6.92743 9.78761 6.71715 9.72615 6.5 9.72615C6.28285 9.72615 6.07257 9.78761 5.90571 9.89986L1.85714 12.6448V1.49998H11.1429V12.6448Z" />
-                    </svg>
-                </div>
+                @if ($currentUser) onclick="saveJob({{ $ad->id }}, this)" @endif>
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12.0714 0H0.928571C0.682299 0 0.446113 0.0790165 0.271972 0.219667C0.0978315 0.360317 2.01065e-09 0.55108 2.01065e-09 0.74999V14.2498C-1.16771e-05 14.3932 0.0508567 14.5335 0.146579 14.6543C0.242301 14.775 0.378866 14.8711 0.540094 14.9311C0.701323 14.991 0.88046 15.0124 1.05628 14.9927C1.23211 14.973 1.39725 14.913 1.53214 14.8198L6.5 11.4523L11.4121 14.7823C11.4989 14.8518 11.6018 14.9068 11.7149 14.9441C11.8281 14.9814 11.9492 15.0004 12.0714 14.9998C12.1932 15.0023 12.3141 14.9818 12.4243 14.9398C12.5939 14.8835 12.739 14.788 12.8415 14.6652C12.9439 14.5424 12.9991 14.3979 13 14.2498V0.74999C13 0.55108 12.9022 0.360317 12.728 0.219667C12.5539 0.0790165 12.3177 0 12.0714 0ZM11.1429 12.6448L7.09429 9.89986C6.92743 9.78761 6.71715 9.72615 6.5 9.72615C6.28285 9.72615 6.07257 9.78761 5.90571 9.89986L1.85714 12.6448V1.49998H11.1429V12.6448Z" />
+                </svg>
             </div>
         </div>
+        @endif
+    </div>
     </div>
     <div class="info-job-main-container w-100 mt-50">
         <div class="job-info">
@@ -531,7 +535,7 @@
         'close' => true,
         'actions' => [
             [
-                'url' => "applyForJob('" . $ad->id . "')",
+                'url' => "applyForJob('" . $ad->id . "', 'apply-for-job')",
                 'type' => 'yes',
                 'label' => 'Apliciraj',
             ],
@@ -539,6 +543,27 @@
                 'url' => "closeDialog('apply-for-job')",
                 'type' => 'cancel',
                 'label' => 'Otkaži',
+            ],
+        ],
+    ])
+    @endcomponent
+
+    @component('dialogs.notification', [
+        'id' => 'remove-application',
+        'type' => 'success',
+        'title' => 'Otkaži apliciranje',
+        'message' => 'Da li ste sigurni da želite da otkažete apliciranje za posao  ' . $ad->title . '?',
+        'close' => true,
+        'actions' => [
+            [
+                'url' => "cancelApplication('" . $ad->id . "', 'remove-application')",
+                'type' => 'yes',
+                'label' => 'Otkaži apliciranje',
+            ],
+            [
+                'url' => "closeDialog('remove-application')",
+                'type' => 'cancel',
+                'label' => 'Zatvori',
             ],
         ],
     ])

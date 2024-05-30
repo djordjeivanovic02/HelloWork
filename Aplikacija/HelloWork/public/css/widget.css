@@ -6,25 +6,6 @@
     border-radius: 20px;
 }
 
-.allaround-container .hover-indicator {
-    background-color: var(--main-color);
-    border-radius: 20px;
-}
-
-.allaround-container:hover .hover-indicator {
-    animation: prosiriHeight .3s ease-in-out forwards;
-}
-
-@keyframes prosiriHeight {
-    0% {
-        height: 0%;
-    }
-
-    100% {
-        height: 100%;
-    }
-}
-
 .img-container {
     background-color: rgb(97, 63, 229);
     width: 70px;
@@ -59,20 +40,55 @@
     background-color: #F0EEFC;
     border-radius: 10px;
     margin-top: 15px;
-    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.spoljni-main {
+    padding: 20px;
+}
+
+.second-hover-indicator {
+    background-color: var(--main-color);
+    width: 0px;
+    border-radius: 10px 0px 0px 10px;
+    left: 0;
+    transition: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: .5s;
+}
+
+.spoljni-container:hover .second-hover-indicator {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.spoljni-container:hover .gornji-text {
+    color: white;
+}
+
+.spoljni-container:hover .donji-text {
+    color: white;
 }
 
 .gornji-text {
     font-weight: bold;
     font-family: 'Rubik', sans-serif;
     font-size: 20px;
+    transition-duration: .5s;
 }
 
 .donji-text {
     color: #613FE5;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
+    transition-duration: .5s;
 }
+
+.spoljni-container a {
+    text-decoration: none;
+}
+
 
 /* Treći deo */
 
@@ -85,6 +101,7 @@
     position: relative;
     margin-bottom: 20px;
     padding: 20px;
+    cursor: pointer;
 }
 
 .out-container:hover {
@@ -94,11 +111,10 @@
 .full-time-div {
     background-color: #F0EEFC;
     border-radius: 5px;
-    width: 58px;
-    height: 19px;
     margin-top: 7px;
     margin-right: 7px;
     position: relative;
+    padding: 2px 7px;
 }
 
 .full-time-text {
@@ -125,6 +141,14 @@
     height: 70px;
     border: 1px solid #DDDDDD;
     border-radius: 10px;
+    padding: 5px;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .top-text {
@@ -133,6 +157,16 @@
     font-family: 'Poppins', sans-serif;
     margin-left: 13px;
     line-height: 15px;
+}
+
+.top-text a {
+    text-decoration: none;
+    color: black;
+}
+
+.top-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .bottom-text {

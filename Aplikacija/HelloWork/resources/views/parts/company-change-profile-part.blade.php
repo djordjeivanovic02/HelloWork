@@ -116,12 +116,14 @@
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Facebook</p>
                 <input type="text" name="companyFacebook" id="companyFacebook" class="w-100"
-                    placeholder="www.facebook.com/..." value="{{ $socialNetworks[0] }}">
+                    placeholder="www.facebook.com/..."
+                    @if ($socialNetworks) value="{{ $socialNetworks[0] }}" @endif>
             </div>
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Instagram</p>
                 <input type="text" name="companyInstagram" id="companyInstagram" class="w-100"
-                    placeholder="www.instagram.com/..." value="{{ $socialNetworks[1] }}">
+                    placeholder="www.instagram.com/..."
+                    @if ($socialNetworks) value="{{ $socialNetworks[1] }}" @endif>
             </div>
         </div>
     </div>
@@ -130,12 +132,14 @@
             <div class="row-element d-flex flex-column">
                 <p class="my-1">Threads</p>
                 <input type="text" name="companyThreads" id="companyThreads" class="w-100"
-                    placeholder="www.threads.com/..." value="{{ $socialNetworks[2] }}">
+                    placeholder="www.threads.com/..."
+                    @if ($socialNetworks) value="{{ $socialNetworks[2] }}" @endif>
             </div>
             <div class="row-element d-flex flex-column">
                 <p class="my-1">LinkedIn</p>
                 <input type="text" name="companyLinkedin" id="companyLinkedin" class="w-100"
-                    placeholder="www.linkedin.com/..." value="{{ $socialNetworks[3] }}">
+                    placeholder="www.linkedin.com/..."
+                    @if ($socialNetworks) value="{{ $socialNetworks[3] }}" @endif>
             </div>
         </div>
     </div>

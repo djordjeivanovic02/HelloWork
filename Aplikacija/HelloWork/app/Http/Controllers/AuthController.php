@@ -7,44 +7,58 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Hash;
 use Exception;
+use Validator;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
         try {
-            validator(request()->all(), [
+            $validator = Validator::make($request->all(), [
                 'email' => ['required', 'email'],
                 'password' => ['required']
             ]);
 
-            if (auth()->attempt(request()->only(['email', 'password']))) {
-                return response()->json(['redirect' => '/']);
+            if ($validator->fails()) {
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!'], 400);
             }
-            // return redirect()->back()->withErrors(['email' => 'Invalid Credentials']);
-            return response()->json(['errors' => ['email' => 'Invalid Credentials']], 422);
+
+            $credentials = $request->only('email', 'password');
+
+            if (auth()->attempt($credentials)) {
+                return response()->json(['type' => 'success', 'redirect' => '/']);
+            }
+
+            return response()->json(['type' => 'error', 'errors' => ['email' => 'Invalid Credentials']], 422);
         } catch (Exception $ex) {
-            return response()->json(['message' => $ex->getMessage()], 500);
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
     }
 
     public function register(Request $request)
     {
         try {
-            validator(request()->all(), [
+            $validator = Validator::make(request()->all(), [
                 'email' => ['required', 'email'],
                 'password' => ['required'],
                 'type' => ['required']
             ]);
+
+            if ($validator->fails()) {
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!', 500]);
+            }
             $emailExist = User::where('email', $request->email)->exists();
             if ($emailExist) {
-                throw new Exception("Već postoji korisnik sa unetom email adresom");
+                return response()->json(['type' => 'email-used', 'message' => 'Već postoji nalog sa ovom email adresom. Pokušaj da se prijaviš.'], 200);
             }
             $data = $request->all();
-            $this->createUser($data);
-            return response()->json(['message' => 'Korisnik je uspešno registrovan'], 200);
+            $user = $this->createUser($data);
+
+            auth()->login($user);
+
+            return response()->json(['type' => 'success', 'redirect' => '/'], 200);
         } catch (Exception $ex) {
-            return response()->json(['message' => $ex->getMessage()], 500);
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
         //return redirect
     }

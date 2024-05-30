@@ -62,6 +62,14 @@ class AdController extends Controller
         ]);
     }
 
+    public function showSearchJob()
+    {
+        return view('search-jobs', [
+            'currentUser' => auth()->user(),
+            'user' => auth()->user()
+        ]);
+    }
+
     public function createAd(Request $request)
     {
         try {

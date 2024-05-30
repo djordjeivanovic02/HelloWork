@@ -1,52 +1,60 @@
 @import url('variables.css');
 
-.login-background-container{
+.login-background-container {
     width: 200%;
     background-color: var(--background-color);
     overflow: auto;
     padding-top: 100px;
 }
-.login-background-container.deactive{
+
+.login-background-container.deactive {
     display: none;
     left: 0%;
 }
-.login-background-container.active{
+
+.login-background-container.active {
     display: flex;
 }
-.login-background-container.register{
+
+.login-background-container.register {
     animation: slideToRegister .3s ease-in-out forwards;
 }
-.login-background-container.login{
+
+.login-background-container.login {
     animation: slideToLogin .3s ease-in-out forwards;
 }
 
-.login-container{
+.login-container {
     scale: 0;
 }
-.login-container.active{
+
+.login-container.active {
     animation: showLoginBox .3s ease-in-out forwards;
 }
-.login-container.deactive{
+
+.login-container.deactive {
     animation: closeLoginBox .3s ease-in-out forwards;
 }
-.close-box{
+
+.close-box {
     transition-duration: .3s;
 }
-.close-box:hover{
+
+.close-box:hover {
     background-color: var(--main-color);
     color: white;
 }
-.register-container svg path{
+
+.register-container svg path {
     fill: var(--main-color);
 }
 
-.login-background-container{
+.login-background-container {
     background-color: rgba(0, 0, 0, 0.60);
     display: none;
 }
 
-.login-container
-{
+.login-container {
     width: 100%;
     max-width: 600px;
     border-radius: 10px;
@@ -54,25 +62,23 @@
     padding: 40px;
 }
 
-.text-username
-{
+.text-username {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     font-weight: 450;
 }
 
-.title
-{
+.title {
     font-size: 28px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
-.text-center .title{
+
+.text-center .title {
     margin-bottom: 30px;
 }
 
-.x
-{
+.x {
     width: 40px;
     height: 40px;
     border-radius: 10px;
@@ -86,8 +92,7 @@
 }
 
 
-.unesi-ovde
-{
+.unesi-ovde {
     width: 492px;
     height: 55px;
     background-color: #F3F6FB;
@@ -97,26 +102,25 @@
     padding-top: 10px;
 }
 
-.text-inside-username
-{
+.text-inside-username {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     color: #7F93B6;
 }
 
-.text-username, .text-password
-{
+.text-username,
+.text-password {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     font-weight: 450;
     margin-bottom: 8px;
 }
-.username-email{
+
+.username-email {
     margin-bottom: 20px;
 }
 
-.input-login
-{
+.input-login {
     width: 100%;
     height: 55px;
     background-color: #F3F6FB;
@@ -127,26 +131,23 @@
     outline: none;
 }
 
-.password-show
-{
+.password-show {
     right: 20px;
     height: 40%;
     top: 30%;
     cursor: pointer;
 }
 
-.username-email, .password
-{
+.username-email,
+.password {
     width: 100%;
 }
 
-.zapamtiIzaboravili
-{
+.zapamtiIzaboravili {
     margin-top: 30px;
 }
 
-.zapamti
-{
+.zapamti {
     width: 20px;
     height: 20px;
     border: 1px solid #DDDDDD;
@@ -155,8 +156,7 @@
     cursor: pointer;
 }
 
-.text-zapamti
-{
+.text-zapamti {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     color: #7F93B6;
@@ -165,31 +165,26 @@
     white-space: nowrap;
 }
 
-.zaboravili
-{
+.zaboravili {
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     color: black;
     text-decoration: none;
 }
 
-@media (max-width: 415px)
-{
-    .zapamtiIzaboravili
-    {
+@media (max-width: 415px) {
+    .zapamtiIzaboravili {
         flex-direction: column;
         max-width: 100%;
     }
 
-    .zaboravili
-    {
+    .zaboravili {
 
         margin-top: 15px;
     }
 }
 
-.button-prijavi-se
-{
+.button-prijavi-se {
     width: 100%;
     background-color: #613FE5;
     border-radius: 12px;
@@ -203,8 +198,7 @@
     padding: 15px;
 }
 
-.text-registration
-{
+.text-registration {
     color: #7F93B6;
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
@@ -212,8 +206,7 @@
     display: inline-block;
 }
 
-.text-prijava-registration
-{
+.text-prijava-registration {
     color: #7F93B6;
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
@@ -223,16 +216,14 @@
 }
 
 
-.registration
-{
+.registration {
     margin-top: 35px;
 }
 
 /* Sesti element - registracija */
 
 
-.kandidat
-{
+.kandidat {
     width: 48%;
     height: 65px;
     border-radius: 12px;
@@ -244,29 +235,24 @@
     font-weight: 600;
 }
 
-.kandidat-poslodavac-text
-{
+.kandidat-poslodavac-text {
     margin: 0;
     margin-left: 7px;
 }
 
-@media(max-width: 450px)
-{
-    .kandidat-poslodavac
-    {
+@media(max-width: 450px) {
+    .kandidat-poslodavac {
         flex-direction: column;
         align-items: center;
     }
 
-    .kandidat-poslodavac button
-    {
-        width:100%;
+    .kandidat-poslodavac button {
+        width: 100%;
         margin-bottom: 12px;
     }
 }
 
-.poslodavac
-{
+.poslodavac {
     width: 48%;
     height: 65px;
     border-radius: 12px;
@@ -277,30 +263,34 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
-.kandidat, .poslodavac{
+
+.kandidat,
+.poslodavac {
     transition-duration: .3s;
 }
 
-.kandidat.active, .poslodavac.active{
+.kandidat.active,
+.poslodavac.active {
     background-color: #34A852;
     color: white;
 }
-.kandidat.active svg path, .poslodavac.active svg path{
+
+.kandidat.active svg path,
+.poslodavac.active svg path {
     fill: white;
 }
 
-.kandidat-poslodavac
-{
+.kandidat-poslodavac {
     width: 100%;
     margin-bottom: 40px;
 }
 
-.registruj-se
-{
+.registruj-se {
     display: inline-block;
 }
 
-.login-error-container{
+.login-error-container,
+.register-error-container {
     margin-bottom: 1rem;
     border: 1px solid red;
     text-align: center;
@@ -308,51 +298,68 @@
     padding: 15px;
     display: none;
 }
-.login-error-container p, b{
+
+.login-error-container p,
+b,
+.register-error-container p,
+b {
     margin: 0px;
     padding: 0px;
 }
 
-.login-error-container.active{
+.login-error-container.active,
+.register-error-container.active {
     display: block;
     animation: showLoginError .3s ease-in-out forwards;
 }
 
 /* ANIMACIJE */
 @keyframes showLoginBox {
-    0%{
+    0% {
         scale: 0;
-    }100%{
+    }
+
+    100% {
         scale: 1;
     }
 }
+
 @keyframes closeLoginBox {
-    0%{
+    0% {
         scale: 1;
-    }100%{
+    }
+
+    100% {
         scale: 0;
     }
 }
 
 @keyframes slideToRegister {
-    0%{
-        left: 0%;
-    }100%{
-        left: -100%;
-    }
-}
-@keyframes slideToLogin {
-    0%{
-        left: -100%;
-    }100%{
+    0% {
         left: 0%;
     }
-}
-@keyframes showLoginError{
-    0%{
-        opacity: 0;
-    }100%{
-        opacity: 1;
+
+    100% {
+        left: -100%;
     }
 }
 
+@keyframes slideToLogin {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+@keyframes showLoginError {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

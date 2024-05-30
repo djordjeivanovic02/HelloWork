@@ -4,14 +4,14 @@
     <div class="info-container w-100 m-0 p-0 d-flex flex-column align-items-center justify-content-center">
         <h1 class="m-0">Pronađi posao</h1>
         <div class="info-navigation-container m-0 mt-2">
-            <a href="{{route('login')}}" class="m-0">Početna</a>
+            <a href="{{ route('login') }}" class="m-0">Početna</a>
             <span>/</span>
             <a href="" class="main m-0">Poslovi</a>
         </div>
     </div>
     <div class="search-job-main-container w-100 d-flex">
         @include('parts.filters')
-        
+
         <div class="search-job-main d-flex flex-column position-relative">
             <div class="search-job-main-header w-100 d-flex justify-content-between align-items-center">
                 <p class="search-showing m-0">Prikazuje se <b>10</b> oglasa</p>
@@ -25,14 +25,14 @@
                 </div>
             </div>
             <div class="w-100 mt-3">
-                @component('parts.wide-widget', [
-                    'active' => false
-                ])
+                {{-- @component('parts.wide-widget', [
+    'active' => false,
+])
                 @endcomponent
                 @component('parts.wide-widget', [
-                    'active' => true
-                ])
-                @endcomponent
+    'active' => true,
+])
+                @endcomponent --}}
             </div>
         </div>
         @include('parts.mobile-filters')

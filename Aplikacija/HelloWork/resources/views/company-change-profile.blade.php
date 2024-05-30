@@ -27,7 +27,7 @@
                     {{-- <button>Sačuvaj</button> --}}
                     <input type="button" value="Sačuvaj" onclick="updateCompanyLogo(this)">
                 </div>
-                <div class="w-100 d-flex justify-content-center my-4 dashboard-head-container">
+                <div class="company-name w-100 d-flex justify-content-center my-4 dashboard-head-container">
                     @if ($user->name != null)
                         <h3>{{ $user->name }}</h3>
                     @else

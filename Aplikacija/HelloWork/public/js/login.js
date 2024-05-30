@@ -3,30 +3,52 @@ const loginErrorContainer = document.querySelector('.login-error-container');
 
 loginBtn.addEventListener('click', login);
 
-
-function login(){
+async function login() {
     const email = document.querySelector('#login-email').value;
     const password = document.querySelector('#login-password').value;
-    var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
-    $.ajax({
-        url: '/login',
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': csrf_token
-        },
-        data: {
-            email: email,
-            password: password
-        },
-        success:function(response){
-            if(response.redirect){
-                window.location.href = response.redirect;
+    if (!validateLogin(email, password)) return;
+
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+
+    try {
+        const response = await fetch('/login', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
-        },
-        error:function(xhr, status, error){
-            loginErrorContainer.classList.add('active');
-            console.log(xhr.responseText);
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
         }
-    });
+
+        const data = await response.json();
+        if (data.type == 'success') {
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+        } else if (data.type == 'error') {
+            loginErrorContainer.classList.add('active');
+            loginErrorContainer.querySelector('p').innerHTML = data.errors.email;
+        }
+    } catch (error) {
+        loginErrorContainer.classList.add('active');
+    }
+}
+
+function validateLogin(email, password) {
+    if (email.trim() === '') {
+        loginErrorContainer.classList.add('active');
+        loginErrorContainer.querySelector('p').innerHTML = 'Email adresa je obavezno polje!';
+        return false;
+    } else if (password.trim() === '') {
+        loginErrorContainer.classList.add('active');
+        loginErrorContainer.querySelector('p').innerHTML = 'Lozinka je obavezno polje!';
+        return false;
+    }
+    return true;
 }

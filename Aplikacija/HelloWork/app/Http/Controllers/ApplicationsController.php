@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Ad;
 use Exception;
 use Validator;
+use DB;
 
 class ApplicationsController extends Controller
 {
@@ -41,6 +42,43 @@ class ApplicationsController extends Controller
                 $appl->save();
 
                 return response()->json(['type' => 'success', 'message' => 'Uspešno ste aplicirali za ovaj posao!'], 200);
+            }
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
+    }
+    public function cancelApply(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'id' => ['required'],
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!'], 400);
+            }
+
+            $id = $request->id;
+            $user = auth()->user();
+
+            if (!$user) {
+                return response()->json(['type' => 'error', 'message' => 'Niste prijavljeni!'], 401);
+            }
+
+            $application = $user->appliedAds()
+                ->where('ad_id', $id)
+                ->first();
+
+            if (!$application) {
+                return response()->json(['type' => 'error', 'message' => 'Niste aplicirali za ovaj posao'], 400);
+            } else {
+                // echo $application->id;
+                // return response()->json(['type' => 'success', 'message' => $application->id], 200);
+                Application::where('ad_id', $id)
+                    ->where('user_id', auth()->id())
+                    ->forceDelete();
+
+                return response()->json(['type' => 'success', 'message' => 'Uspešno ste otkazali aplikaciju za ovaj posao!'], 200);
             }
         } catch (Exception $ex) {
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);

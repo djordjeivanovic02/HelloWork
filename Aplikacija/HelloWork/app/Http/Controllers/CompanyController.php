@@ -90,7 +90,16 @@ class CompanyController extends Controller
         ]);
     }
 
-
+    public function showApplications()
+    {
+        $user = auth()->user();
+        $applications = $user->appliedAds();
+        return view('/company-applications', [
+            'currentUser' => $user,
+            'user' => $user,
+            'applications' => $applications
+        ]);
+    }
     public function updateCompanyData(Request $request)
     {
         try {

@@ -73,16 +73,48 @@
                         <h2>Ponuda novih poslova</h2>
                         <p class="mt-2 description">Svakog dana 100+ novih oglasa</p>
                     </div>
-                    <button>Postavi oglas</button>
+                    @if (($currentUser !== null && $currentUser->type == 2) || !$currentUser)
+                        <button @if (!$currentUser) onclick="showDialog('not-signed')" @endif>Postavi
+                            oglas</button>
+                    @endif
                 </div>
 
                 <div class="quick-jobs-cotnainer w-100 d-flex flex-column align-items-center">
                     <div class="tutorial-widgets w-100 d-flex justify-content-center flex-wrap mt-5 ">
-                        @include('parts.quick-job')
+                        @if ($ads)
+                            @foreach ($ads as $ad)
+                                @component('parts.quick-job', [
+                                    'ad' => $ad,
+                                ])
+                                @endcomponent
+                            @endforeach
+                        @else
+                            Nema oglasa
+                        @endif
                     </div>
-                    <button>Učitaj još</button>
+                    <button onclick="window.location.href='/searchjob'">Učitaj još</button>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+
+@component('dialogs.notification', [
+    'id' => 'not-signed',
+    'type' => 'success',
+    'title' => 'Obaveštenje',
+    'message' => 'Morate biti prijavljeni kao poslodavac da biste dodali oglas posao!',
+    'close' => true,
+    'actions' => [
+        [
+            'url' => "closeDialog('not-signed')",
+            'type' => 'yes',
+            'label' => 'OK',
+        ],
+    ],
+])
+@endcomponent
+
+
+<script src="{{ asset('js/dialogs/actions.js') }}"></script>

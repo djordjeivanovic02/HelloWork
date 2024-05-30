@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/upload-cv', [UserController::class, 'uploadCV']);
         Route::delete('/delete-cv', [UserController::class, 'deleteCV']);
         Route::post('/apply-for-job', [ApplicationsController::class, 'apply']);
+        Route::post('/cancel-apply', [ApplicationsController::class, 'cancelApply']);
     });
     Route::middleware('check.type:2')->group(function () {
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
@@ -67,12 +68,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::get('/company-change-profile', [CompanyController::class, 'showDashboard']);
         Route::get('/company-manage-jobs', [AdController::class, 'showManageAds']);
-        Route::get('/company-applications', function () {
-            return view('/company-applications', [
-                'currentUser' => auth()->user(),
-                'user' => auth()->user()
-            ]);
-        });
+        Route::get('/company-applications', [CompanyController::class, 'showApplications']);
         Route::post('/company-upload-logo', [CompanyController::class, 'uploadLogo']);
         Route::post('/company-update-profile', [CompanyController::class, 'updateCompanyData']);
         Route::post('/company-add-new-job', [AdController::class, 'createAd']);
@@ -91,9 +87,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job/{id}', [AdController::class, 'show']);
 Route::get('/company/{id}', [CompanyController::class, 'show']);
 Route::get('/', [IndexController::class, '__invoke'])->name('login');
-Route::get('/searchjob', function () {
-    return view('search-jobs', ['currentuser' => auth()->user()]);
-})->name('searchjob');
+Route::get('/searchjob', [AdController::class, 'showSearchJob']);
 // samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {
     return view('parts.widgets');
