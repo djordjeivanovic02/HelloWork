@@ -28,6 +28,14 @@
     scale: 0;
 }
 
+.box-with-input {
+    max-width: 600px;
+}
+
+.box-with-input textarea {
+    min-height: 100px;
+}
+
 .quick-preview-box {
     max-width: 500px;
     padding: 0;

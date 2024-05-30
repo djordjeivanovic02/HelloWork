@@ -41,7 +41,11 @@
                     @php
                         $razlikaUDanima = now()->diffInDays($ad->created_at);
                     @endphp
-                    Pre {{ $razlikaUDanima }} dana
+                    @if ($razlikaUDanima > 0)
+                        Pre {{ $razlikaUDanima }} dana
+                    @else
+                        Danas
+                    @endif
                 </p>
                 <div class="full-time-div">
                     <p class="full-time-text m-0">

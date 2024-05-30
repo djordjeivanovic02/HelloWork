@@ -20,8 +20,20 @@
                 </div>
                 <div
                     class="w-100 d-flex flex-column justify-content-center align-items-center my-4 dashboard-head-container">
-                    <h4 style="text-align: center" class="m-0">Aleksa Jovanovic</h4>
-                    <p class="m-0">Web developer</p>
+                    <h4 style="text-align: center" class="m-0">
+                        @if ($user != null && $user->name != null)
+                            {{ $user->name }}
+                        @else
+                            Korisnik
+                        @endif
+                    </h4>
+                    <p class="m-0">
+                        @if ($user != null && $user->userInfo != null && $user->userInfo->professional_title != null)
+                            {{ $user->userInfo->professional_title }}
+                        @else
+                            Nepoznata profesija
+                        @endif
+                    </p>
                 </div>
                 <div class="hide-bottom-shadow"></div>
             </div>

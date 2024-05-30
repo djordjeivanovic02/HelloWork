@@ -36,12 +36,7 @@ Route::middleware('auth')->group(function () {
                 'user' => auth()->user()
             ]);
         });
-        Route::get('/user-applications', function () {
-            return view('/user-applications', [
-                'currentUser' => auth()->user(),
-                'user' => auth()->user()
-            ]);
-        });
+        Route::get('/user-applications', [UserController::class, 'showApplications']);
         Route::get('/user-saved-ads', [SavedAdController::class, 'show']);
         Route::post('/apply/{ad}', [ApplicationsController::class, 'apply']);
         Route::post('/user-upload-logo', [UserController::class, 'uploadLogo']);
@@ -73,6 +68,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/company-update-profile', [CompanyController::class, 'updateCompanyData']);
         Route::post('/company-add-new-job', [AdController::class, 'createAd']);
         Route::delete('/company-delete-job/{id}', [AdController::class, 'deleteAd']);
+        Route::post('/accept-application', [ApplicationsController::class, 'acceptApplication']);
     });
     Route::get('/logout', [AuthController::class, 'signOut']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);

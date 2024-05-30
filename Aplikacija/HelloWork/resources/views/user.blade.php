@@ -9,8 +9,7 @@
                         <img src="{{ asset('storage/uploads/user_' . $user->id . '/logo/' . $user->userInfo->logo) }}"
                             alt="User Logo">
                     @else
-                        <img src="{{ asset('images/unknown-company.svg') }}" id="companyLogoImage" alt="Company Logo"
-                            class="w-100 h-100">
+                        <img src="{{ asset('images/unknown-company.svg') }}" alt="Company Logo" class="w-100 h-100">
                     @endif
                 </div>
                 <div class="job-header-info d-flex flex-column align-items-center my-3">

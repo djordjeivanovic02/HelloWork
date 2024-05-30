@@ -12,11 +12,65 @@
     padding-bottom: 15px;
 }
 
+.all-applications,
+.accepted-applications,
+.rejected-applications,
+.active-applications {
+    display: none;
+}
+
+.all-applications.active,
+.accepted-applications.active,
+.rejected-applications.active,
+.active-applications.active {
+    display: block;
+}
+
 .company-name {
     text-align: center;
 }
 
+.action-button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--background-light);
+}
+
+.action-button p {
+    margin: 0;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.action-button.submit {
+    background-color: var(--light-green2);
+}
+
+.action-button.submit p {
+    color: var(--remote-text);
+}
+
+.action-button.reject {
+    background-color: var(--light-red2);
+    margin-left: 10px;
+}
+
+.action-button.reject p {
+    color: var(--red-color);
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.action-button img {
+    width: 20px;
+}
+
+
 .info-row {
+    display: flex;
     justify-content: space-between;
 }
 
@@ -363,6 +417,100 @@ td {
 .application-skill p {
     font-size: 14px;
     color: var(--main-color);
+}
+
+
+.application-container.submitted {
+    background-color: var(--light-green1);
+    border-left-color: var(--light-green1);
+}
+
+.application-container.submitted:hover {
+    border-left-color: var(--remote-text);
+}
+
+.application-container.submitted .application-skill {
+    background-color: var(--light-green);
+}
+
+.application-container.submitted .application-skill p {
+    color: var(--remote-text);
+}
+
+.application-container.submitted .cancel-application {
+    background-color: var(--light-green);
+}
+
+.application-container.submitted .cancel-application p span {
+    color: var(--remote-text);
+}
+
+.application-container.submitted .application-category {
+    color: var(--remote-text);
+}
+
+
+
+.application-container.rejected {
+    background-color: var(--light-red);
+    border-left-color: var(--light-red);
+}
+
+.application-container.rejected:hover {
+    border-left-color: var(--red-color);
+}
+
+.application-container.rejected .application-skill {
+    background-color: var(--light-red2);
+}
+
+.application-container.rejected .application-skill p {
+    color: var(--red-color);
+}
+
+.application-container.rejected .cancel-application {
+    background-color: var(--light-red2);
+}
+
+.application-container.rejected .cancel-application p span {
+    color: var(--red-color);
+}
+
+.application-container.rejected .application-category {
+    color: var(--red-color);
+}
+
+
+
+.submitted-indicator img,
+.rejected-indicator img {
+    width: 25px;
+    height: 25px;
+}
+
+.submitted-indicator p {
+    color: var(--remote-text);
+    font-weight: bold;
+}
+
+.rejected-indicator p {
+    color: var(--red-color);
+    font-weight: bold;
+}
+
+.submitted-message,
+.rejected-message {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.submitted-message {
+    background-color: var(--light-green);
+
+}
+
+.rejected-message {
+    background-color: var(--light-red2);
 }
 
 .download-container {

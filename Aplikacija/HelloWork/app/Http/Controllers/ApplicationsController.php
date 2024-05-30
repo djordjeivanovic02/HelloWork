@@ -84,4 +84,41 @@ class ApplicationsController extends Controller
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
     }
+
+    public function acceptApplication(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required|integer',
+                'message' => 'nullable|string',
+                'user_id' => 'required|integer'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!'], 400);
+            }
+
+            $id = $request->id;
+            $message = $request->message;
+            $user_id = $request->user_id;
+
+            $application = Application::where('ad_id', $id)
+                ->where('user_id', $user_id)
+                ->first();
+
+            if (!$application) {
+                return response()->json(['type' => 'error', 'message' => 'Apliciranje ne postoji'], 400);
+            }
+
+            $application->message = $message;
+            $application->status = 'accepted';
+            $application->updated_at = now();
+            $application->save();
+
+            return response()->json(['type' => 'success', 'message' => 'Uspešno ste prihvatili apliciranje korisnika!'], 200);
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\SavedAd;
 use App\Models\User;
 use Carbon\Carbon;
@@ -93,11 +94,17 @@ class CompanyController extends Controller
     public function showApplications()
     {
         $user = auth()->user();
-        $applications = $user->appliedAds();
+        $appliedAds = collect();
+        $ads = $user->ads;
+        foreach ($ads as $ad) {
+            $applications = $ad->applications()->with('user')->get();
+            $appliedAds = $appliedAds->merge($applications);
+        }
+
         return view('/company-applications', [
             'currentUser' => $user,
             'user' => $user,
-            'applications' => $applications
+            'appliedAds' => $appliedAds
         ]);
     }
     public function updateCompanyData(Request $request)

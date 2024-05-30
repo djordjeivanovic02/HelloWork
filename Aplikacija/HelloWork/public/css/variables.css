@@ -33,7 +33,11 @@
 
 
     --light-green: rgb(212, 255, 212);
+    --light-green1: rgb(238, 255, 238);
+    --light-green2: rgb(172, 255, 172);
+
     --light-red: rgb(255, 223, 223);
+    --light-red2: rgb(255, 191, 191);
 
     --notification-error: rgb(255, 237, 237);
 

@@ -1,7 +1,7 @@
-const containerBg = document.querySelector('.cv-preview-background');
-const container = document.getElementById('pdfContainer');
-
 function previewCV(id, cv) {
+    const containerBg = document.querySelector('.cv-preview-background');
+    const container = document.getElementById('pdfContainer');
+
     var pdfUrl = 'storage/uploads/user_' + id + '/cv/' + cv;
     var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
@@ -48,15 +48,15 @@ function previewCV(id, cv) {
 
         window.addEventListener('resize', resizeCanvas);
     });
+    container.addEventListener('click', function (event) {
+        event.stopPropagation();
+    })
+    containerBg.addEventListener('click', function () {
+        this.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
 }
 
-container.addEventListener('click', function (event) {
-    event.stopPropagation();
-})
-containerBg.addEventListener('click', function () {
-    this.classList.remove('active');
-    document.body.style.overflow = 'auto';
-});
 
 
 

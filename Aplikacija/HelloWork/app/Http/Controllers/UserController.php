@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -110,6 +111,38 @@ class UserController extends Controller
             'currentUser' => $user,
             'user' => $user,
             'cv' => $cv,
+        ]);
+    }
+
+    public function showApplications()
+    {
+        $user = auth()->user();
+        $applications = Application::where('user_id', $user->id)
+            // ->orderByRaw("FIELD(status, 'accepted', 'rejected', 'pending')")
+            ->orderByDesc('updated_at')
+            ->get();
+
+        $accepted = Application::where('user_id', $user->id)
+            ->where('status', 'accepted')
+            ->orderByDesc('updated_at')
+            ->get();
+
+        $rejected = Application::where('user_id', $user->id)
+            ->where('status', 'rejected')
+            ->orderByDesc('updated_at')
+            ->get();
+
+        $active = Application::where('user_id', $user->id)
+            ->where('status', 'pending')
+            ->orderByDesc('updated_at')
+            ->get();
+        return view('/user-applications', [
+            'currentUser' => $user,
+            'user' => $user,
+            'applications' => $applications,
+            'accepted' => $accepted,
+            'rejected' => $rejected,
+            'active' => $active
         ]);
     }
     public function updateUserData(Request $request)
