@@ -120,5 +120,71 @@ class ApplicationsController extends Controller
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
     }
+    public function rejectApplication(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required|integer',
+                'message' => 'nullable|string',
+                'user_id' => 'required|integer'
+            ]);
 
+            if ($validator->fails()) {
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!'], 400);
+            }
+
+            $id = $request->id;
+            $message = $request->message;
+            $user_id = $request->user_id;
+
+            $application = Application::where('ad_id', $id)
+                ->where('user_id', $user_id)
+                ->first();
+
+            if (!$application) {
+                return response()->json(['type' => 'error', 'message' => 'Apliciranje ne postoji'], 400);
+            }
+
+            $application->message = $message;
+            $application->status = 'rejected';
+            $application->updated_at = now();
+            $application->save();
+
+            return response()->json(['type' => 'success', 'message' => 'Uspešno ste odbili apliciranje korisnika!'], 200);
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
+    }
+    public function returnToPending(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required|integer',
+                'user_id' => 'required|integer'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!'], 400);
+            }
+
+            $id = $request->id;
+            $user_id = $request->user_id;
+
+            $application = Application::where('ad_id', $id)
+                ->where('user_id', $user_id)
+                ->first();
+
+            if (!$application) {
+                return response()->json(['type' => 'error', 'message' => 'Apliciranje ne postoji'], 400);
+            }
+            $application->status = 'pending';
+            $application->message = null;
+            $application->updated_at = now();
+            $application->save();
+
+            return response()->json(['type' => 'success', 'message' => 'Uspešno ste otkazali potvrdu!'], 200);
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
+    }
 }

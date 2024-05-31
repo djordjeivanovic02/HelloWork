@@ -94,7 +94,6 @@ async function cancelApplicationList(id, dialogName) {
 async function acceptApplication(id, user_id, dialogName) {
     try {
         const formData = new FormData();
-        console.log('#message_' + dialogName);
         const messageBox = document.querySelector('#message_' + dialogName + '-' + id + '-' + user_id).value;
 
         formData.append('id', id);
@@ -102,6 +101,96 @@ async function acceptApplication(id, user_id, dialogName) {
         formData.append('message', messageBox);
 
         const response = await fetch('/accept-application', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        if (data.type == 'success') {
+            window.location.reload();
+            // closeDialog(dialogName);
+        }
+    } catch (error) {
+        alert("Došlo je do greške, molimo pokušajte kasnije " + error);
+    } finally {
+    }
+}
+
+
+async function returnApplication(id, user_id) {
+    try {
+        const formData = new FormData();
+
+        formData.append('id', id);
+        formData.append('user_id', user_id);
+
+        const response = await fetch('/return-application', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        if (data.type == 'success')
+            window.location.reload();
+    } catch (error) {
+        alert("Došlo je do greške, molimo pokušajte kasnije " + error.message);
+    } finally {
+    }
+}
+
+
+async function returnApplication(id, user_id) {
+    try {
+        const formData = new FormData();
+
+        formData.append('id', id);
+        formData.append('user_id', user_id);
+
+        const response = await fetch('/return-application', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        if (data.type == 'success')
+            window.location.reload();
+    } catch (error) {
+        alert("Došlo je do greške, molimo pokušajte kasnije " + error.message);
+    } finally {
+    }
+}
+
+async function rejectApplication(id, user_id, dialogName) {
+    try {
+        const formData = new FormData();
+        const messageBox = document.querySelector('#message_' + dialogName + '-' + id + '-' + user_id).value;
+
+        formData.append('id', id);
+        formData.append('user_id', user_id);
+        formData.append('message', messageBox);
+
+        const response = await fetch('/reject-application', {
             method: 'POST',
             body: formData,
             headers: {

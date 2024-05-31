@@ -34,7 +34,7 @@
                     <div class="navigation-main align-items-center gap-5">
                         <a href="/">POČETNA</a>
                         <a href="/searchjob">PRONAĐI POSAO</a>
-                        <a href="#">KREIRAJ CV</a>
+                        <a href="/make-cv">KREIRAJ CV</a>
                         <a href="#">O NAMA</a>
                         <a href="#">PODRŠKA</a>
                     </div>
@@ -75,6 +75,7 @@
                 @yield('job')
                 @yield('new-job')
                 @yield('company-dashboard')
+                @yield('cv-maker')
                 {{-- @include('parts.login') --}}
             </div>
         </div>

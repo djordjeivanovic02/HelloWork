@@ -1,6 +1,7 @@
 <div @if ($application->status == 'accepted') class="application-container submitted w-100 p-4" @endif
     @if ($application->status == 'rejected') class="application-container rejected w-100 p-4" @endif
-    @if ($application->status == 'pending') class="application-container w-100 p-4" @endif>
+    @if ($application->status == 'pending') class="application-container w-100 p-4" @endif
+    id="application-containter-{{ $application->ad_id }}-{{ $application->user_id }}">
     <p class="application-name m-0"><a href="/user/{{ $application->user_id }}">{{ $application->user->name }}</a></p>
     <a href="" class="my-1 application-category">{{ $application->user->userInfo->professional_title }}</a>
     <a href="/job/{{ $application->ad_id }}"
@@ -55,27 +56,28 @@
         </div>
     @endforeach
 
-    <div class="actions w-100 d-flex justify-content-end align-items-center">
-        <div
-            @if ($application->status == 'accepted' || $application->status == 'rejected') style="display: none"
+    <div class="w-100 d-flex justify-content-end align-items-center mt-4">
+        <div @if ($application->status == 'accepted' || $application->status == 'rejected') style="display: none"
             @else
-                style="display: flex" @endif>
+                style="display: flex" @endif
+            class="all-actions2">
             <div class="action-button submit d-flex align-items-center justify-content-center"
                 onclick="showDialog('apply-user-{{ $application->ad_id . '-' . $application->user_id }}')">
                 <img src="{{ asset('images/submitted.svg') }}" alt="Prihvati">
                 <p>Prihvati</p>
             </div>
-            <div class="action-button reject d-flex align-items-center justify-content-center">
+            <div class="action-button reject d-flex align-items-center justify-content-center"
+                onclick="showDialog('reject-user-{{ $application->ad_id . '-' . $application->user_id }}')">
                 <img src="{{ asset('images/rejected.svg') }}" alt="Prihvati">
                 <p>Odbij</p>
             </div>
         </div>
-        <div
-            @if ($application->status == 'accepted' || $application->status == 'rejected') style="display: flex"
+        <div @if ($application->status == 'accepted' || $application->status == 'rejected') style="display: flex"
         @else
-            style="display: none" @endif>
+            style="display: none" @endif
+            class="small-actions">
             <div class="action-button  d-flex align-items-center justify-content-center"
-                onclick="showDialog('reject-user')">
+                onclick="returnApplication({{ $application->ad_id }}, {{ $application->user_id }})">
                 <p class="m-0">Otkaži</p>
             </div>
         </div>
@@ -124,18 +126,18 @@
 @endcomponent
 
 @component('dialogs.box-with-input', [
-    'id' => 'reject-user',
+    'id' => 'reject-user-' . $application->ad_id . '-' . $application->user_id,
     'type' => 'success',
     'title' => 'Odbij korisnika',
     'message' =>
-        'Ukoliko želite da odbijete apliciranje korisnika za posao ' .
+        'Da li ste sigurni da želite da odbijete korisnika za posao ' .
         $application->ad->title .
         ', možete to uraditi klikom na dugme Odbij',
     'close' => true,
     'actions' => [
         [
             'url' =>
-                'javascript:acceptApplication(' .
+                'javascript:rejectApplication(' .
                 $application->ad_id .
                 ', ' .
                 $application->user_id .
@@ -144,7 +146,7 @@
             'label' => 'Odbij',
         ],
         [
-            'url' => "javascript:closeDialog('reject-user')",
+            'url' => "javascript:closeDialog('reject-user-' . $application->ad_id . '-' . $application->user_id .')",
             'type' => 'cancel',
             'label' => 'Otkaži',
         ],

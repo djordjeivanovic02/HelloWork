@@ -94,19 +94,26 @@ class CompanyController extends Controller
     public function showApplications()
     {
         $user = auth()->user();
-        $appliedAds = collect();
+
+        $allApplications = collect();
+        $applicationsByAd = collect();
         $ads = $user->ads;
+
         foreach ($ads as $ad) {
             $applications = $ad->applications()->with('user')->get();
-            $appliedAds = $appliedAds->merge($applications);
+            $allApplications = $allApplications->merge($applications);
+            $applicationsByAd->put($ad->id, $applications);
         }
 
         return view('/company-applications', [
             'currentUser' => $user,
             'user' => $user,
-            'appliedAds' => $appliedAds
+            'allApplications' => $allApplications,
+            'applicationsByAd' => $applicationsByAd,
+            'ads' => $ads
         ]);
     }
+
     public function updateCompanyData(Request $request)
     {
         try {

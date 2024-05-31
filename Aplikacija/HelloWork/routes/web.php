@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IndexController;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::middleware('check.type:0')->group(function () {
-        //only admin routes
+        Route::get('/dashboard', [AdminController::class, 'show']);
     });
     Route::middleware('check.type:1')->group(function () {
         Route::post('/updateUserData', [UserController::class, 'updateUserData']);
@@ -69,6 +70,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/company-add-new-job', [AdController::class, 'createAd']);
         Route::delete('/company-delete-job/{id}', [AdController::class, 'deleteAd']);
         Route::post('/accept-application', [ApplicationsController::class, 'acceptApplication']);
+        Route::post('/return-application', [ApplicationsController::class, 'returnToPending']);
+        Route::post('/reject-application', [ApplicationsController::class, 'rejectApplication']);
     });
     Route::get('/logout', [AuthController::class, 'signOut']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
@@ -84,6 +87,12 @@ Route::get('/job/{id}', [AdController::class, 'show']);
 Route::get('/company/{id}', [CompanyController::class, 'show']);
 Route::get('/', [IndexController::class, '__invoke'])->name('login');
 Route::get('/searchjob', [AdController::class, 'showSearchJob']);
+Route::get('/make-cv', function () {
+    return view('cv-maker', [
+        'user' => auth()->user(),
+        'currentUser' => auth()->user()
+    ]);
+});
 // samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {
     return view('parts.widgets');
