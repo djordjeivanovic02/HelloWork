@@ -91,24 +91,24 @@
     {{-- FOOTER --}}
     <div class="footer-container container-fluid w-100 p-0 d-flex justify-content-center">
         <div class="footer-main-container footer-w-100 position-relative w-100">
-            <div class="newsletter-container w-100 position-absolute d-flex justify-content-between align-items-center">
-                <h2 class="m-0 p-0">Pridruzite nam se da zajedno pronadjemo Vas posao iz snova!</h2>
-                <button class="bg-white">Pretrazuj poslove</button>
+            <div class="newsletter-container w-100 position-absolute d-flex">
+                <h2 class="m-0 p-0">Pridružite nam se da zajedno pronađemo Vaš posao iz snova!</h2>
+                <button class="bg-white" onclick="window.location.href='/searchjob'">Pretražuj poslove</button>
             </div>
-            <div class="footer-content-container w-100 d-flex justify-content-between align-items-start">
+            <div class="footer-content-container w-100 d-flex">
                 <div class="footer-logo-info-container">
                     <div class="footer-logo d-flex align-items-center">
                         <img src="{{ asset('images/logo.svg') }}" alt="Logo Icon" style="width: 70px">
                         <h3 class="m-0 p-0">Hello <span>Work</span></h3>
                     </div>
-                    <p class="p-0">Ipsum passages, and more recently with desktop publishing software like Aldus
-                        PageMaker including versions of Lorem Ipsum</p>
+                    <p class="p-0">HelloWork je platforma za zapošljavanje na kojoj možete pronaći oglase za
+                        različite posove.</p>
                     <div class="footer-logo d-flex align-items-center">
                         <svg viewBox="0 0 512 512">
                             <path
                                 d="M448 64H64C28.65 64 0 92.65 0 128v256c0 35.35 28.65 64 64 64h384c35.35 0 64-28.65 64-64V128C512 92.65 483.3 64 448 64zM64 112h384c8.822 0 16 7.178 16 16v22.16l-166.8 138.1c-23.19 19.28-59.34 19.27-82.47 .0156L48 150.2V128C48 119.2 55.18 112 64 112zM448 400H64c-8.822 0-16-7.178-16-16V212.7l136.1 113.4C204.3 342.8 229.8 352 256 352s51.75-9.188 71.97-25.98L464 212.7V384C464 392.8 456.8 400 448 400z" />
                         </svg>
-                        <a href="#" class="m-o p-0">team@aurora.rs</a>
+                        <a href="#" class="m-0 p-0">team@aurora.rs</a>
                     </div>
                 </div>
                 <div class="footer-logo-info-container">

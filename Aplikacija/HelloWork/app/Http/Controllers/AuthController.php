@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VerificationMail;
 use Auth;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Hash;
 use Exception;
+use Mail;
 use Validator;
+use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 
-class AuthController extends Controller
+class AuthController extends Controller implements MustVerifyEmail
 {
+    use MustVerifyEmailTrait;
     public function login(Request $request)
     {
         try {
@@ -55,24 +60,20 @@ class AuthController extends Controller
             $data = $request->all();
             $user = $this->createUser($data);
 
-            auth()->login($user);
+            $user->sendEmailVerificationNotification();
+
+            // auth()->login($user);
             $tip = 'poslodavac';
             if ($request->type == 1)
                 $tip = 'kandidat';
 
-            Auth::user()->logActivity('register', 'Nova registracija na platformi: ' . auth()->user()->email . ' kao ' . $tip);
-
-            return response()->json(['type' => 'success', 'redirect' => '/'], 200);
+            $user->logActivity('register', 'Nova registracija na platformi: ' . $user->email . ' kao ' . $tip);
+            Mail::to($user->email)->send(new VerificationMail($user));
+            return response()->json(['type' => 'success', 'message' => 'Uspešno ste se registrovali, na vašu email adresu je poslat email za verifikaciju', 'redirect' => '/'], 200);
         } catch (Exception $ex) {
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
         //return redirect
-    }
-
-    public function signOut()
-    {
-        auth()->logout();
-        return redirect('/');
     }
 
     private function createUser(array $data)
@@ -81,6 +82,18 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'type' => $data['type']
+        ]);
+    }
+    public function signOut()
+    {
+        auth()->logout();
+        return redirect('/');
+    }
+
+    public function verifyEmail($id)
+    {
+        return view('verification.email-verification', [
+            'user' => User::where('id', $id)
         ]);
     }
 }

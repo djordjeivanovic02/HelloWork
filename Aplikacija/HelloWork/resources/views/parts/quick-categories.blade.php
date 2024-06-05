@@ -23,12 +23,15 @@
     ];
 @endphp
 @for ($i = 2; $i < 10; $i++)
+    @php
+        $url = '/searchjob?jobCategory=' . $i;
+    @endphp
     <div class="categories-container d-inline-block p-2">
         <div class="spoljni-container position-relative d-flex flex-column align-items-center justify-content-center">
             <div class="second-hover-indicator top-0 h-100 position-absolute"></div>
             <div class="spoljni-main position-absolute">
                 <p class="gornji-text"> {{ $categories[$i] }}</p>
-                <a href="">
+                <a href="{{ $url }}">
                     <p class="donji-text mb-0"> Pogledaj najnovije poslove </p>
                 </a>
             </div>

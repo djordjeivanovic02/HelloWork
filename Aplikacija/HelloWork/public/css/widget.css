@@ -93,7 +93,8 @@
 /* Treći deo */
 
 .out-container {
-    width: 397px;
+    width: 100%;
+    max-width: 397px;
     /* he÷ight: 273px; */
     border: 2px solid transparent;
     border-radius: 10px;
@@ -127,7 +128,6 @@
 }
 
 .before2 {
-    width: 60px;
     font-family: 'Poppins', sans-serif;
     color: #7F93B6;
     font-family: 'Poppins', sans-serif;

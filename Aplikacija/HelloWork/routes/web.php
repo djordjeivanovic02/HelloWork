@@ -9,6 +9,7 @@ use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\NewJobController;
 use App\Http\Controllers\SavedAdController;
 use App\Http\Controllers\UserController;
+use App\Mail\VerificationMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->group(function () {
+Auth::routes(['verify' => true]);
+
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::middleware('check.type:0')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'show']);
         Route::get('/for-check', [AdminController::class, 'forCheck']);
@@ -97,7 +100,11 @@ Route::get('/make-cv', function () {
         'currentUser' => auth()->user()
     ]);
 });
+
+Route::get('/verificate-email/{id}', [AuthController::class, 'verifyEmail'])->name('verify-email');
+
 // samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {
     return view('parts.widgets');
 });
+
