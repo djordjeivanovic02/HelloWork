@@ -26,6 +26,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::middleware('check.type:0')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'show']);
+        Route::get('/for-check', [AdminController::class, 'forCheck']);
+        Route::get('/candidates', [AdminController::class, 'candidates']);
+        Route::put('/approve-ad/{id}', [AdminController::class, 'approveAd']);
+        Route::put('/reject-ad/{id}', [AdminController::class, 'rejectAd']);
     });
     Route::middleware('check.type:1')->group(function () {
         Route::post('/updateUserData', [UserController::class, 'updateUserData']);
@@ -86,7 +90,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job/{id}', [AdController::class, 'show']);
 Route::get('/company/{id}', [CompanyController::class, 'show']);
 Route::get('/', [IndexController::class, '__invoke'])->name('login');
-Route::get('/searchjob', [AdController::class, 'showSearchJob']);
+Route::get('/searchjob', [AdController::class, 'showSearchJob'])->name('searchjob');
 Route::get('/make-cv', function () {
     return view('cv-maker', [
         'user' => auth()->user(),

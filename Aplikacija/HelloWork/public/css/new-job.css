@@ -389,6 +389,7 @@ td {
     background-color: rgb(220, 211, 255);
     padding: 3px 5px;
     border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .cancel-application {

@@ -62,11 +62,100 @@ class AdController extends Controller
         ]);
     }
 
-    public function showSearchJob()
+    public function showSearchJob(Request $request)
     {
+        $query = Ad::query();
+
+        // Filtriranje po nazivu posla ili kompanije
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where(function ($query) use ($request) {
+                $query->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhereHas('users', function ($q) use ($request) {
+                        $q->where('name', 'like', '%' . $request->search . '%');
+                    });
+            });
+        }
+
+        // Filtriranje po lokaciji
+        if ($request->has('location') && !empty($request->location)) {
+            $query->whereHas('users.companyInfo', function ($q) use ($request) {
+                $q->where('city', 'like', '%' . $request->location . '%');
+            });
+        }
+
+        // Filtriranje po veštinama
+        if ($request->has('skills') && !empty($request->skills)) {
+            $query->where('tabs', 'like', '%' . $request->skills . '%');
+        }
+
+        // Filtriranje po kategoriji posla
+        if ($request->has('jobCategory') && !empty($request->jobCategory)) {
+            $query->where('job_category', $request->jobCategory);
+        }
+
+        // Filtriranje po tipu posla
+        $jobTypes = [];
+        if ($request->has('fullTime')) {
+            $jobTypes[] = 1;
+        }
+        if ($request->has('partTime')) {
+            $jobTypes[] = 2;
+        }
+        if (!empty($jobTypes)) {
+            $query->whereIn('job_type', $jobTypes);
+        }
+
+        // Filtriranje po načinu plaćanja
+        if ($request->hasAny(['dailyPay', 'mountlyPay', 'yearlyPay'])) {
+            $paymentMethods = [];
+            if ($request->has('dailyPay')) {
+                $paymentMethods[] = 1;
+            }
+            if ($request->has('mountlyPay')) {
+                $paymentMethods[] = 2;
+            }
+            if ($request->has('yearlyPay')) {
+                $paymentMethods[] = 3;
+            }
+            $query->whereIn('payment_method', $paymentMethods);
+        }
+
+        // Filtriranje po ceni
+        if ($request->has('minPrice') && !empty($request->minPrice)) {
+            $query->where('min_salary', '>=', $request->minPrice * 1000);
+        }
+
+        if ($request->has('maxPrice') && !empty($request->maxPrice)) {
+            $query->where('max_salary', '<=', $request->maxPrice * 1000);
+        }
+
+        // Primeni sortiranje
+        if ($request->has('sorting')) {
+            switch ($request->sorting) {
+                case 0:
+                    $query->orderBy('title', 'desc');
+                    break;
+                case 1:
+                    $query->orderBy('created_at', 'desc');
+                    break;
+                case 2:
+                    $query->orderBy('created_at', 'asc');
+                    break;
+            }
+        }
+        $query->where('skills', 1);
+        // Paginacija
+        $adsCount = $query->count();
+        $ads = $query->paginate(3)->appends($request->except('page'));
+        // dd($ads);
+        if ($request->ajax()) {
+            return view('parts.job-list', compact('ads'))->render();
+        }
         return view('search-jobs', [
             'currentUser' => auth()->user(),
-            'user' => auth()->user()
+            'user' => auth()->user(),
+            'ads' => $ads,
+            'adsCount' => $adsCount,
         ]);
     }
 
@@ -123,6 +212,8 @@ class AdController extends Controller
         } catch (Exception $ex) {
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
+
+
     }
 
     public function deleteAd(Request $request, $id)

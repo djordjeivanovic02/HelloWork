@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Ad;
 use Exception;
@@ -40,6 +41,7 @@ class ApplicationsController extends Controller
                 $appl->user_id = $user->id;
                 $appl->ad_id = $id;
                 $appl->save();
+                Auth::user()->logActivity('apply', auth()->user()->name . ' je aplicirao za oglas: ' . $appl->ad->title);
 
                 return response()->json(['type' => 'success', 'message' => 'Uspešno ste aplicirali za ovaj posao!'], 200);
             }
@@ -74,9 +76,11 @@ class ApplicationsController extends Controller
             } else {
                 // echo $application->id;
                 // return response()->json(['type' => 'success', 'message' => $application->id], 200);
+                Auth::user()->logActivity('cancel-apply', auth()->user()->name . ' je otkazao apliciranje za oglas sa id: ' . $application->ad_id);
                 Application::where('ad_id', $id)
                     ->where('user_id', auth()->id())
                     ->forceDelete();
+
 
                 return response()->json(['type' => 'success', 'message' => 'Uspešno ste otkazali aplikaciju za ovaj posao!'], 200);
             }
@@ -115,6 +119,8 @@ class ApplicationsController extends Controller
             $application->updated_at = now();
             $application->save();
 
+            Auth::user()->logActivity('accept-apply', auth()->user()->name . ' je prihvatio apliciranje korisnika: ' . $application->user->name . ' za posao: ' . $application->ad->title);
+
             return response()->json(['type' => 'success', 'message' => 'Uspešno ste prihvatili apliciranje korisnika!'], 200);
         } catch (Exception $ex) {
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
@@ -149,6 +155,7 @@ class ApplicationsController extends Controller
             $application->status = 'rejected';
             $application->updated_at = now();
             $application->save();
+            Auth::user()->logActivity('reject-apply', auth()->user()->name . ' je odbio apliciranje korisnika: ' . $application->user->name . ' za posao: ' . $application->ad->title);
 
             return response()->json(['type' => 'success', 'message' => 'Uspešno ste odbili apliciranje korisnika!'], 200);
         } catch (Exception $ex) {

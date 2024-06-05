@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -55,6 +56,11 @@ class AuthController extends Controller
             $user = $this->createUser($data);
 
             auth()->login($user);
+            $tip = 'poslodavac';
+            if ($request->type == 1)
+                $tip = 'kandidat';
+
+            Auth::user()->logActivity('register', 'Nova registracija na platformi: ' . auth()->user()->email . ' kao ' . $tip);
 
             return response()->json(['type' => 'success', 'redirect' => '/'], 200);
         } catch (Exception $ex) {
