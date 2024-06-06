@@ -31,9 +31,11 @@
         <a class="zaboravili" href="#">Zaboravili ste lozinku?</a>
     </div>
 
-    <input type="button" class="button-prijavi-se d-flex align-items-center justify-content-center" value="Prijavi se"
+    <input type="button" class="button-prijavi-se align-items-center justify-content-center" value="Prijavi se"
         id="login-btn">
-
+    <div class="button-prijavi-se loading align-items-center justify-content-center" id="login-loading">
+        <img src="{{ asset('images/loading.gif') }}" alt="Loading">
+    </div>
     <div class="registration">
         <p class="text-registration">Još uvek nemate nalog?</p> <a class="text-prijava-registration"
             href="#"><span class="registruj-se">Registruj se</span></a>
@@ -84,9 +86,12 @@
         </div>
     </div>
 
-    <input type="button" class="button-prijavi-se d-flex align-items-center justify-content-center"
-        value="Registruj se" id="register-btn">
+    <input type="button" class="button-prijavi-se align-items-center justify-content-center" value="Registruj se"
+        id="register-btn">
 
+    <div class="button-prijavi-se loading align-items-center justify-content-center" id="register-loading">
+        <img src="{{ asset('images/loading.gif') }}" alt="Loading">
+    </div>
     <div class="registration">
         <p class="text-registration">Već imate nalog?</p> <a class="text-prijava-registration" href="#"><span
                 class="registruj-se prijavi-se">Prijavi se</span></a>

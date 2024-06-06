@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::middleware('check.type:0')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'show']);
         Route::get('/for-check', [AdminController::class, 'forCheck']);
@@ -87,9 +87,12 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/check-is-saved', [SavedAdController::class, 'checkIsSaved']);
 });
 
+Route::group(['middleware' => ['verified']], function () {
+    Route::post('/login', [AuthController::class, 'login']);
+});
+
 Route::get('/user/{id}', [UserController::class, 'show']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job/{id}', [AdController::class, 'show']);
 Route::get('/company/{id}', [CompanyController::class, 'show']);
 Route::get('/', [IndexController::class, '__invoke'])->name('login');
@@ -102,7 +105,7 @@ Route::get('/make-cv', function () {
 });
 
 Route::get('/verificate-email/{id}', [AuthController::class, 'verifyEmail'])->name('verify-email');
-
+Route::get('/resend-email-verification/{email}', [AuthController::class, 'resendEmailVerification']);
 // samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {
     return view('parts.widgets');

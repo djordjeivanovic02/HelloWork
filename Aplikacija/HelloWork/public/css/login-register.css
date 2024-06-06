@@ -196,6 +196,21 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 450;
     padding: 15px;
+    display: flex;
+}
+
+.loading {
+    padding: 10px;
+    display: none;
+}
+
+.loading-login {
+    padding: 10px;
+    display: none;
+}
+
+.button-prijavi-se img {
+    height: 35px;
 }
 
 .text-registration {

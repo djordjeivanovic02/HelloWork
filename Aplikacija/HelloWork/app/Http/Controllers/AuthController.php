@@ -26,7 +26,7 @@ class AuthController extends Controller implements MustVerifyEmail
             ]);
 
             if ($validator->fails()) {
-                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!'], 400);
+                return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!'], 200);
             }
 
             $credentials = $request->only('email', 'password');
@@ -35,9 +35,9 @@ class AuthController extends Controller implements MustVerifyEmail
                 return response()->json(['type' => 'success', 'redirect' => '/']);
             }
 
-            return response()->json(['type' => 'error', 'errors' => ['email' => 'Invalid Credentials']], 422);
+            return response()->json(['type' => 'error', 'errors' => ['email' => 'Pogrešna email adresa ili lozinka']], 200);
         } catch (Exception $ex) {
-            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 200);
         }
     }
 
@@ -59,9 +59,6 @@ class AuthController extends Controller implements MustVerifyEmail
             }
             $data = $request->all();
             $user = $this->createUser($data);
-
-            $user->sendEmailVerificationNotification();
-
             // auth()->login($user);
             $tip = 'poslodavac';
             if ($request->type == 1)
@@ -71,7 +68,7 @@ class AuthController extends Controller implements MustVerifyEmail
             Mail::to($user->email)->send(new VerificationMail($user));
             return response()->json(['type' => 'success', 'message' => 'Uspešno ste se registrovali, na vašu email adresu je poslat email za verifikaciju', 'redirect' => '/'], 200);
         } catch (Exception $ex) {
-            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 200);
         }
         //return redirect
     }
@@ -92,8 +89,39 @@ class AuthController extends Controller implements MustVerifyEmail
 
     public function verifyEmail($id)
     {
-        return view('verification.email-verification', [
-            'user' => User::where('id', $id)
-        ]);
+        try {
+            $user = User::where('id', $id)->first();
+            if ($user) {
+                $user->email_verified_at = now();
+                $user->save();
+
+                return view('verification.email-verification', [
+                    'type' => 'success'
+                ]);
+            } else {
+                return view('verification.email-verification', [
+                    'type' => 'error'
+                ]);
+            }
+        } catch (Exception $ex) {
+            return view('verification.email-verification', [
+                'type' => 'error'
+            ]);
+        }
+    }
+
+    public function resendEmailVerification($email)
+    {
+        try {
+            $user = User::where('email', $email)->first();
+            if ($user) {
+                Mail::to($user->email)->send(new VerificationMail($user));
+                return response()->json(['type' => 'success', 'message' => 'Poslat verifikacioni mail'], 200);
+            } else {
+                return response()->json(['type' => 'not-exist', 'message' => 'Korisnik ne postoji'], 200);
+            }
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => 'Došlo je do greške!'], 500);
+        }
     }
 }
