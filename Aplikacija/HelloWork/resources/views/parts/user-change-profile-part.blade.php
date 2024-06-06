@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/new-job.css') }}">
+<link rel="stylesheet" href="{{ asset('css/job.css') }}">
 <div class="w-100">
     <div class="section-info w-100">
         <h4>Osnovne informacije</h4>
@@ -261,16 +262,73 @@
             </div>
         </div>
     </div>
+    <div class="section-info w-100 mt-3 d-flex justify-content-between align-items-center">
+        <h4>Prethodni poslovi</h4>
+        <button onclick="showDialog('previous')">Dodaj</button>
+    </div>
+    <div class="w-100 my-4">
+        @if ($user && $user->previousJobs && count($user->previousJobs) != 0)
+            @foreach ($user->previousJobs as $item)
+                <div class="early-job align-items-center my-3 position-relative" id="early-job-{{ $item->id }}">
+                    <div class="early-job-image d-flex justify-content-center align-items-center">
+                        <p class="m-0 p-0">{{ $item->company_name[0] }}</p>
+                    </div>
+                    <div class="early-job-title mx-4">
+                        <p class="my-0">{{ $item->job_title }}</p>
+                        <a href="">{{ $item->company_name }}</a>
+                    </div>
+                    <div class="early-job-duration">
+                        <p class="m-0">{{ $item->start_year }} - {{ $item->end_year }}</p>
+                    </div>
+                    <div class="delete-previous" onclick="removePrevious({{ $item->id }})">
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <p>Još uvek niste dodali nijedan prethodni posao!</p>
+        @endif
+    </div>
+
+
     <div class="info-row w-100 d-flex flex-column align-items-start">
-        <button class="my-4 add-ad" onclick="updateUserProfile()">Ažuriraj podatke</button>
+        <button class="my-4 add-ad w-100" onclick="updateUserProfile()">Ažuriraj podatke</button>
     </div>
     <div class="section-info w-100 mt-3">
         <h4>Ostale akcije</h4>
     </div>
     <div class="info-row w-100 d-flex">
-        <button class="my-4 add-ad" style="background-color: red; border-color: red" onclick="showDialog()">Obrišite
+        <button class="my-4 add-ad" style="background-color: red; border-color: red"
+            onclick="showDialog('delete_profile')">Obrišite
             nalog</button>
     </div>
 </div>
+
+@component('dialogs.notification', [
+    'id' => 'delete_profile',
+    'type' => 'success',
+    'title' => 'Brisanje naloga',
+    'message' =>
+        'Da li ste sigurni da želite da obrišete svoj nalog? Svi oglasi koje imate kao i sva apliciranja će biti obrisana!',
+    'close' => true,
+    'actions' => [
+        [
+            'url' => 'deleteAccount(' . $user->id . ')',
+            'type' => 'yes',
+            'label' => 'DA, OBRIŠI',
+        ],
+        [
+            'url' => "closeDialog('delete_profile')",
+            'type' => 'cancel',
+            'label' => 'Otkaži',
+        ],
+    ],
+])
+@endcomponent
+
+@component('dialogs.previous-job', [])
+@endcomponent
+
+<script src="{{ asset('js/dialogs/actions.js') }}"></script>
+<script src="{{ asset('js/delete-profile.js') }}"></script>
 <script src="{{ asset('js/company/change-logo.js') }}"></script>
 <script src="{{ asset('js/user/update-profile-data.js') }}"></script>

@@ -20,7 +20,8 @@ async function applyForJob(id, dialogName) {
             btn.style.backgroundColor = 'red';
             btn.innerHTML = 'Otkaži apliciranje';
 
-            closeDialog(dialogName);
+            // closeDialog(dialogName
+            window.location.reload();
         }
     } catch (error) {
         alert("Došlo je do greške, molimo pokušajte kasnije " + error.message);
@@ -51,7 +52,8 @@ async function cancelApplication(id, dialogName) {
             btn.style.backgroundColor = '#613FE5';
             btn.innerHTML = 'Apliciraj za posao';
 
-            closeDialog(dialogName);
+            // closeDialog(dialogName);
+            window.location.reload();
         }
     } catch (error) {
         alert("Došlo je do greške, molimo pokušajte kasnije " + error.message);

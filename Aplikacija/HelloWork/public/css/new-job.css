@@ -12,6 +12,16 @@
     padding-bottom: 15px;
 }
 
+.section-info button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--main-color);
+    color: white;
+}
+
+
+
 .all-applications,
 .accepted-applications,
 .rejected-applications,
@@ -41,6 +51,15 @@
     margin: 0;
     margin-left: 5px;
     font-weight: 600;
+}
+
+.support-row {
+    transition-duration: .3s;
+}
+
+.support-row:hover {
+    cursor: pointer;
+    background-color: var(--background-light);
 }
 
 .action-button.submit {
@@ -681,6 +700,25 @@ td {
 
 .cv-preview-main {
     height: 100%;
+}
+
+.add-previous {
+    color: white;
+    margin-left: 10px;
+}
+
+.delete-previous {
+    position: absolute;
+    right: 0;
+}
+
+.delete-previous::before {
+    content: '\00D7';
+    font-size: 35px;
+    color: var(--red-color);
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
 }
 
 /* RESPONSIVE */

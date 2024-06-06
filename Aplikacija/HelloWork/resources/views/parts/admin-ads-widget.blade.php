@@ -29,15 +29,17 @@
 @endphp
 <div @if ($type == 'newestAdsAccepted') class="submitted application-container p-4 w-100" @endif
     @if ($type == 'newestAdsRejected') class="rejected application-container p-4 w-100" @endif
-    @if ($type == 'newestAdsForCheck') class="application-container p-4 w-100" @endif>
+    @if ($type == 'newestAdsForCheck' || $type == 'adminTest') class="application-container p-4 w-100" @endif>
     {{-- id="application-containter-{{ $application->ad_id }}-{{ $application->user_id }}"> --}}
     <p class="application-name m-0"><a href="/job/{{ $ad->id }}">
+
             @php
+                $newTitle = $ad->title;
                 if (strlen($ad->title) > 15) {
-                    $ad->title = Str::substr($ad->title, 0, 15) . '...';
+                    $newTitle = Str::substr($ad->title, 0, 15) . '...';
                 }
             @endphp
-            {{ $ad->title }}</a></p>
+            {{ $newTitle }}</a></p>
     <a href="" class="my-1 application-category">{{ $categories[$ad->job_category] }}</a>
     <a href="/company/{{ $ad->user_id }}" class="my-1 d-inline-block application-job">({{ $ad->users->name }})</a>
     <div class="row-images w-100 my-2 mb-3">
@@ -106,6 +108,14 @@
             </div>
         </div>
     @endif
+
+    @if ($type == 'adminTest')
+        <div class="action-button reject d-flex align-items-center justify-content-center"
+            onclick="showDialog('delete-ad-{{ $ad->id }}')">
+            <img src="{{ asset('images/rejected.svg') }}" alt="Prihvati">
+            <p>Obriši oglas</p>
+        </div>
+    @endif
     {{-- <div class="small-actions d-flex">
             <div class="action-button  d-flex align-items-center justify-content-center" onclick="returnApplication()">
                 <p class="m-0">Otkaži</p>
@@ -115,49 +125,27 @@
 
 </div>
 
-
-{{-- @component('dialogs.box-with-input', [
-    'id' => 'apply-user-' . $application->ad_id . '-' . $application->user_id,
+@component('dialogs.notification', [
+    'id' => 'delete-ad-' . $ad->id,
     'type' => 'success',
-    'title' => 'Prihvati korisnika',
-    'message' => 'Ukoliko želite da prihvatite apliciranje korisnika za posao ' . $application->ad->title . ', možete to uraditi klikom na dugme Prihvati',
+    'title' => 'Brisanje oglasa',
+    'message' => 'Da li ste sigurni da želite da obrisete oglas ' . $ad->title . '?',
     'close' => true,
     'actions' => [
         [
-            'url' => 'javascript:acceptApplication(' . $application->ad_id . ', ' . $application->user_id . ", 'apply-user')",
+            'url' => 'deleteJobAdmin(' . $ad->id . ', true)',
             'type' => 'yes',
-            'label' => 'Prihvati',
+            'label' => 'DA, OBRIŠI',
         ],
         [
-            'url' => "javascript:closeDialog('apply-user-' . $application->ad_id . '-' . $application->user_id .')",
+            'url' => "closeDialog('delete-ad-'" . $ad->id . ')',
             'type' => 'cancel',
             'label' => 'Otkaži',
         ],
     ],
 ])
 @endcomponent
-
-@component('dialogs.box-with-input', [
-    'id' => 'reject-user-' . $application->ad_id . '-' . $application->user_id,
-    'type' => 'success',
-    'title' => 'Odbij korisnika',
-    'message' => 'Da li ste sigurni da želite da odbijete korisnika za posao ' . $application->ad->title . ', možete to uraditi klikom na dugme Odbij',
-    'close' => true,
-    'actions' => [
-        [
-            'url' => 'javascript:rejectApplication(' . $application->ad_id . ', ' . $application->user_id . ", 'apply-user')",
-            'type' => 'yes',
-            'label' => 'Odbij',
-        ],
-        [
-            'url' => "javascript:closeDialog('reject-user-' . $application->ad_id . '-' . $application->user_id .')",
-            'type' => 'cancel',
-            'label' => 'Otkaži',
-        ],
-    ],
-])
-@endcomponent --}}
-
-
+<script src="{{ asset('js/dialogs/actions.js') }}"></script>
+<script src="{{ asset('js/company/delete-job.js') }}"></script>
 <script src="{{ asset('js/user/cv-actions.js') }}"></script>
 <script src="{{ asset('js/user/apply-for-job.js') }}"></script>

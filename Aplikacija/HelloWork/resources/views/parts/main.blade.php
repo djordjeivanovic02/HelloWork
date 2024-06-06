@@ -35,19 +35,24 @@
                         <a href="/">POČETNA</a>
                         <a href="/searchjob">PRONAĐI POSAO</a>
                         <a href="/make-cv">KREIRAJ CV</a>
-                        <a href="#">O NAMA</a>
-                        <a href="#">PODRŠKA</a>
+                        <a href="/about">O NAMA</a>
+                        <a href="/support">PODRŠKA</a>
                     </div>
                     <div class="actions-container align-items-center gap-4">
                         {{-- <a href="#" class="text-decoration-none add-your-cv">Dodajte Vaš CV</a> --}}
-
+                        @if ($currentUser && $currentUser->type == 0)
+                            <button class="login-register-button open-profile h-100 border-0 rounded p-3 d-block"
+                                onclick="window.location.href='/dashboard'">
+                                Kontrolna tabla</button>
+                        @endif
                         <button
                             class="login-register-button open-profile h-100 border-0 rounded p-3
-                            @if ($currentUser !== null) d-block
+                            @if ($currentUser !== null && $currentUser->type != 0) d-block
                             @else
                                 d-none @endif
                             ">Pogledaj
                             profil</button>
+
                         <button
                             class="login-register-button login-register h-100 border-0 rounded p-3
                             @if ($currentUser !== null) d-none
@@ -76,6 +81,9 @@
                 @yield('new-job')
                 @yield('company-dashboard')
                 @yield('cv-maker')
+                @yield('about')
+                @yield('contact')
+
                 {{-- @include('parts.login') --}}
             </div>
         </div>

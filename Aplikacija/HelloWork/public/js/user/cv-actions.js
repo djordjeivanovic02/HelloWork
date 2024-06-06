@@ -61,7 +61,7 @@ function previewCV(id, cv) {
 
 
 function downloadCV(id, cv) {
-    var url = 'storage/uploads/user_' + id + '/cv/' + cv;
+    var url = '../storage/uploads/user_' + id + '/cv/' + cv;
     fetch(url)
         .then(response => {
             if (!response.ok) {

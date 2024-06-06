@@ -372,6 +372,7 @@ nav.close~.dashboard .top {
     overflow: auto;
 }
 
+
 .activity .activity-data {
     display: flex;
 }
@@ -393,6 +394,8 @@ nav.close~.dashboard .top {
     font-weight: 400;
     margin-top: 20px;
     color: var(--text-color);
+    height: 60px;
+    overflow-y: auto;
     /* max-width: 200px; */
 }
 

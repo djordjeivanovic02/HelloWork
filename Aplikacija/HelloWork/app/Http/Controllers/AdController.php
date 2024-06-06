@@ -221,9 +221,9 @@ class AdController extends Controller
         try {
             $ad = Ad::findOrFail($id);
 
-            if ($ad->user_id !== auth()->id()) {
-                return response()->json(['type' => 'permission-fail', 'message' => 'Nemate prava da obrisete ovaj oglas.'], 403);
-            }
+            // if ($ad->user_id !== auth()->id()) {
+            //     return response()->json(['type' => 'permission-fail', 'message' => 'Nemate prava da obrisete ovaj oglas.'], 403);
+            // }
 
             if ($ad->image_path) {
                 Storage::delete('public/uploads/ads/' . $ad->image_path);

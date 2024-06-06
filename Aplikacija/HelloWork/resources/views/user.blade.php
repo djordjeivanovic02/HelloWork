@@ -65,7 +65,12 @@
                     </span>
                 </div>
                 <div class="job-actionss d-flex">
-                    <button>Preuzmi CV</button>
+                    @if ($user && $user->userInfo->cv)
+                        <button onclick="downloadCV({{ $user->id }}, '{{ $user->userInfo->cv }}')">Preuzmi
+                            CV</button>
+                    @else
+                        <button onclick="">Korisnik nema CV</button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -93,42 +98,27 @@
         </div>
         <div class="mt-50">
             <b>Prethodni poslovi</b>
-            <div class="early-job d-flex align-items-center mt-3 mb-2">
-                <div class="early-job-image d-flex justify-content-center align-items-center">
-                    <p class="m-0 p-0">W</p>
-                </div>
-                <div class="early-job-title mx-4">
-                    <p class="my-0">Web Developer</p>
-                    <a href="">Microsoft</a>
-                </div>
-                <div class="early-job-duration">
-                    <p class="m-0">2014 - 2018</p>
-                </div>
-            </div>
-            <div class="early-job d-flex align-items-center mt-3 mb-2">
-                <div class="early-job-image d-flex justify-content-center align-items-center">
-                    <p class="m-0 p-0">W</p>
-                </div>
-                <div class="early-job-title mx-4">
-                    <p class="my-0">Web Developer</p>
-                    <a href="">Microsoft</a>
-                </div>
-                <div class="early-job-duration">
-                    <p class="m-0">2014 - 2018</p>
-                </div>
-            </div>
-            <div class="early-job d-flex align-items-center mt-4 mb-3">
-                <div class="early-job-image d-flex justify-content-center align-items-center">
-                    <p class="m-0 p-0">R</p>
-                </div>
-                <div class="early-job-title mx-4">
-                    <p class="my-0">Unity Programer</p>
-                    <a href="">Rockstar</a>
-                </div>
-                <div class="early-job-duration">
-                    <p class="m-0">2014 - 2020</p>
-                </div>
-            </div>
+            @if ($user && $user->previousJobs && count($user->previousJobs) != 0)
+                @foreach ($user->previousJobs as $item)
+                    <div class="early-job align-items-center my-3 position-relative"
+                        id="early-job-{{ $item->id }}">
+                        <div class="early-job-image d-flex justify-content-center align-items-center">
+                            <p class="m-0 p-0">{{ $item->company_name[0] }}</p>
+                        </div>
+                        <div class="early-job-title mx-4">
+                            <p class="my-0">{{ $item->job_title }}</p>
+                            <a href="">{{ $item->company_name }}</a>
+                        </div>
+                        <div class="early-job-duration">
+                            <p class="m-0">{{ $item->start_year }} - {{ $item->end_year }}</p>
+                        </div>
+                        <div class="delete-previous" onclick="removePrevious({{ $item->id }})">
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <p>Korisnik nije naveo nijedan prethodni posao</p>
+            @endif
         </div>
     </div>
     <div class="job-right-container d-flex-flex-column">
@@ -316,4 +306,6 @@
 
     </div>
 </div>
+
+<script src="{{ asset('js/user/cv-actions.js') }}"></script>
 @endsection

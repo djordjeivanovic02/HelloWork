@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\LastActivity;
+use App\Models\SupportMessages;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\Ad;
+use Storage;
 
 class AdminController extends Controller
 {
@@ -58,6 +60,52 @@ class AdminController extends Controller
         return view('/admin-candidates', [
             'users' => $users
         ]);
+    }
+    public function companies()
+    {
+        $users = User::where('type', 2)
+            ->withCount('ads')
+            ->get();
+        return view('/admin-company', [
+            'users' => $users
+        ]);
+    }
+
+    public function allAds(Request $request)
+    {
+        $ads = Ad::orderBy('created_at', 'desc')->paginate(3);
+        if ($request->ajax()) {
+            return view('parts.admin-ads-list', compact('ads'))->render();
+        }
+        return view('/admin-all-ads', [
+            'ads' => $ads
+        ]);
+    }
+    public function support(Request $request)
+    {
+        $messages = SupportMessages::orderByRaw('readed ASC')->orderByDesc('created_at')
+            ->get();// if ($request->ajax()) {
+        //     return view('parts.admin-ads-list', compact('ads'))->render();
+        // }
+        return view('/admin-support', [
+            'messages' => $messages
+        ]);
+    }
+    public function deleteAd(Request $request, $id)
+    {
+        try {
+            $ad = Ad::findOrFail($id);
+
+            if ($ad->image_path) {
+                Storage::delete('public/uploads/ads/' . $ad->image_path);
+            }
+
+            $ad->delete();
+
+            return response()->json(['type' => 'success', 'message' => 'Oglas uspesno obrisan'], 200);
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
     }
     public function approveAd($id)
     {

@@ -8,9 +8,8 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\NewJobController;
 use App\Http\Controllers\SavedAdController;
+use App\Http\Controllers\SupportMessageController;
 use App\Http\Controllers\UserController;
-use App\Mail\VerificationMail;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +32,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/candidates', [AdminController::class, 'candidates']);
         Route::put('/approve-ad/{id}', [AdminController::class, 'approveAd']);
         Route::put('/reject-ad/{id}', [AdminController::class, 'rejectAd']);
+        Route::get('/companies', [AdminController::class, 'companies']);
+        Route::delete('/admin-delete-job/{id}', [AdminController::class, 'deleteAd']);
+        Route::get('/all-ads', [AdminController::class, 'allAds']);
+        Route::get('/admin-support', [AdminController::class, 'support']);
+        Route::put('/read-message/{id}', [SupportMessageController::class, 'readMessage']);
     });
     Route::middleware('check.type:1')->group(function () {
         Route::post('/updateUserData', [UserController::class, 'updateUserData']);
@@ -54,6 +58,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('/delete-cv', [UserController::class, 'deleteCV']);
         Route::post('/apply-for-job', [ApplicationsController::class, 'apply']);
         Route::post('/cancel-apply', [ApplicationsController::class, 'cancelApply']);
+        Route::post('/add-previous-job', [UserController::class, 'addPreviousJob']);
+        Route::delete('/remove-previous-job/{id}', [UserController::class, 'deletePreviousJob']);
     });
     Route::middleware('check.type:2')->group(function () {
         Route::post('/updateCompanyData', [CompanyController::class, 'updateCompanyData']);
@@ -80,6 +86,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/return-application', [ApplicationsController::class, 'returnToPending']);
         Route::post('/reject-application', [ApplicationsController::class, 'rejectApplication']);
     });
+    Route::delete('/delete-account/{id}', [UserController::class, 'deleteProfile']);
     Route::get('/logout', [AuthController::class, 'signOut']);
     Route::post('/deleteUserData', [UserController::class, 'deleteProfile']);
     Route::post('/change-password', [UserController::class, 'changePassword']);
@@ -106,6 +113,19 @@ Route::get('/make-cv', function () {
 
 Route::get('/verificate-email/{id}', [AuthController::class, 'verifyEmail'])->name('verify-email');
 Route::get('/resend-email-verification/{email}', [AuthController::class, 'resendEmailVerification']);
+Route::get('/about', function () {
+    return view('/about', [
+        'currentUser' => auth()->user()
+    ]);
+});
+Route::get('/support', function () {
+    return view('/contact', [
+        'currentUser' => auth()->user()
+    ]);
+});
+
+Route::post('/send-message-support', [SupportMessageController::class, 'saveReport']);
+
 // samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {
     return view('parts.widgets');

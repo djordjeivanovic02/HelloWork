@@ -1,11 +1,11 @@
 @extends('parts.admin-dashboard-main')
-@section('candidates')
+@section('companies')
     <link rel="stylesheet" href="{{ asset('css/new-job.css') }}">
     <div class="dash-content">
         <div class="activity">
             <div class="title">
-                <i class="uil uil-user"></i>
-                <span class="text">Lista kandidata</span>
+                <i class="uil uil-bag"></i>
+                <span class="text">Lista poslodavaca</span>
             </div>
             <div class="activity-data manage-jobs-container">
                 <table class="w-100">
@@ -15,7 +15,7 @@
                             <th>Ime</th>
                             <th>Email</th>
                             <th>Adresa</th>
-                            <th class="aplications-column">Broj apliciranja</th>
+                            <th class="aplications-column">Broj oglasa</th>
                             <th class="status-column">Član od</th>
                             <th></th>
                         </tr>
@@ -25,9 +25,9 @@
                             @foreach ($users as $user)
                                 <tr id="row_ad_{{ $user->id }}">
                                     <td>
-                                        @if ($user && $user->userInfo && $user->userInfo->logo)
+                                        @if ($user && $user->companyInfo && $user->companyInfo->logo)
                                             <img class="row-company-image"
-                                                src="{{ asset('storage/uploads/user_' . $user->id . '/logo/' . $user->userInfo->logo) }}"
+                                                src="{{ asset('storage/uploads/company_' . $user->id . '/logo/' . $user->companyInfo->logo) }}"
                                                 alt="Slika Kompanije">
                                         @else
                                             <img src="{{ asset('images/unknown-company.svg') }}" alt="CompanyLogo"
@@ -49,14 +49,14 @@
                                         <p class="m-0">{{ $user->email }}</p>
                                     </td>
                                     <td>
-                                        @if ($user->userInfo && $user->userInfo->full_address)
-                                            <p class="m-0">{{ $user->userInfo->full_address }}</p>
+                                        @if ($user->companyInfo && $user->companyInfo->address)
+                                            <p class="m-0">{{ $user->companyInfo->address }}</p>
                                         @else
                                             Nepoznato
                                         @endif
                                     </td>
                                     <td class="aplications-column">
-                                        <p class="applications-text m-0">{{ $user->applications_count }}</p>
+                                        <p class="applications-text m-0">{{ $user->ads_count }}</p>
                                     </td>
                                     <td class="status-column">
                                         <p class="saved-date m-0">{{ date('d.m.Y', strtotime($user->created_at)) }}</p>

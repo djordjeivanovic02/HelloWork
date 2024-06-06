@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\User;
+use App\Models\UserPreviousJobs;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\UserInfo;
@@ -218,14 +219,18 @@ class UserController extends Controller
         }
     }
 
-    public function deleteProfile(Request $request)
+    public function deleteProfile($id)
     {
-        $user = User::findOrFail($request->input('id'));
+        try {
+            $user = User::findOrFail($id);
 
-        if ($user->delete()) {
-            return response()->json(['message' => 'Profil korisnika je uspešno obrisan.'], 200);
-        } else {
-            return response()->json(['message' => 'Došlo je do greške prilikom brisanja profila korisnika.'], 500);
+            if ($user->delete()) {
+                return response()->json(['type' => 'success', 'message' => 'Profil korisnika je uspešno obrisan.'], 200);
+            } else {
+                return response()->json(['type' => 'error', 'message' => 'Došlo je do greške prilikom brisanja profila korisnika.'], 200);
+            }
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => 'Došlo je do greške prilikom brisanja profila korisnika.'], 200);
         }
     }
 
@@ -335,6 +340,41 @@ class UserController extends Controller
             return response()->json(['type' => 'success', 'message' => "Uspešno obrisan cv"], 200);
         } catch (Exception $ex) {
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
+    }
+
+    public function addPreviousJob(Request $request)
+    {
+        try {
+            $prevJob = new UserPreviousJobs();
+            $prevJob->job_title = $request->input('previousTitle');
+            $prevJob->company_name = $request->input('previousCompany');
+            $prevJob->start_year = $request->input('previousStart');
+            $prevJob->end_year = $request->input('previousEnd');
+            $prevJob->created_at = now();
+            $prevJob->user()->associate(auth()->user());
+
+            $prevJob->save();
+            return response()->json(['type' => 'success', 'message' => "Uspešno dodat posao"], 200);
+
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 200);
+        }
+    }
+
+    public function deletePreviousJob($id)
+    {
+        try {
+            $previousJob = UserPreviousJobs::find($id);
+
+            if (!$previousJob || $previousJob->user_id != auth()->id()) {
+                return response()->json(['type' => 'error', 'message' => 'Posao nije pronađen ili ne pripada korisniku.'], 404);
+            }
+
+            $previousJob->delete();
+            return response()->json(['type' => 'success', 'message' => "Uspešno obrisan prethodni posao"], 200);
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 200);
         }
     }
 }

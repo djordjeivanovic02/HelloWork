@@ -177,11 +177,11 @@
     'type' => 'success',
     'title' => 'Brisanje naloga',
     'message' =>
-        'Da li ste sigurni da želite da obrišete svoj nalog? Ukoliko obrišete nalog ne postoji način da vam isti bude vraćen!',
+        'Da li ste sigurni da želite da obrišete svoj nalog? Ukoliko obrišete nalog ne postoji način da vam isti bude vraćen, takođe, svi vaši oglasi će biti obrisani!',
     'close' => true,
     'actions' => [
         [
-            'url' => "alert('Povezati sa funkcijom za brisanje naloga')",
+            'url' => 'deleteAccount(' . $user->id . ')',
             'type' => 'yes',
             'label' => 'DA',
         ],
@@ -193,3 +193,5 @@
     ],
 ])
 @endcomponent
+
+<script src="{{ asset('js/delete-profile.js') }}"></script>

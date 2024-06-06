@@ -264,6 +264,10 @@ ul li {
     margin-left: 5px;
 }
 
+.early-job {
+    display: flex;
+}
+
 .early-job-image {
     width: 35px;
     height: 35px;
