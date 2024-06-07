@@ -148,13 +148,25 @@ class AdController extends Controller
         $adsCount = $query->count();
         $ads = $query->paginate(3)->appends($request->except('page'));
         // dd($ads);
+
+
+        $savedAds = [];
+
+        if (auth()->user()) {
+            foreach ($ads as $item) {
+                $savedAds[$item->id] = SavedAd::where('user_id', auth()->id())
+                    ->where('ad_id', $item->id)
+                    ->exists() ? true : false;
+            }
+        }
         if ($request->ajax()) {
-            return view('parts.job-list', compact('ads'))->render();
+            return view('parts.job-list', compact('ads', 'savedAds'))->render();
         }
         return view('search-jobs', [
             'currentUser' => auth()->user(),
             'user' => auth()->user(),
             'ads' => $ads,
+            'savedAds' => $savedAds,
             'adsCount' => $adsCount,
         ]);
     }

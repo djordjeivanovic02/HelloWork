@@ -98,7 +98,7 @@
 
 @component('dialogs.box-with-input', [
     'id' => 'apply-user-' . $application->ad_id . '-' . $application->user_id,
-    'type' => 'success',
+    'type' => 'accept',
     'title' => 'Prihvati korisnika',
     'message' =>
         'Ukoliko želite da prihvatite apliciranje korisnika za posao ' .
@@ -127,7 +127,7 @@
 
 @component('dialogs.box-with-input', [
     'id' => 'reject-user-' . $application->ad_id . '-' . $application->user_id,
-    'type' => 'success',
+    'type' => 'reject',
     'title' => 'Odbij korisnika',
     'message' =>
         'Da li ste sigurni da želite da odbijete korisnika za posao ' .
@@ -141,7 +141,7 @@
                 $application->ad_id .
                 ', ' .
                 $application->user_id .
-                ", 'apply-user')",
+                ", 'reject-user')",
             'type' => 'yes',
             'label' => 'Odbij',
         ],

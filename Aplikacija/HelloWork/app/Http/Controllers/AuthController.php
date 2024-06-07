@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ChangePasswordMail;
 use App\Mail\VerificationMail;
 use Auth;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -81,6 +82,10 @@ class AuthController extends Controller implements MustVerifyEmail
             'type' => $data['type']
         ]);
     }
+    public function showResetPassword($id)
+    {
+        return view('verification.change-password', ['id' => $id]);
+    }
     public function signOut()
     {
         auth()->logout();
@@ -122,6 +127,21 @@ class AuthController extends Controller implements MustVerifyEmail
             }
         } catch (Exception $ex) {
             return response()->json(['type' => 'error', 'message' => 'Došlo je do greške!'], 500);
+        }
+    }
+
+    public function sendResetPasswordEmail($email)
+    {
+        try {
+            $user = User::where('email', $email)->first();
+            if ($user) {
+                Mail::to($user->email)->send(new ChangePasswordMail($user));
+                return response()->json(['type' => 'success', 'message' => 'Poslat mail za resetovanje lozinke'], 200);
+            } else {
+                return response()->json(['type' => 'not-exist', 'message' => 'Korisnik ne postoji'], 200);
+            }
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
     }
 }

@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\UserInfo;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -222,17 +223,29 @@ class UserController extends Controller
     public function deleteProfile($id)
     {
         try {
-            $user = User::findOrFail($id);
+            DB::beginTransaction();
 
-            if ($user->delete()) {
-                return response()->json(['type' => 'success', 'message' => 'Profil korisnika je uspešno obrisan.'], 200);
-            } else {
-                return response()->json(['type' => 'error', 'message' => 'Došlo je do greške prilikom brisanja profila korisnika.'], 200);
+            $user = User::find($id);
+
+            if (!$user) {
+                return response()->json(['type' => 'error', 'message' => 'Korisnik nije pronađen.'], 404);
             }
+
+            // Brisanje povezanih aplikacija
+            $user->applications()->delete();
+
+            // Brisanje korisnika
+            $user->delete();
+
+            DB::commit();
+
+            return response()->json(['type' => 'success', 'message' => 'Profil korisnika je uspešno obrisan.'], 200);
         } catch (Exception $ex) {
-            return response()->json(['type' => 'error', 'message' => 'Došlo je do greške prilikom brisanja profila korisnika.'], 200);
+            DB::rollBack();
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
         }
     }
+
 
     public function changePassword(Request $request)
     {
@@ -256,6 +269,25 @@ class UserController extends Controller
             return response()->json(['type' => 'success', 'message' => 'Lozinka uspešno promenjena'], 200);
         } catch (Exception $ex) {
             return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 500);
+        }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        try {
+            $id = $request->input('id');
+            $password = $request->input('password');
+
+            $user = User::where('id', $id)->first();
+            if ($user) {
+                $user->password = Hash::make($password);
+                $user->save();
+                return response()->json(['type' => 'success', 'message' => 'Lozinka uspešno promenjena'], 200);
+            } else {
+                return response()->json(['type' => 'error', 'message' => "Doslo je do greske"], 200);
+            }
+        } catch (Exception $ex) {
+            return response()->json(['type' => 'error', 'message' => $ex->getMessage()], 200);
         }
     }
 

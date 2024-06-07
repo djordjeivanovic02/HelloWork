@@ -16,25 +16,25 @@
                     <p class="m-0">></p>
                 </div>
             </a>
-            <a href="searchjob" class="mobile-menu-item w-100">
+            <a href="/searchjob" class="mobile-menu-item w-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="m-0">Pronađi posao</p>
                     <p class="m-0">></p>
                 </div>
             </a>
-            <a href="#" class="mobile-menu-item w-100">
+            <a href="/make-cv" class="mobile-menu-item w-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="m-0">Kreiraj CV</p>
                     <p class="m-0">></p>
                 </div>
             </a>
-            <a href="#" class="mobile-menu-item w-100">
+            <a href="/about" class="mobile-menu-item w-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="m-0">O nama</p>
                     <p class="m-0">></p>
                 </div>
             </a>
-            <a href="#" class="mobile-menu-item w-100">
+            <a href="/support" class="mobile-menu-item w-100 mb-4">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="m-0">Podrška</p>
                     <p class="m-0">></p>

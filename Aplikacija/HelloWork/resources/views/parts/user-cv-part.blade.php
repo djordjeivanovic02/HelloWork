@@ -65,7 +65,8 @@
         <div class="w-100 d-flex justify-content-center">
             <div class="no-found-cont w-100 d-flex flex-column align-items-center justify-content-center">
                 <img src="{{ asset('images/cv-not-found.svg') }}" alt="Not Found">
-                <p class="mt-3">Nije pronađen nijedan cv. Možete ga <span>kreirati</span> ili <span
+                <p class="mt-3">Nije pronađen nijedan cv. Možete ga <span
+                        onclick="window.location.href='/make-cv'">kreirati</span> ili <span
                         onclick="triggerCVInput()">dodati</span> već
                     postojeći cv.</p>
             </div>

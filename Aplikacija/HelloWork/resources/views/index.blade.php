@@ -63,7 +63,7 @@
                         zapošljavanje može pružiti. Jer s nama, pronalaženje posla nije samo cilj - to je putovanje ka
                         ostvarenju vaših profesionalnih snova.</p>
                     @if ($currentUser)
-                        @if ($currentUser->companyInfo)
+                        @if ($currentUser->type == 2)
                             <button class="mt-3" onclick="window.location.href='/new-ad'">Postavi oglas</button>
                         @else
                             <button class="mt-3" onclick="window.location.href='/user-change-profile'">Pogledaj

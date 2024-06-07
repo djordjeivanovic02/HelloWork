@@ -27,7 +27,7 @@
             </div>
             <div class="job-list-container w-100 mt-3">
                 @if ($adsCount > 0)
-                    @include('parts.job-list', ['ads' => $ads])
+                    @include('parts.job-list', ['ads' => $ads, 'savedAds' => $savedAds])
                 @else
                     <div class="w-100 d-flex justify-content-center">
                         <div class="no-found-cont w-100 d-flex flex-column align-items-center justify-content-center">

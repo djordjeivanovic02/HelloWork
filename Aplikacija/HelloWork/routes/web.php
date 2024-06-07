@@ -104,15 +104,20 @@ Route::get('/job/{id}', [AdController::class, 'show']);
 Route::get('/company/{id}', [CompanyController::class, 'show']);
 Route::get('/', [IndexController::class, '__invoke'])->name('login');
 Route::get('/searchjob', [AdController::class, 'showSearchJob'])->name('searchjob');
+Route::post('/send-message-support', [SupportMessageController::class, 'saveReport']);
+Route::get('/verificate-email/{id}', [AuthController::class, 'verifyEmail'])->name('verify-email');
+Route::get('/resend-email-verification/{email}', [AuthController::class, 'resendEmailVerification']);
+Route::get('/send-reset-password-email/{email}', [AuthController::class, 'sendResetPasswordEmail']);
+Route::post('/reset-user-password', [UserController::class, 'resetPassword']);
+
+Route::get('/reset-password/{id}', [AuthController::class, 'showResetPassword'])->name('reset-password');
+
 Route::get('/make-cv', function () {
     return view('cv-maker', [
         'user' => auth()->user(),
         'currentUser' => auth()->user()
     ]);
 });
-
-Route::get('/verificate-email/{id}', [AuthController::class, 'verifyEmail'])->name('verify-email');
-Route::get('/resend-email-verification/{email}', [AuthController::class, 'resendEmailVerification']);
 Route::get('/about', function () {
     return view('/about', [
         'currentUser' => auth()->user()
@@ -124,7 +129,7 @@ Route::get('/support', function () {
     ]);
 });
 
-Route::post('/send-message-support', [SupportMessageController::class, 'saveReport']);
+
 
 // samo za priakaz Davidovih vidzeta
 Route::get('/widgets', function () {

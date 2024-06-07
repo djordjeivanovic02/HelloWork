@@ -41,18 +41,15 @@ function removeImage() {
 
 const createdRespElements = document.querySelectorAll('.resp-preview .resp-element');
 
-createdRespElements.forEach(element => {
-    element.addEventListener('click', () => deleteResp(element));
-});
 
 const respInput = document.querySelector('#jobResp');
 const respPreviewCont = document.querySelector('.resp-preview');
 
-let responsibilities = [
-    "Vođenje, obuka i motivisanje prodajnog tima kako bi se osigurali visoki performansi i efikasnos",
-    "Pružanje emocionalne i akademske podrške učenicima, kao i saradnja sa roditeljima kako bi se osigurali optimalni uslovi za učenje i razvoj deteta",
-    "Vođenje preciznih medicinskih zapisa i dokumentacije o pacijentima, uključujući beleženje simptoma, tretmana i napretka"
-];
+let responsibilities = [];
+createdRespElements.forEach(element => {
+    responsibilities.push(element.querySelector('p').innerHTML);
+    element.addEventListener('click', () => deleteResp(element));
+});
 
 respInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
@@ -96,18 +93,15 @@ function deleteResp(divEl) {
 
 const createdExpElements = document.querySelectorAll('.exp-preview .exp-element');
 
-createdExpElements.forEach(element => {
-    element.addEventListener('click', () => deleteExp(element));
-});
 
 const expInput = document.querySelector('#jobExp');
 const expPreviewCont = document.querySelector('.exp-preview');
 
-let experience = [
-    "Iskustvo u kreiranju i sprovođenju marketinških i prodajnih planova",
-    "Višegodišnje iskustvo u vođenju i menadžmentu prodajnog tima",
-    "Sposobnost rešavanja problema i pritužbi klijenata na efikasan način"
-];
+let experience = [];
+createdExpElements.forEach(element => {
+    experience.push(element.querySelector('p').innerHTML);
+    element.addEventListener('click', () => deleteExp(element));
+});
 
 expInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
@@ -152,18 +146,15 @@ function deleteExp(divEl) {
 
 const createdTagsElements = document.querySelectorAll('.tags-preview .tags-element');
 
-createdTagsElements.forEach(element => {
-    element.addEventListener('click', () => deleteTags(element));
-});
 
 const tagsInput = document.querySelector('#jobTags');
 const tagsPreviewCont = document.querySelector('.tags-preview');
 
-let tags = [
-    "android",
-    "programiranje",
-    "kuvanje"
-];
+let tags = [];
+createdTagsElements.forEach(element => {
+    tags.push(element.querySelector('p').innerHTML);
+    element.addEventListener('click', () => deleteTags(element));
+});
 
 tagsInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {

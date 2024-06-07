@@ -28,7 +28,7 @@
             <input type="checkbox" class="zapamti">
             <p class="text-zapamti">Zapamti me</p>
         </div>
-        <a class="zaboravili" href="#">Zaboravili ste lozinku?</a>
+        <a class="zaboravili" href="#" onclick="changePasswordMail(this)">Zaboravili ste lozinku?</a>
     </div>
 
     <input type="button" class="button-prijavi-se align-items-center justify-content-center" value="Prijavi se"

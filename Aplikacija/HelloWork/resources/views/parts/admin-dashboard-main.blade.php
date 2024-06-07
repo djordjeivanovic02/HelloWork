@@ -16,13 +16,15 @@
 
 <body>
     <nav>
-        <div class="logo-name">
-            <div class="logo-image">
-                <img src="{{ asset('images/logo.svg') }}">
-            </div>
+        <a href="/" style="text-decoration: none">
+            <div class="logo-name">
+                <div class="logo-image">
+                    <img src="{{ asset('images/logo.svg') }}">
+                </div>
 
-            <span class="logo_name">Hello<span style="color: #613FE5">Work</span></span>
-        </div>
+                <span class="logo_name">Hello<span style="color: #613FE5">Work</span></span>
+            </div>
+        </a>
 
         <div class="menu-items">
             <ul class="nav-links mx-0 px-2">

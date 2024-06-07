@@ -1,7 +1,7 @@
 @if ($ads != null && count($ads) != 0)
     @foreach ($ads as $item)
         @component('parts.wide-widget', [
-            'saved' => false,
+            'saved' => $savedAds ? $savedAds[$item->id] : false,
             'image' => $item->image,
             'jobId' => $item->id,
             'companyID' => $item->users->id,

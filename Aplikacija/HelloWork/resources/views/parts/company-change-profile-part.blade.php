@@ -49,8 +49,8 @@
                 @if ($user->companyInfo !== null && $user->companyInfo->website !== null) value="{{ $user->companyInfo->website }}" @endif>
         </div>
         <div class="row-element d-flex flex-column">
-            <p class="my-1">Datum osnivanja*</p>
-            <input type="text" name="companyFounded" id="companyFounded" class="w-100" placeholder="npr. 16/09/2018"
+            <p class="my-1">Datum osnivanja (dan.mesec.godina)*</p>
+            <input type="text" name="companyFounded" id="companyFounded" class="w-100" placeholder="npr. 16.09.2022"
                 onchange="focusOut(this)" {{-- @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ $user->companyInfo->start_date }}" @endif> --}}
                 @if ($user->companyInfo !== null && $user->companyInfo->start_date !== null) value="{{ date('d.m.Y', strtotime($user->companyInfo->start_date)) }}" @endif>
         </div>
@@ -82,7 +82,7 @@
                 <p class="my-1">Email adresa*</p>
                 <input type="text" name="companyEmail" id="companyEmail" class="w-100"
                     placeholder="npr. kompanija@gmail.com" onchange="focusOut(this)"
-                    @if ($user->email !== null) value="{{ $user->email }}" @endif>
+                    @if ($user->email !== null) value="{{ $user->email }}" @endif disabled>
             </div>
         </div>
     </div>
@@ -146,7 +146,7 @@
     <div class="section-info w-100 mt-3">
         <h4>Galerija</h4>
     </div>
-    <div class="info-row images-container w-100">
+    <div class="info-row images-container w-100 d-block">
         <input type="file" name="inputImages" id="inputImages" accept="image/*" hidden>
         <button class="my-4 add-img2" onclick="importImages()">Dodaj slike</button>
         @if (!empty($images))

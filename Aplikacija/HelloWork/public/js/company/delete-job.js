@@ -21,6 +21,7 @@ async function deleteJob(jobId, admin = false) {
             } else {
                 const rowEl = document.querySelector('#row_ad_' + jobId);
                 rowEl.style.display = 'none';
+                closeDialog('delete_ad_' + jobId);
             }
         } else if (jsonResponse.type == 'error') {
             alert("Došlo je do greške, molomo pokušajte kasnije!");

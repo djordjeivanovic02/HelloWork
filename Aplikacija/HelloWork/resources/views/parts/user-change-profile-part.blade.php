@@ -262,6 +262,10 @@
             </div>
         </div>
     </div>
+
+    <div class="info-row w-100 d-flex flex-column align-items-start">
+        <button class="my-4 add-ad w-100" onclick="updateUserProfile()">Ažuriraj podatke</button>
+    </div>
     <div class="section-info w-100 mt-3 d-flex justify-content-between align-items-center">
         <h4>Prethodni poslovi</h4>
         <button onclick="showDialog('previous')">Dodaj</button>
@@ -290,9 +294,7 @@
     </div>
 
 
-    <div class="info-row w-100 d-flex flex-column align-items-start">
-        <button class="my-4 add-ad w-100" onclick="updateUserProfile()">Ažuriraj podatke</button>
-    </div>
+
     <div class="section-info w-100 mt-3">
         <h4>Ostale akcije</h4>
     </div>

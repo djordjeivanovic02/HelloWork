@@ -136,7 +136,7 @@
                     </div>
                 </div>
             </div>
-            @if (($currentUser && $currentUser->type != 2) || !$currentUser)
+            @if (($currentUser && $currentUser->type != 2 && $currentUser->type != 0) || !$currentUser)
 
                 <div class="job-actions d-flex">
                     <button
@@ -368,7 +368,7 @@
                                     Nepoznato
                                 @endif
                             </p>
-                            <a href="#">Pogledaj profil kompanije</a>
+                            <a href="/company/{{ $ad->users->id }}">Pogledaj profil kompanije</a>
                         </div>
                     </div>
                 </div>

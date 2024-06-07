@@ -6,12 +6,14 @@
     <td>
         <div class="w-100">
             <b class="m-0">
-                <a href="">{{ $title }}</a>
+                <a href="/job/{{ $id }}">{{ $title }}</a>
             </b>
         </div>
     </td>
     <td class="aplications-column">
-        <p class="applications-text m-0">{{ $companyName }}</p>
+        <a href="/company/{{ $folderId }}" style="text-decoration: none">
+            <p class="applications-text m-0">{{ $companyName }}</p>
+        </a>
     </td>
     <td class="status-column">
         <p class="saved-date m-0">{{ $date }}</p>

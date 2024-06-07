@@ -7,9 +7,12 @@ downloadBtn.addEventListener('click', () => {
         filename: 'CV.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
-            scale: 2,
-            width: documentDiv.offsetWidth,
-            height: documentDiv.offsetHeight,
+            scale: 3,
+            margin: 0,
+            scrollX: 0,
+            scrollY: 0,
+            width: documentDiv.scrollWidth,
+            height: documentDiv.scrollHeight,
         },
         jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' }
     };

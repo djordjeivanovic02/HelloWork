@@ -17,10 +17,9 @@ class EnsureEmailIsVerified
     public function handle(Request $request, Closure $next): Response
     {
         $user = User::where('email', $request->email)->first();
-        if (
-            !$user ||
-            ($user->email_verified_at == null)
-        ) {
+        if (!$user) {
+            return response()->json(['type' => 'invalid-data', 'message' => 'Neispravni podaci!'], 200);
+        } else if ($user->email_verified_at == null) {
             return response()->json(['type' => 'not-verified', 'message' => 'Vaša email adresa nije verifikovana.'], 201);
         }
 

@@ -178,48 +178,7 @@
                          <div class="skills-div width-80">
                              <b class="left-headers">VESTINE</b>
                              <div class="d-flex flex-wrap" id="skill-cont">
-                                 <div class="card-skill">
-                                     <div class="progresss-bar">
-                                         <div class="dinamic-progress"></div>
-                                         <div class="skill-precentage-div">75%</div>
-                                     </div>
-                                     <label for="" class="fixed-width white-text">JavaScript</label>
-                                 </div>
-                                 <div class="card-skill">
-                                     <div class="progresss-bar">
-                                         <div class="dinamic-progress"></div>
-                                         <div class="skill-precentage-div">75%</div>
-                                     </div>
-                                     <label for="" class="fixed-width white-text">JavaScript</label>
-                                 </div>
-                                 <div class="card-skill">
-                                     <div class="progresss-bar">
-                                         <div class="dinamic-progress"></div>
-                                         <div class="skill-precentage-div">75%</div>
-                                     </div>
-                                     <label for="" class="fixed-width white-text">JavaScript</label>
-                                 </div>
-                                 <div class="card-skill">
-                                     <div class="progresss-bar">
-                                         <div class="dinamic-progress"></div>
-                                         <div class="skill-precentage-div">75%</div>
-                                     </div>
-                                     <label for="" class="fixed-width white-text">JavaScript</label>
-                                 </div>
-                                 <div class="card-skill">
-                                     <div class="progresss-bar">
-                                         <div class="dinamic-progress"></div>
-                                         <div class="skill-precentage-div">75%</div>
-                                     </div>
-                                     <label for="" class="fixed-width white-text">JavaScript</label>
-                                 </div>
-                                 <div class="card-skill">
-                                     <div class="progresss-bar">
-                                         <div class="dinamic-progress"></div>
-                                         <div class="skill-precentage-div">75%</div>
-                                     </div>
-                                     <label for="" class="fixed-width white-text">JavaScript</label>
-                                 </div>
+
                              </div>
                          </div>
                          <div class="social-media-div width-80">

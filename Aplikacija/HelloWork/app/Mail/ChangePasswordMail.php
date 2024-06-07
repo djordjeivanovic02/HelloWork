@@ -9,16 +9,14 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class VerificationMail extends Mailable
+class ChangePasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
     /**
      * Create a new message instance.
      */
-
-    public $user;
-
     public function __construct($user)
     {
         $this->user = $user;
@@ -30,7 +28,7 @@ class VerificationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Verifikacioni Mail',
+            subject: 'Promena Lozinke',
         );
     }
 
@@ -40,7 +38,7 @@ class VerificationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.verification',
+            view: 'mail.change-password',
             with: [
                 'user' => $this->user,
             ]
