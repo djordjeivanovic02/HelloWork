@@ -1,44 +1,46 @@
 @extends('parts.main')
 @section('search-job')
     <link rel="stylesheet" href="{{ asset('css/search-jobs.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <div class="info-container w-100 m-0 p-0 d-flex flex-column align-items-center justify-content-center">
         <h1 class="m-0">Pronađi posao</h1>
         <div class="info-navigation-container m-0 mt-2">
-            <a href="{{route('login')}}" class="m-0">Početna</a>
+            <a href="{{ route('login') }}" class="m-0">Početna</a>
             <span>/</span>
             <a href="" class="main m-0">Poslovi</a>
         </div>
     </div>
     <div class="search-job-main-container w-100 d-flex">
-        <div class="search-job-inputs">
-            <div class="w-100">
-                <p class="mb-3">Pretraži poslove</p>
-                <div class="search-job-input d-flex align-items-center w-100 bg-white">
-                    <div class="search-job-input-image">
-                        <img src="{{ asset('images/search-icon.svg') }}" alt="search icon">
-                    </div>
-                    <input type="text" class="w-100 h-100 px-2 border-0" placeholder="Ime posla, kompanije">
+        @include('parts.filters')
+
+        <div class="search-job-main d-flex flex-column position-relative">
+            <div class="search-job-main-header w-100 d-flex justify-content-between align-items-center">
+                <p class="search-showing m-0">Ukupno <b>{{ $adsCount }}</b> oglasa</p>
+                <img id="filter-triger" src="{{ asset('images/filter.svg') }}" alt="Filtriraj">
+                <div>
+                    <select name="sortSelect" id="sortSelect">
+                        <option value="0">Sortiraj podrazumevano</option>
+                        <option value="1">Najnoviji</option>
+                        <option value="2">Najstariji</option>
+                    </select>
                 </div>
             </div>
-            <div class="w-100 mt-4">
-                <p class="mb-3">Lokacija</p>
-                <div class="search-job-input d-flex align-items-center w-100 bg-white">
-                    <div class="search-job-input-image">
-                        <img src="{{ asset('images/location-icon.svg') }}" alt="location icon">
+            <div class="job-list-container w-100 mt-3">
+                @if ($adsCount > 0)
+                    @include('parts.job-list', ['ads' => $ads, 'savedAds' => $savedAds])
+                @else
+                    <div class="w-100 d-flex justify-content-center">
+                        <div class="no-found-cont w-100 d-flex flex-column align-items-center justify-content-center">
+                            <img src="{{ asset('images/no-found.svg') }}" alt="Not Found">
+                            <p class="mt-3">Nije pronađen nijedan oglas!</p>
+                        </div>
                     </div>
-                    <input type="text" class="w-100 h-100 px-2 border-0" placeholder="Grad ili okrug">
-                </div>
-            </div>
-            <div class="w-100 mt-4">
-                <p class="mb-3">Vaše veštine</p>
-                <div class="search-job-input d-flex align-items-center w-100 bg-white">
-                    <div class="search-job-input-image">
-                        <img src="{{ asset('images/skills-icon.svg') }}" alt="skills icon">
-                    </div>
-                    <input type="text" class="w-100 h-100 px-2 border-0" placeholder="Npr. kuvanje kafe">
-                </div>
+                @endif
             </div>
         </div>
-        <div class="search-job-main"></div>
+        {{-- @include('parts.mobile-filters') --}}
     </div>
+    <script src="{{ asset('js/widgets.js') }}"></script>
+    <script src="{{ asset('js/filter.js') }}"></script>
+    <script src="{{ asset('js/search-job.js') }}"></script>
 @endsection

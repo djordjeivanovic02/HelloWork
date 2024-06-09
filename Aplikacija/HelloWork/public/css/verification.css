@@ -1,0 +1,29 @@
+.main-container {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.image-container {
+    width: 60px;
+}
+
+.image-container img {
+    width: 100%;
+}
+
+.main-container h1 {
+    font-size: 28px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.main-container p {
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #7F93B6;
+}
+
+.content-container {
+    max-width: 400px;
+}
