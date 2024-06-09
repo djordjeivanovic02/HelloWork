@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $ads = Ad::orderBy('created_at', 'desc')->where('skills', 1)->take(8)->get();
+        $ads = Ad::orderBy('created_at', 'desc')->where('skills', 1)->take(6)->get();
         return view('index', [
             'currentUser' => auth()->user(),
             'user' => auth()->user(),

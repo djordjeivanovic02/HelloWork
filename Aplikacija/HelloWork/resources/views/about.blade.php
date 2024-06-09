@@ -1,5 +1,6 @@
 @extends('parts.main')
 @section('about')
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search-jobs.css') }}">
     <div class="info-container w-100 m-0 p-0 d-flex flex-column align-items-center justify-content-center">
