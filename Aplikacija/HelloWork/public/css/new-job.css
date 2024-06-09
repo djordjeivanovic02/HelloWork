@@ -1,0 +1,765 @@
+@import url('variables.css');
+
+.new-job-main-container {
+    max-width: 1310px;
+    padding: 20px;
+}
+
+.section-info {
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--black-color);
+    padding-bottom: 15px;
+}
+
+.section-info button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--main-color);
+    color: white;
+}
+
+
+
+.all-applications,
+.accepted-applications,
+.rejected-applications,
+.active-applications {
+    display: none;
+}
+
+.all-applications.active,
+.accepted-applications.active,
+.rejected-applications.active,
+.active-applications.active {
+    display: block;
+}
+
+.company-name {
+    text-align: center;
+}
+
+.action-button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--background-light);
+}
+
+.action-button p {
+    margin: 0;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.support-row {
+    transition-duration: .3s;
+}
+
+.support-row:hover {
+    cursor: pointer;
+    background-color: var(--background-light);
+}
+
+.action-button.submit {
+    background-color: var(--light-green2);
+}
+
+.action-button.submit p {
+    color: var(--remote-text);
+}
+
+.action-button.reject {
+    background-color: var(--light-red2);
+    margin-left: 10px;
+}
+
+.action-button.reject p {
+    color: var(--red-color);
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.action-button img {
+    width: 20px;
+}
+
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row-element {
+    width: 49%;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
+    position: relative;
+}
+
+.row-element input,
+select {
+    padding: 15px 20px;
+    border: none;
+    border: 1px solid transparent;
+    box-shadow: var(--box-shadow);
+    outline: none;
+}
+
+.textarea-cont.error textarea {
+    border: 1px solid transparent;
+}
+
+.row-element.error input,
+.textarea-cont.error textarea,
+.row-element.not-verified input,
+.row-element.short input,
+.row-element.same input,
+.row-el.error input {
+    border-color: red;
+}
+
+.row-el {
+    position: relative;
+}
+
+.row-element.error::before,
+.textarea-cont.error::before,
+.row-element.not-verified::before,
+.row-element.short::before,
+.row-element.same::before,
+.row-el.error::before {
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+}
+
+.row-element.error::before,
+.row-el.error::before {
+    content: 'Ovo polje je obavezno';
+}
+
+.textarea-cont.error::before {
+    content: "Ovo polje je obavezno";
+}
+
+.row-element.not-verified::before {
+    content: 'Lozinke se ne poklapaju';
+}
+
+.row-element.short::before {
+    content: 'Lozinka mora biti duža od 7 karaktera';
+}
+
+.row-element.same::before {
+    content: 'Nova lozinka ne može biti kao stara';
+}
+
+.row-element p {
+    color: var(--black-color);
+}
+
+.info-row textarea {
+    /* border: 1px solid var(--border-color); */
+    border: none;
+    box-shadow: var(--box-shadow);
+    outline: none;
+    min-height: 150px;
+    padding: 15px 20px;
+}
+
+.info-row .add-img,
+.info-row .add-img2 {
+    padding: 20px 30px;
+    border: 2px solid var(--main-color);
+    background-color: white;
+    color: var(--main-color);
+    font-weight: 600;
+    transition-duration: .3s;
+    display: block;
+}
+
+.info-row .add-img2 {
+    display: inline-block;
+    height: 150px;
+}
+
+.info-row .add-img.hidden,
+.info-row .add-img2.hidden {
+    display: none;
+}
+
+.info-row .add-img:hover,
+.info-row .add-img2:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.info-row .add-ad {
+    padding: 20px 30px;
+    border: 2px solid var(--main-color);
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 600;
+}
+
+.info-row .change-password {
+    padding: 10px 20px;
+    border: 2px solid var(--main-color);
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 600;
+}
+
+.notification {
+    padding: 20px 30px;
+    border: 1px solid transparent;
+    display: none;
+}
+
+.notification.error {
+    display: block;
+    background-color: var(--notification-error);
+    border-color: red;
+}
+
+.notification.success {
+    display: block;
+    background-color: rgb(237, 255, 237);
+    border-color: green;
+}
+
+.image-container {
+    width: 100%;
+    max-width: 300px;
+    height: 150px;
+    display: none;
+    position: relative;
+}
+
+.image-container::before {
+    content: '\00D7';
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    opacity: 0;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    font-size: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    background-color: var(--background-color);
+    transition: opacity .3s ease-in-out;
+}
+
+.image-container:hover::before {
+    opacity: 1;
+}
+
+.image-container.active {
+    display: block;
+}
+
+.image-container2.active {
+    display: inline-block;
+    margin: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.manage-jobs-container th,
+td {
+    padding: 15px 20px;
+    font-weight: 500;
+}
+
+.manage-jobs-container thead {
+    background-color: rgb(220, 211, 255);
+}
+
+.manage-jobs-container tr:nth-child(even) {
+    background-color: rgb(244, 241, 255);
+}
+
+.row-images {
+    display: block;
+}
+
+.row-images svg {
+    width: 15px;
+    height: 16px;
+}
+
+.row-info {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.manage-jobs-container b {
+    font-weight: 600;
+}
+
+.manage-jobs-container b a {
+    text-decoration: none;
+    color: black;
+}
+
+.manage-jobs-container b a:hover {
+    text-decoration: underline;
+}
+
+.applications-text {
+    color: var(--main-color);
+}
+
+.ad-state.active {
+    color: var(--remote-text);
+}
+
+.ad-state.deactive {
+    color: red;
+}
+
+.ad-state.pending {
+    color: orange;
+}
+
+.action-btns {
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.look-btn {
+    background-color: var(--main-color);
+}
+
+.delete-btn {
+    background-color: red;
+}
+
+.aplications-column,
+.status-column {
+    display: table-cell;
+}
+
+.application-container {
+    background-color: rgb(244, 241, 255);
+    border-left: 5px solid var(--main-color-hover);
+    border-radius: 5px;
+    position: relative;
+    transition-duration: .3s;
+}
+
+.application-container:hover {
+    border-left: 5px solid var(--main-color);
+}
+
+.application-name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.application-name a {
+    text-decoration: none;
+    color: black;
+}
+
+.application-name a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.application-category {
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 14px;
+}
+
+.application-category:hover {
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+.application-job {
+    color: var(--grey-text);
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.application-skill {
+    background-color: rgb(220, 211, 255);
+    padding: 3px 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.cancel-application {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(220, 211, 255);
+    border-radius: 5px;
+}
+
+.cancel-application button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+}
+
+.cancel-application p {
+    font-size: 16px;
+}
+
+.cancel-application p span {
+    color: var(--main-color);
+}
+
+.application-skill p {
+    font-size: 14px;
+    color: var(--main-color);
+}
+
+
+.application-container.submitted {
+    background-color: var(--light-green1);
+    border-left-color: var(--light-green1);
+}
+
+.application-container.submitted:hover {
+    border-left-color: var(--remote-text);
+}
+
+.application-container.submitted .application-skill {
+    background-color: var(--light-green);
+}
+
+.application-container.submitted .application-skill p {
+    color: var(--remote-text);
+}
+
+.application-container.submitted .cancel-application {
+    background-color: var(--light-green);
+}
+
+.application-container.submitted .cancel-application p span {
+    color: var(--remote-text);
+}
+
+.application-container.submitted .application-category {
+    color: var(--remote-text);
+}
+
+
+
+.application-container.rejected {
+    background-color: var(--light-red);
+    border-left-color: var(--light-red);
+}
+
+.application-container.rejected:hover {
+    border-left-color: var(--red-color);
+}
+
+.application-container.rejected .application-skill {
+    background-color: var(--light-red2);
+}
+
+.application-container.rejected .application-skill p {
+    color: var(--red-color);
+}
+
+.application-container.rejected .cancel-application {
+    background-color: var(--light-red2);
+}
+
+.application-container.rejected .cancel-application p span {
+    color: var(--red-color);
+}
+
+.application-container.rejected .application-category {
+    color: var(--red-color);
+}
+
+
+
+.submitted-indicator img,
+.rejected-indicator img {
+    width: 25px;
+    height: 25px;
+}
+
+.submitted-indicator p {
+    color: var(--remote-text);
+    font-weight: bold;
+}
+
+.rejected-indicator p {
+    color: var(--red-color);
+    font-weight: bold;
+}
+
+.submitted-message,
+.rejected-message {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.submitted-message {
+    background-color: var(--light-green);
+
+}
+
+.rejected-message {
+    background-color: var(--light-red2);
+}
+
+.download-container {
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.download-container svg {
+    width: 70%;
+    height: 70%;
+}
+
+.row-company-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.saved-date {
+    font-size: 14px;
+    color: var(--grey-text);
+    margin: 10px 0px;
+}
+
+.update-profile-notification-container {
+    display: none;
+}
+
+.update-profile-notification-container.success {
+    display: block;
+    border: 2px solid var(--remote-text);
+    background-color: var(--light-green);
+}
+
+.update-profile-notification-container.error {
+    display: block;
+    border: 2px solid red;
+    background-color: var(--light-red);
+}
+
+.resp-element,
+.exp-element,
+.tags-element {
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: var(--background-light);
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    transition-duration: .3s;
+}
+
+.exp-element {
+    background-color: var(--main-color-hover);
+}
+
+.tags-element {
+    background-color: var(--urgent-background);
+}
+
+.resp-element p,
+.exp-element p,
+.tags-element p {
+    font-size: 14px;
+}
+
+.resp-element:hover,
+.exp-element:hover,
+.tags-element:hover {
+    background-color: red;
+    color: white;
+}
+
+.no-found-cont {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.no-found-cont span {
+    color: var(--main-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.no-found-cont span:hover {
+    text-decoration: underline;
+}
+
+.no-found-cont img {
+    width: 130px;
+}
+
+.cv-card {
+    max-width: 200px;
+    max-height: 300px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+}
+
+.cv-header {
+    padding: 10px;
+}
+
+.cv-header-delete {
+    padding: 5px 8px;
+    border-radius: 5px;
+    background-color: var(--background-light);
+    cursor: pointer;
+    transition-duration: .3s;
+}
+
+.cv-header-delete::before {
+    content: '\00D7';
+    font-size: 24px;
+    line-height: 24px;
+    transition-duration: .3s;
+}
+
+.cv-header-delete:hover {
+    background-color: red;
+}
+
+.cv-header-delete:hover::before {
+    color: white;
+}
+
+.cv-body svg {
+    width: 100%;
+    max-width: 70px;
+}
+
+.cv-footer {
+    background-color: var(--background-light);
+    padding: 10px;
+    text-align: center;
+}
+
+.cv-footer-action {
+    padding: 5px 7px;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    cursor: pointer;
+}
+
+.cv-footer-action svg {
+    width: 20px;
+    height: 20px;
+}
+
+.cv-preview-background {
+    background-color: var(--background-color);
+    display: none;
+    padding: 20px;
+}
+
+.cv-preview-background.active {
+    display: flex;
+}
+
+.cv-preview-main {
+    height: 100%;
+}
+
+.add-previous {
+    color: white;
+    margin-left: 10px;
+}
+
+.delete-previous {
+    position: absolute;
+    right: 0;
+}
+
+.delete-previous::before {
+    content: '\00D7';
+    font-size: 35px;
+    color: var(--red-color);
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width: 640px) {
+    .status-column {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .info-row {
+        flex-direction: column;
+    }
+
+    .row-element {
+        width: 100%;
+    }
+
+    .row-company-image {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .aplications-column {
+        display: none;
+    }
+
+    .row-images {
+        display: none;
+    }
+
+    .row-company-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {}
+
+@media only screen and (max-width: 1280px) {}
+
+@media only screen and (max-width: 1500px) {}

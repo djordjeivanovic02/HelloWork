@@ -1,0 +1,380 @@
+@import url('variables.css');
+
+.login-background-container {
+    width: 200%;
+    background-color: var(--background-color);
+    overflow: auto;
+    padding-top: 100px;
+}
+
+.login-background-container.deactive {
+    display: none;
+    left: 0%;
+}
+
+.login-background-container.active {
+    display: flex;
+}
+
+.login-background-container.register {
+    animation: slideToRegister .3s ease-in-out forwards;
+}
+
+.login-background-container.login {
+    animation: slideToLogin .3s ease-in-out forwards;
+}
+
+.login-container {
+    scale: 0;
+}
+
+.login-container.active {
+    animation: showLoginBox .3s ease-in-out forwards;
+}
+
+.login-container.deactive {
+    animation: closeLoginBox .3s ease-in-out forwards;
+}
+
+.close-box {
+    transition-duration: .3s;
+}
+
+.close-box:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.register-container svg path {
+    fill: var(--main-color);
+}
+
+.login-background-container {
+    background-color: rgba(0, 0, 0, 0.60);
+    display: none;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 40px;
+}
+
+.text-username {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+}
+
+.title {
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.text-center .title {
+    margin-bottom: 30px;
+}
+
+.x {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #F3F6FB;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+
+.unesi-ovde {
+    width: 492px;
+    height: 55px;
+    background-color: #F3F6FB;
+    color: #7F93B6;
+    padding-left: 15px;
+    border-radius: 15px;
+    padding-top: 10px;
+}
+
+.text-inside-username {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+}
+
+.text-username,
+.text-password {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    margin-bottom: 8px;
+}
+
+.username-email {
+    margin-bottom: 20px;
+}
+
+.input-login {
+    width: 100%;
+    height: 55px;
+    background-color: #F3F6FB;
+    color: black;
+    padding-left: 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+}
+
+.password-show {
+    right: 20px;
+    height: 40%;
+    top: 30%;
+    cursor: pointer;
+}
+
+.username-email,
+.password {
+    width: 100%;
+}
+
+.zapamtiIzaboravili {
+    margin-top: 30px;
+}
+
+.zapamti {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+.text-zapamti {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+
+.zaboravili {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    text-decoration: none;
+}
+
+@media (max-width: 415px) {
+    .zapamtiIzaboravili {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .zaboravili {
+
+        margin-top: 15px;
+    }
+}
+
+.button-prijavi-se {
+    width: 100%;
+    background-color: #613FE5;
+    border-radius: 12px;
+    margin-top: 40px;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    padding: 15px;
+    display: flex;
+}
+
+.loading {
+    padding: 10px;
+    display: none;
+}
+
+.loading-login {
+    padding: 10px;
+    display: none;
+}
+
+.button-prijavi-se img {
+    height: 35px;
+}
+
+.text-registration {
+    color: #7F93B6;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    display: inline-block;
+}
+
+.text-prijava-registration {
+    color: #7F93B6;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding-left: 3px;
+    text-decoration: none;
+}
+
+
+.registration {
+    margin-top: 35px;
+}
+
+/* Sesti element - registracija */
+
+
+.kandidat {
+    width: 48%;
+    height: 65px;
+    border-radius: 12px;
+    background-color: #F3F6FB;
+    border: none;
+    outline: none;
+    color: #613FE5;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.kandidat-poslodavac-text {
+    margin: 0;
+    margin-left: 7px;
+}
+
+@media(max-width: 450px) {
+    .kandidat-poslodavac {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .kandidat-poslodavac button {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+}
+
+.poslodavac {
+    width: 48%;
+    height: 65px;
+    border-radius: 12px;
+    background-color: #F3F6FB;
+    border: none;
+    outline: none;
+    color: #613FE5;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.kandidat,
+.poslodavac {
+    transition-duration: .3s;
+}
+
+.kandidat.active,
+.poslodavac.active {
+    background-color: #34A852;
+    color: white;
+}
+
+.kandidat.active svg path,
+.poslodavac.active svg path {
+    fill: white;
+}
+
+.kandidat-poslodavac {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.registruj-se {
+    display: inline-block;
+}
+
+.login-error-container,
+.register-error-container {
+    margin-bottom: 1rem;
+    border: 1px solid red;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 15px;
+    display: none;
+}
+
+.login-error-container p,
+b,
+.register-error-container p,
+b {
+    margin: 0px;
+    padding: 0px;
+}
+
+.login-error-container.active,
+.register-error-container.active {
+    display: block;
+    animation: showLoginError .3s ease-in-out forwards;
+}
+
+/* ANIMACIJE */
+@keyframes showLoginBox {
+    0% {
+        scale: 0;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes closeLoginBox {
+    0% {
+        scale: 1;
+    }
+
+    100% {
+        scale: 0;
+    }
+}
+
+@keyframes slideToRegister {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: -100%;
+    }
+}
+
+@keyframes slideToLogin {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+@keyframes showLoginError {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

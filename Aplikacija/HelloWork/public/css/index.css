@@ -1,0 +1,228 @@
+@import url('variables.css');
+
+.welcome-container {
+    max-width: 1310px;
+    padding: 20px;
+    padding-top: 50px;
+    min-height: 700px;
+    align-items: center;
+}
+
+.welcome-left-container {
+    display: inline-block;
+    width: 60%;
+    position: relative;
+    z-index: 2;
+}
+
+.welcome-left-container h1 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 65px;
+    line-height: 75px;
+}
+
+.main-text span {
+    color: var(--main-color);
+}
+
+.welcome-left-container p {
+    margin-top: 30px;
+    color: var(--grey-text);
+}
+
+.welcome-right-container {
+    width: 40%;
+    height: 600px;
+    align-items: end;
+    justify-content: end;
+    z-index: 1;
+}
+
+.welcome-right-container img {
+    height: 100%;
+}
+
+.mt-200 {
+    margin-top: 200px;
+}
+
+.purpleText {
+    color: var(--main-color);
+}
+
+.welcome-sector-text,
+.welcome-sector-image {
+    width: 50%;
+}
+
+.welcome-section-image {
+    align-items: end;
+}
+
+.welcome-sector-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.site-tutorial h2,
+.welcome-sector-text h2 {
+    color: var(--black-text);
+    font-size: 40px;
+    line-height: 49px;
+}
+
+.site-tutorial .tutorial-header {
+    width: 100%;
+    max-width: 850px;
+}
+
+.site-tutorial .description {
+    font-weight: normal;
+    color: var(--grey-text);
+}
+
+.welcome-quick-jobs {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-sector-container button,
+.welcome-quick-jobs button,
+.quick-jobs-cotnainer button {
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+}
+
+.welcome-quick-jobs button {
+    padding: 20px 30px;
+}
+
+.quick-jobs-cotnainer button {
+    margin-top: 20px;
+}
+
+.quick-search {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.quick-search img {
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+}
+
+.quick-search input {
+    width: 200px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.quick-search input::placeholder {
+    font-weight: normal;
+    color: var(--grey-text);
+}
+
+.quick-search .separator {
+    width: 1px;
+    height: 70px;
+    /* border: 2px solid var(--border-color); */
+    background-color: var(--border-color);
+}
+
+.quick-search button {
+    min-height: 60px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    padding: 20px;
+}
+
+/* RESPONSIVE */
+
+
+
+@media only screen and (max-width: 1500px) {}
+
+@media only screen and (max-width: 1280px) {
+    .welcome-sector-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .welcome-sector-text,
+    .welcome-section-image {
+        width: 100%;
+    }
+
+    .welcome-section-image {
+        margin-top: 50px;
+        justify-content: center;
+    }
+
+
+    .welcome-section-image img {
+        width: 100%;
+        height: 100%;
+        max-width: 500px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .welcome-container {
+        flex-direction: column;
+    }
+
+    .welcome-left-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .welcome-right-container {
+        width: 100%;
+        height: 400px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .quick-search button {
+        width: 100%;
+    }
+
+    .welcome-quick-jobs {
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .welcome-left-container h1 {
+        font-size: 50px;
+        line-height: 55px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .welcome-left-container h1 {
+        font-size: 40px;
+        line-height: 45px;
+    }
+
+    .welcome-right-container img {
+        height: auto;
+        width: 100%;
+    }
+}

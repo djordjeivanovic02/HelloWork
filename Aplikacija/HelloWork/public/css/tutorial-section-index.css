@@ -1,0 +1,40 @@
+.allaround-container {
+    width: 298px;
+    height: 274px;
+    border-radius: 20px;
+}
+
+.hover-indicator {
+    z-index: 1;
+}
+
+.allaround-main {
+    z-index: 2;
+}
+
+.allaround-container .hover-indicator {
+    background-color: var(--main-color);
+    border-radius: 20px;
+}
+
+.allaround-container .hover-indicator {
+    height: 0%;
+    transition: height 0.5s ease-in-out;
+}
+
+.allaround-container:hover .hover-indicator {
+    height: 100%;
+}
+
+.allaround-container p {
+    transition: color 0.2s ease-in-out;
+}
+
+.allaround-container:hover p {
+    color: white;
+}
+
+.allaround-container .img-container {
+    box-sizing: border-box;
+    border: 2px solid white;
+}

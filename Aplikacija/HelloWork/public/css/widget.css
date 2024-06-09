@@ -1,0 +1,452 @@
+@import url('variables.css');
+
+.allaround-container {
+    width: 298px;
+    height: 274px;
+    border-radius: 20px;
+}
+
+.img-container {
+    background-color: rgb(97, 63, 229);
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+}
+
+.text-pretraga {
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+    margin: 20px 10px 10px 10px;
+    font-weight: bold;
+}
+
+.text-pronadji {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 10px;
+    line-height: 15px;
+    color: #7F93B6;
+}
+
+.centaar {
+    padding: 10%;
+}
+
+/* Drugi deo */
+
+.spoljni-container {
+    width: 298px;
+    height: 150px;
+    background-color: #F0EEFC;
+    border-radius: 10px;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.spoljni-main {
+    padding: 20px;
+}
+
+.second-hover-indicator {
+    background-color: var(--main-color);
+    width: 0px;
+    border-radius: 10px 0px 0px 10px;
+    left: 0;
+    transition: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: .5s;
+}
+
+.spoljni-container:hover .second-hover-indicator {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.spoljni-container:hover .gornji-text {
+    color: white;
+}
+
+.spoljni-container:hover .donji-text {
+    color: white;
+}
+
+.gornji-text {
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    transition-duration: .5s;
+}
+
+.donji-text {
+    color: #613FE5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    transition-duration: .5s;
+}
+
+.spoljni-container a {
+    text-decoration: none;
+}
+
+
+/* Treći deo */
+
+.out-container {
+    width: 100%;
+    max-width: 397px;
+    /* he÷ight: 273px; */
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition-duration: 0.3s;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.out-container:hover {
+    border-color: #613FE5;
+}
+
+.full-time-div {
+    background-color: #F0EEFC;
+    border-radius: 5px;
+    margin-top: 7px;
+    margin-right: 7px;
+    position: relative;
+    padding: 2px 7px;
+}
+
+.full-time-text {
+    font-size: 11px;
+    font-family: 'Poppins', sans-serif;
+    color: #613FE5;
+    font-weight: bold;
+    margin-left: 4px;
+    margin-top: 1px;
+}
+
+.before2 {
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.logo-container {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.top-text {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 13px;
+    line-height: 15px;
+}
+
+.top-text a {
+    text-decoration: none;
+    color: black;
+}
+
+.top-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.bottom-text {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 13px;
+    color: #7F93B6;
+    line-height: 1px;
+
+}
+
+.third-row {
+    margin-top: 18px;
+}
+
+.text-third-row {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+}
+
+.button {
+    padding: 10px 20px;
+    height: 42px;
+    background-color: #613FE5;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.button-text {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin: 0px;
+}
+
+.price {
+    color: #613FE5;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 0px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.month {
+    color: #7F93B6;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    margin: 0px;
+}
+
+.pricemonth-div {
+    padding-right: 20px;
+    position: relative;
+    padding-top: 10px;
+}
+
+/* Četvrti deo */
+
+.long-container {
+    border: 1px solid #F0EEFC;
+    border-radius: 10px;
+    margin-top: 20px;
+    position: relative;
+    padding: 20px;
+}
+
+.image-div {
+    width: 55px;
+    height: 55px;
+}
+
+.image-div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.above-text {
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.above-text a {
+    text-decoration: none;
+    color: black;
+}
+
+.above-text a:hover {
+    text-decoration: underline;
+}
+
+.widget-types {
+    padding-left: 55px;
+}
+
+.all-informations {
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #7F93B6;
+}
+
+.text-in-span {
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.down-button-text {
+    color: #613FE5;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    margin: 0px;
+}
+
+.down-button {
+    padding: 2px 10px;
+    background-color: #F3F6FB;
+    border-radius: 20px;
+    margin-top: 17px;
+    margin-left: 14px;
+}
+
+
+
+
+
+/* Sedmi deo - Petar Petrovic */
+
+.whole-container {
+    margin-top: 40px;
+}
+
+.left-div {
+    width: 20%;
+    height: 40%;
+    padding-right: 20px;
+    border-radius: 15px;
+}
+
+.right-div {
+    width: 60%;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.osnovne-kontakt-informacije {
+    font-size: 20px;
+    font-family: 'Poppines', sans-serif;
+    font-weight: 600;
+}
+
+
+.textarea {
+    height: 200px;
+    width: 97.5%;
+    background-color: white;
+    color: black;
+    padding-left: 10px;
+    padding-top: 10px;
+    border-radius: 8px;
+    border: 0.5px solid grey;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+}
+
+
+.tekst-neki {
+    width: 100%;
+    padding-bottom: 35px;
+}
+
+
+.isti-text {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin: 0px;
+    margin-top: 15px;
+}
+
+.ime-zanimanje-desni {
+    width: 100%;
+}
+
+.isti-input {
+    width: 99%;
+    max-width: 700px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    padding-left: 15px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    box-shadow: 0px, 0px, 5px, 0px, red;
+}
+
+.button-end {
+    width: 100%;
+    background-color: #613FE5;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 450;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+.wide-widget .all-informations {
+    display: flex;
+}
+
+.wide-widget {
+    justify-content: start;
+}
+
+.last-info {
+    display: block;
+}
+
+.save-it-div {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.save-it-div svg path {
+    fill: black;
+}
+
+.save-it-div.active {
+    background-color: var(--main-color);
+    fill: white;
+}
+
+.save-it-div.active svg path {
+    fill: white;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 640px) {
+    .wide-widget .all-informations {
+        display: none;
+    }
+
+    .down-button {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {}
+
+@media only screen and (max-width: 1024px) {
+    .last-info {
+        display: none;
+    }
+
+    .wide-widget {
+        justify-content: center;
+        margin-bottom: 0;
+    }
+
+    .image-div {
+        width: 40px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {}
+
+@media only screen and (max-width: 1500px) {}

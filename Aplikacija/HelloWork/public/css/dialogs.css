@@ -1,0 +1,164 @@
+@import url('variables.css');
+
+.dialog-background,
+.quick-preview-background {
+    background-color: var(--background-color);
+    padding: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--black-color);
+}
+
+.dialog-background.active,
+.quick-preview-background.active {
+    display: flex;
+}
+
+.dialog-background.passive,
+.quick-preview-background.passive {
+    display: none;
+}
+
+.dialog-box,
+.quick-preview-box {
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    scale: 0;
+}
+
+.box-with-input {
+    max-width: 600px;
+}
+
+.box-with-input textarea {
+    min-height: 100px;
+}
+
+.quick-preview-box {
+    max-width: 500px;
+    padding: 0;
+}
+
+.dialog-box.active,
+.quick-preview-box.active {
+    animation: showDialog .3s ease-in-out forwards;
+}
+
+.dialog-box.passive,
+.quick-preview-box.passive {
+    animation: hiddeDialog .3s ease-in-out forwards;
+}
+
+.dialog-box .title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.dialog-btn {
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dialog-btn-yes {
+    color: white;
+    background-color: var(--main-color);
+}
+
+.dialog-btn-yes:hover {
+    color: white;
+}
+
+.dialog-btn-cancel {
+    color: black;
+    background-color: rgb(212, 212, 212);
+}
+
+.dialog-btn-cancel:hover {
+    color: black;
+}
+
+.dialog-close {
+    right: 20px;
+    top: 20px;
+}
+
+.quick-preview-header {
+    /* padding: 15px; */
+    padding-left: 20px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px 5px 0 0;
+}
+
+.quick-preview-footer {
+    padding: 15px 20px;
+    background-color: rgb(240, 240, 240);
+    border-top: 1px solid var(--border-color);
+    border-radius: 0px 0px 5px 5px;
+}
+
+.quick-preview-footer button {
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid var(--border-color);
+    background-color: white;
+}
+
+.quick-preview-header h3 span {
+    color: var(--main-color);
+}
+
+.quick-preview-header img {
+    width: 50px;
+}
+
+.quick-main-cont {
+    padding: 30px;
+}
+
+.quick-close {
+    /* padding: 0px 10px; */
+    padding: 10px 20px;
+    cursor: pointer;
+    height: 100%;
+    border-left: 1px solid var(--border-color);
+}
+
+.quick-close::before {
+    content: '\00D7';
+    font-size: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+.quick-main-cont .name-cl p {
+    font-weight: 600;
+}
+
+
+@keyframes showDialog {
+    0% {
+        scale: 0;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes hiddeDialog {
+    0% {
+        scale: 1;
+    }
+
+    100% {
+        scale: 0;
+    }
+}
